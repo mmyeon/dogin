@@ -4,6 +4,7 @@ import Detail from "../Components/Detail";
 
 const Question1 = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [questionNum, setQuestionNum] = useState(1);
 
   function handleDetail() {
     setIsVisible(true);
@@ -13,7 +14,9 @@ const Question1 = () => {
     <>
       <div>Question1</div>
       <Answers onClick={handleDetail} />
-      {isVisible && <Detail />}
+      {isVisible && (
+        <Detail questionNum={questionNum} setQuestionNum={setQuestionNum} />
+      )}
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
 
-const Detail = () => {
+const Detail = ({ setQuestionNum, questionNum }) => {
   const ModalOverlay = styled.div`
     height: 100vh;
     width: 100vw;
@@ -30,11 +30,15 @@ const Detail = () => {
     color: white;
   `;
 
+  function updateQuestion() {
+    setQuestionNum(questionNum + 1);
+  }
+
   return (
     <ModalOverlay>
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
-        <Button title="다음" />
+        <Button title="다음" onClick={updateQuestion} />
       </ModalContainer>
     </ModalOverlay>
   );
