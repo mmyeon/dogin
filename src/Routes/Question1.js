@@ -1,19 +1,13 @@
 import React, { useState } from "react";
-import Button from "../Components/Button";
+import Answers from "../Components/Answers";
 
 const Question1 = () => {
-  const [userResult, setUserResult] = useState([]);
-
-  function handleYesClick() {
-    console.log("클릭되었습니다");
-  }
+  // const [userResult, setUserResult] = useState([]);
 
   return (
     <>
       <div>Question1</div>
-      {/* TODO: 클릭하면 userResult에 추가되기 */}
-      <Button title="YES" onClick={handleYesClick} />
-      <Button title="NO" onClick={handleYesClick} />
+      <Answers />
     </>
   );
 };
