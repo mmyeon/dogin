@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 const Detail = () => {
   const ModalOverlay = styled.div`
@@ -33,7 +34,7 @@ const Detail = () => {
     <ModalOverlay>
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
-        <button>다음</button>
+        <Button title="다음" />
       </ModalContainer>
     </ModalOverlay>
   );
