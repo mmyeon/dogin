@@ -1,0 +1,42 @@
+import React from "react";
+import styled from "styled-components";
+
+const Detail = () => {
+  const ModalOverlay = styled.div`
+    height: 100vh;
+    width: 100vw;
+    background: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  `;
+
+  const ModalContainer = styled.div`
+    width: 400px;
+    height: 400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+  `;
+
+  const Title = styled.h1`
+    color: white;
+  `;
+
+  return (
+    <ModalOverlay>
+      <ModalContainer>
+        <Title>이 문제를 맞히셨습니다</Title>
+        <button>다음</button>
+      </ModalContainer>
+    </ModalOverlay>
+  );
+};
+
+export default Detail;
