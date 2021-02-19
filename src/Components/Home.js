@@ -5,7 +5,6 @@ import Button from "./Button";
 import { useQuestionNum } from "../context";
 
 const HomeContainer = styled.div`
-  text-align: center;
   padding: 3em;
 `;
 
