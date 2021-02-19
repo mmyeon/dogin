@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Answers from "../Components/Answers";
 import Detail from "../Components/Detail";
+import { useQuestionNum } from "../context";
 
-const Question1 = () => {
+const Question = () => {
+  const questionNum = useQuestionNum();
+  console.log("questionNum", questionNum);
+
   const [isVisible, setIsVisible] = useState(false);
-  const [questionNum, setQuestionNum] = useState(1);
 
   function handleDetail() {
     setIsVisible(true);
@@ -13,13 +16,14 @@ const Question1 = () => {
 
   return (
     <>
+      <h1>{questionNum}</h1>
       <div>Question1</div>
       <Answers onClick={handleDetail} />
-      {isVisible && (
+      {/* {isVisible && (
         <Detail questionNum={questionNum} setQuestionNum={setQuestionNum} />
-      )}
+      )} */}
     </>
   );
 };
 
-export default Question1;
+export default Question;
