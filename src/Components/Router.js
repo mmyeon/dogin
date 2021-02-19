@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
-import Question1 from "../Routes/Question1";
+import Question from "../Routes/Question";
 
 const DefaultRouter = () => {
   return (
     <Router>
       <Route path="/" exact component={Home} />
-      <Route path="/question1" component={Question1} />
+      <Route path="/question" component={Question} />
     </Router>
   );
 };

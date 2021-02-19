@@ -8,6 +8,7 @@ const Question1 = () => {
 
   function handleDetail() {
     setIsVisible(true);
+    console.log(questionNum);
   }
 
   return (

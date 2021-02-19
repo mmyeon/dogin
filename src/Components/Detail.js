@@ -31,8 +31,7 @@ const Title = styled.h1`
 
 const Detail = ({ setQuestionNum, questionNum }) => {
   function updateQuestion() {
-    setQuestionNum(questionNum + 1);
-    console.log(questionNum);
+    setQuestionNum((questionNum += 1));
   }
 
   return (
