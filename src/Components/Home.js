@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Button from "./Button";
+
+const HomeContainer = styled.div`
+  text-align: center;
+  padding: 3em;
+`;
+
+const ProjectName = styled.span`
+  font-size: 1.5rem;
+`;
+
+const Title = styled.h1`
+  margin: 1.5rem 0;
+  font-size: 2rem;
+  line-height: 2rem;
+`;
 
 const Home = () => {
   return (
-    <>
-      <div>Dog In</div>
-      <h1>나는 너와 함께 살 준비가 되어있을까?</h1>
+    <HomeContainer>
+      <ProjectName>Dog In</ProjectName>
+      <Title>나는 너와 함께 살아갈 준비가 되어있을까?</Title>
       <Link to="/question1">
-        {/* <Link to={`/question${questionNum}`}> */}
-        <Button title="start" />
+        <Button title="START" />
       </Link>
-    </>
+    </HomeContainer>
   );
 };
 
