@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useGetDetail, useQuestionNum } from "../context";
 import Button from "./Button";
 
 const ModalOverlay = styled.div`
   height: 100vh;
   width: 100vw;
-  background: black;
+  background: mediumaquamarine;
   position: relative;
   display: flex;
   align-items: center;
@@ -16,29 +17,36 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: 400px;
-  height: 400px;
-
+  padding: 1.5em;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: red;
+  background: white;
+  border-radius: 25px;
+  margin: 0 2rem;
 `;
 
 const Title = styled.h1`
-  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 1rem 0;
 `;
 
-const Detail = ({ setQuestionNum, questionNum }) => {
+const Detail = () => {
+  const questionNum = useQuestionNum();
+  const detail = useGetDetail();
+
   function updateQuestion() {
-    setQuestionNum((questionNum += 1));
+    console.log("clicked");
   }
 
   return (
     <ModalOverlay>
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
-        <Button title="다음" onClick={updateQuestion} />
+        <p>{detail(questionNum)}</p>
+        <Button title="NEXT" onClick={updateQuestion} />
       </ModalContainer>
     </ModalOverlay>
   );

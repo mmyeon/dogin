@@ -10,11 +10,22 @@ export const Question = ({ children, data }) => {
     return data[questionNum]["question"];
   };
 
+  const getDetail = (questionNum) => {
+    return data[questionNum]["detail"];
+  };
+
   return (
-    <QuestionContext.Provider value={{ questionNum, getQuestion }}>
+    <QuestionContext.Provider
+      value={{ questionNum, setQuestionNum, getQuestion, getDetail }}
+    >
       {children}
     </QuestionContext.Provider>
   );
+};
+
+export const useSetQuestionNum = () => {
+  const { setQuestionNum } = useContext(QuestionContext);
+  return setQuestionNum;
 };
 
 export const useQuestionNum = () => {
@@ -25,6 +36,11 @@ export const useQuestionNum = () => {
 export const useGetQuestion = () => {
   const { getQuestion } = useContext(QuestionContext);
   return getQuestion;
+};
+
+export const useGetDetail = () => {
+  const { getDetail } = useContext(QuestionContext);
+  return getDetail;
 };
 
 export default Question;
