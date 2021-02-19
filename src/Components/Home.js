@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
+import { useQuestionNum } from "../context";
 
 const HomeContainer = styled.div`
   text-align: center;
@@ -19,11 +20,13 @@ const Title = styled.h1`
 `;
 
 const Home = () => {
+  const questionNum = useQuestionNum();
+
   return (
     <HomeContainer>
       <ProjectName>Dog In</ProjectName>
       <Title>나는 너와 함께 살아갈 준비가 되어있을까?</Title>
-      <Link to="/question1">
+      <Link to={`/question${questionNum}`}>
         <Button title="START" />
       </Link>
     </HomeContainer>
