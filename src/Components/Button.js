@@ -12,6 +12,8 @@ const ButtonContainer = styled.button`
   outline: none;
   font-weight: 900;
   letter-spacing: 3px;
+  margin: 1em 0;
+  margin-right: 5px;
 `;
 
 const Button = ({ title, onClick }) => {
