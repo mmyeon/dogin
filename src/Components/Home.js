@@ -5,7 +5,8 @@ import Button from "./Button";
 import { useQuestionNum } from "../context";
 
 const HomeContainer = styled.div`
-  padding: 3em;
+  padding: 1.5em;
+  margin: 0 2rem;
 `;
 
 const ProjectName = styled.span`
