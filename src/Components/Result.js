@@ -1,6 +1,7 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { useGetDetail, useQuestionNum } from "../context";
+import { useGetDetail } from "../context";
 import Button from "./Button";
 
 const ModalOverlay = styled.div`
@@ -33,9 +34,9 @@ const Title = styled.h1`
   margin: 1rem 0;
 `;
 
-const Detail = () => {
-  const questionNum = useQuestionNum();
+const Detail = ({ location: { pathname } }) => {
   const detail = useGetDetail();
+  const questionNumber = JSON.parse(pathname.split("/")[2]);
 
   function updateQuestion() {
     console.log("clicked");
@@ -45,11 +46,13 @@ const Detail = () => {
     <ModalOverlay>
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
-        <p>{detail(questionNum)}</p>
-        <Button title="NEXT" onClick={updateQuestion} />
+        <p>{detail(questionNumber)}</p>
+        <Link to={`/question/${questionNumber + 1}`}>
+          <Button title="NEXT" onClick={updateQuestion} />
+        </Link>
       </ModalContainer>
     </ModalOverlay>
   );
 };
 
-export default Detail;
+export default withRouter(Detail);
