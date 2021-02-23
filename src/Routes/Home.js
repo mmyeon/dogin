@@ -26,7 +26,7 @@ const Home = () => {
     <HomeContainer>
       <ProjectName>Dog In</ProjectName>
       <Title>나는 너와 함께 살아갈 준비가 되어있을까?</Title>
-      <Link to={`/question${questionNum}`}>
+      <Link to={`/question/${questionNum}`}>
         <Button title="START" />
       </Link>
     </HomeContainer>

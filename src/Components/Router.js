@@ -10,7 +10,7 @@ const DefaultRouter = () => {
   return (
     <Router>
       <Route path="/" exact component={Home} />
-      <Route path={`/question${questionNum}`} component={Question} />
+      <Route path={`/question/${questionNum}`} component={Question} />
     </Router>
   );
 };
