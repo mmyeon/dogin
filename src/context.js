@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 
-// export const QuestionContext = React.createContext();
 const QuestionContext = React.createContext();
 
-export const Question = ({ children, data }) => {
+export const QuestionProvider = ({ children, data }) => {
   const [questionNum, setQuestionNum] = useState(1);
 
   const getQuestion = (questionNum) => {
@@ -43,4 +42,4 @@ export const useGetDetail = () => {
   return getDetail;
 };
 
-export default Question;
+export default QuestionProvider;

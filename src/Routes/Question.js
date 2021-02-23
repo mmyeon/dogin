@@ -20,7 +20,6 @@ const Title = styled.h1`
 const Question = () => {
   const questionNum = useQuestionNum();
   const question = useGetQuestion();
-
   const [isVisible, setIsVisible] = useState(false);
 
   function handleDetail() {

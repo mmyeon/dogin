@@ -1,4 +1,4 @@
-const datas = {
+const data = {
   1: {
     question: "매일 한 시간 이상 산책할 수 있나요?",
     detail: "1번 상세 설명",
@@ -10,4 +10,4 @@ const datas = {
   },
 };
 
-export default datas;
+export default data;

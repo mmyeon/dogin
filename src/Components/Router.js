@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "../Routes/Home";
 import Question from "../Routes/Question";
 import { useQuestionNum } from "../context";
 
