@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Answers from "../Components/Answers";
-import Detail from "../Components/Detail";
+import Result from "../Components/Result";
 import { useGetQuestion, useQuestionNum } from "../context";
 import styled from "styled-components";
 
@@ -20,11 +20,10 @@ const Title = styled.h1`
 const Question = () => {
   const questionNum = useQuestionNum();
   const question = useGetQuestion();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleResult, setIsVisibleResult] = useState(false);
 
   function handleDetail() {
-    setIsVisible(true);
-    console.log(questionNum);
+    setIsVisibleResult(true);
   }
 
   return (
@@ -32,7 +31,7 @@ const Question = () => {
       <span>{questionNum}</span>
       <Title>{question(questionNum)}</Title>
       <Answers onClick={handleDetail} />
-      {isVisible && <Detail />}
+      {isVisibleResult && <Result />}
     </QuestionContainer>
   );
 };
