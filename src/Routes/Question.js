@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import { useGetQuestion } from "../context";
 import Answers from "../Components/Answers";
 import Result from "../Components/Result";
-import { useGetQuestion, useQuestionNum } from "../context";
 import styled from "styled-components";
 
 const QuestionContainer = styled.div`
@@ -17,10 +18,10 @@ const Title = styled.h1`
   margin: 1rem 0;
 `;
 
-const Question = () => {
-  const questionNum = useQuestionNum();
+const Question = ({ location: { pathname } }) => {
   const question = useGetQuestion();
   const [isVisibleResult, setIsVisibleResult] = useState(false);
+  const questionNumber = JSON.parse(pathname.split("/")[2]);
 
   function handleDetail() {
     setIsVisibleResult(true);
@@ -28,12 +29,12 @@ const Question = () => {
 
   return (
     <QuestionContainer>
-      <span>{questionNum}</span>
-      <Title>{question(questionNum)}</Title>
+      <span>{questionNumber}</span>
+      <Title>{question(questionNumber)}</Title>
       <Answers onClick={handleDetail} />
       {isVisibleResult && <Result />}
     </QuestionContainer>
   );
 };
 
-export default Question;
+export default withRouter(Question);
