@@ -23,7 +23,7 @@ const Question = ({ location: { pathname } }) => {
   const [isVisibleResult, setIsVisibleResult] = useState(false);
   const questionNumber = JSON.parse(pathname.split("/")[2]);
 
-  function handleDetail() {
+  function handleResult() {
     setIsVisibleResult(true);
   }
 
@@ -31,7 +31,7 @@ const Question = ({ location: { pathname } }) => {
     <QuestionContainer>
       <span>{questionNumber}</span>
       <Title>{question(questionNumber)}</Title>
-      <Answers onClick={handleDetail} />
+      <Answers onClick={handleResult} />
       {isVisibleResult && <Result />}
     </QuestionContainer>
   );
