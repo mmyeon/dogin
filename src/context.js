@@ -1,18 +1,19 @@
 import React, { useContext, useState } from "react";
-
 const QuestionContext = React.createContext();
 
-export const QuestionProvider = ({ children, questionList, answerList }) => {
+export const QuestionProvider = ({ data, children }) => {
   const [questionNum, setQuestionNum] = useState(1);
-
-  const getQuestion = (questionNum) => {
-    const currentIndex = questionNum - 1;
-    return questionList[currentIndex];
-  };
+  const questionList = data.map((item, i) => item[i + 1]["question"]);
+  const answerList = data.map((item, i) => item[i + 1]["answer"]);
 
   const getAnswer = (questionNum) => {
     const currentIndex = questionNum - 1;
     return answerList[currentIndex];
+  };
+
+  const getQuestion = (questionNum) => {
+    const currentIndex = questionNum - 1;
+    return questionList[currentIndex];
   };
 
   return (
