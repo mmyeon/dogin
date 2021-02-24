@@ -1,21 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "../Routes/Home";
 import Question from "../Routes/Question";
-import { useQuestionNum } from "../context";
+import data from "../data";
 
 const DefaultRouter = () => {
-  const questionNum = useQuestionNum();
-
-  // TODO: state 변경되었는지 확인하기
-  useEffect(() => {
-    console.log("Router", questionNum);
-  }, [questionNum]);
-
   return (
     <Router>
       <Route path="/" exact component={Home} />
-      <Route path={`/question/${questionNum}`} component={Question} />
+      {data.map((question, i) => {
+        return (
+          <Route key={i} path={`/question/${i + 1}`} component={Question} />
+        );
+      })}
     </Router>
   );
 };
