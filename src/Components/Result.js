@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { useGetDetail, useSetQuestionNum } from "../context";
+import { useGetAnswer, useSetQuestionNum } from "../context";
 import Button from "./Button";
 
 const ModalOverlay = styled.div`
@@ -36,7 +36,7 @@ const Title = styled.h1`
 
 const Detail = ({ location: { pathname } }) => {
   const setQuestionNum = useSetQuestionNum();
-  const detail = useGetDetail();
+  const answer = useGetAnswer();
   const questionNumber = JSON.parse(pathname.split("/")[2]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Detail = ({ location: { pathname } }) => {
     <ModalOverlay>
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
-        <p>{detail(questionNumber)}</p>
+        <p>{answer(questionNumber)}</p>
         <Link to={`/question/${questionNumber + 1}`}>
           <Button title="NEXT" />
         </Link>

@@ -2,11 +2,11 @@ import React from "react";
 import QuestionProvider from "../context";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
-import data from "../data";
+import { questionList, answerList } from "../data";
 
 const App = () => {
   return (
-    <QuestionProvider data={data}>
+    <QuestionProvider questionList={questionList} answerList={answerList}>
       <Router />
       <GlobalStyles />
     </QuestionProvider>

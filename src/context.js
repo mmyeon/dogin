@@ -2,20 +2,22 @@ import React, { useContext, useState } from "react";
 
 const QuestionContext = React.createContext();
 
-export const QuestionProvider = ({ children, data }) => {
+export const QuestionProvider = ({ children, questionList, answerList }) => {
   const [questionNum, setQuestionNum] = useState(1);
 
   const getQuestion = (questionNum) => {
-    return data[questionNum]["question"];
+    const currentIndex = questionNum - 1;
+    return questionList[currentIndex];
   };
 
-  const getDetail = (questionNum) => {
-    return data[questionNum]["detail"];
+  const getAnswer = (questionNum) => {
+    const currentIndex = questionNum - 1;
+    return answerList[currentIndex];
   };
 
   return (
     <QuestionContext.Provider
-      value={{ questionNum, setQuestionNum, getQuestion, getDetail }}
+      value={{ questionNum, setQuestionNum, getQuestion, getAnswer }}
     >
       {children}
     </QuestionContext.Provider>
@@ -37,9 +39,9 @@ export const useGetQuestion = () => {
   return getQuestion;
 };
 
-export const useGetDetail = () => {
-  const { getDetail } = useContext(QuestionContext);
-  return getDetail;
+export const useGetAnswer = () => {
+  const { getAnswer } = useContext(QuestionContext);
+  return getAnswer;
 };
 
 export default QuestionProvider;
