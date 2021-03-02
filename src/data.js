@@ -24,6 +24,24 @@ const data = [
       answer: "4번 상세 설명",
     },
   },
+  {
+    5: {
+      question: "5번 문제?",
+      answer: "5번 상세 설명",
+    },
+  },
+  {
+    6: {
+      question: "6번 문제?",
+      answer: "6번 상세 설명",
+    },
+  },
+  {
+    7: {
+      question: "7번 문제?",
+      answer: "7번 상세 설명",
+    },
+  },
 ];
 
 export default data;
