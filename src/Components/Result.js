@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import { useGetAnswer, useSetQuestionNum } from "../context";
 import Button from "./Button";
+import data from "../data";
 
 const ModalOverlay = styled.div`
   height: 100vh;
@@ -50,9 +51,15 @@ const Detail = ({ location: { pathname } }) => {
       <ModalContainer>
         <Title>이 문제를 맞히셨습니다</Title>
         <p>{answer(questionNumber)}</p>
-        <Link to={`/question/${questionNumber + 1}`}>
-          <Button title="NEXT" />
-        </Link>
+        {questionNumber < data.length ? (
+          <Link to={`/question/${questionNumber + 1}`}>
+            <Button title="NEXT" />
+          </Link>
+        ) : (
+          <Link to="/review">
+            <Button title="NEXT" />
+          </Link>
+        )}
       </ModalContainer>
     </ModalOverlay>
   );
