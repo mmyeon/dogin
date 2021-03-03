@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import { useGetQuestion } from "../context";
+import {
+  useGetQuestion,
+  useSetUserAnswerList,
+  useUserAnswerList,
+} from "../context";
 import Answers from "../Components/Answers";
 import Result from "../Components/Result";
 import styled from "styled-components";
+import data from "../data";
 
 const QuestionContainer = styled.div`
   padding: 1.5em;
@@ -20,12 +25,26 @@ const Title = styled.h1`
 
 const Question = ({ location: { pathname } }) => {
   const question = useGetQuestion();
+  const userAnswerList = useUserAnswerList();
+  const setUserAnswerList = useSetUserAnswerList();
   const [isVisibleResult, setIsVisibleResult] = useState(false);
   const questionNumber = JSON.parse(pathname.split("/")[2]);
 
-  function handleResult() {
+  function handleResult(e) {
     setIsVisibleResult(true);
+    const userAnswer = e.target.innerText;
+    setUserAnswerList([...userAnswerList, { questionNumber, userAnswer }]);
   }
+
+  useEffect(() => {
+    if (userAnswerList.length > data.length) {
+      return setUserAnswerList([]);
+    }
+
+    if (userAnswerList.length < questionNumber) {
+      // TODO: Home 페이지로 이동
+    }
+  }, [userAnswerList]);
 
   return (
     <QuestionContainer>
