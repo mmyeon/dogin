@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { useGetAnswer, useSetQuestionNum } from "../context";
+import { useGetAnswer, useSetQuestionNum, useUserAnswerList } from "../context";
 import Button from "./Button";
 import data from "../data";
 
@@ -39,6 +39,15 @@ const Detail = ({ location: { pathname } }) => {
   const setQuestionNum = useSetQuestionNum();
   const answer = useGetAnswer();
   const questionNumber = JSON.parse(pathname.split("/")[2]);
+  const userAnswerList = useUserAnswerList();
+  // TODO:userAnswerList가 빈 배열일때 에러 처리하기
+  const userSelection =
+    userAnswerList.length > 0
+      ? userAnswerList[questionNumber - 1]["userAnswer"]
+      : null;
+
+  const correctAnswer =
+    data[questionNumber - 1][questionNumber]["questionAnswer"];
 
   useEffect(() => {
     return () => {
@@ -49,7 +58,11 @@ const Detail = ({ location: { pathname } }) => {
   return (
     <ModalOverlay>
       <ModalContainer>
-        <Title>이 문제를 맞히셨습니다</Title>
+        <Title>
+          {userSelection === correctAnswer
+            ? "축하합니다. 정답입니다"
+            : "아쉽지만 틀렸습니다"}
+        </Title>
         <p>{answer(questionNumber)}</p>
         {questionNumber < data.length ? (
           <Link to={`/question/${questionNumber + 1}`}>

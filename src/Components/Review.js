@@ -9,8 +9,9 @@ const Review = () => {
   );
 
   let resultList = [];
+
   function checkResult() {
-    for (let i = 0; i < correctAnswerList.length; i++) {
+    for (let i = 0; i < userAnswerList.length; i++) {
       userAnswerList[i]["userAnswer"] === correctAnswerList[i]
         ? resultList.push({ questionNumber: i + 1, answerResult: "맞음" })
         : resultList.push({ questionNumber: i + 1, answerResult: "틀림" });
