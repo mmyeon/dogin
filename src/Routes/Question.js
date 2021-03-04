@@ -40,10 +40,6 @@ const Question = ({ location: { pathname } }) => {
     if (userAnswerList.length > data.length) {
       return setUserAnswerList([]);
     }
-
-    if (userAnswerList.length < questionNumber) {
-      // TODO: Home 페이지로 이동
-    }
   }, [userAnswerList]);
 
   return (
