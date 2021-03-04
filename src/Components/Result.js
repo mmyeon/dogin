@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { useGetAnswer, useSetQuestionNum, useUserAnswerList } from "../context";
+import {
+  useGetAnswer,
+  useSetQuestionNum,
+  useUserAnswerList,
+  useSetUserAnswerList,
+} from "../context";
 import Button from "./Button";
 import data from "../data";
 
@@ -36,24 +41,34 @@ const Title = styled.h1`
 `;
 
 const Detail = ({ location: { pathname } }) => {
+  let history = useHistory();
   const setQuestionNum = useSetQuestionNum();
   const answer = useGetAnswer();
   const questionNumber = JSON.parse(pathname.split("/")[2]);
   const userAnswerList = useUserAnswerList();
-  // TODO:userAnswerList가 빈 배열일때 에러 처리하기
-  const userSelection =
-    userAnswerList.length > 0
-      ? userAnswerList[questionNumber - 1]["userAnswer"]
-      : null;
+  const setUserAnswerList = useSetUserAnswerList();
 
+  // TODO: 질문하기 - 내 예상에 2번 TODO가 가능할 것 같은데 실제로는 불가함.
+  // TODO: 배열의 갯수가 질문의 넘버와 다른 경우
+  const userSelection = userAnswerList[userAnswerList.length - 1]["userAnswer"];
+  // 2번 TODO: 배열의 갯수가 질문의 넘버와 같은 경우
+  // const userSelection = userAnswerList[questionNumber - 1]["userAnswer"];
   const correctAnswer =
     data[questionNumber - 1][questionNumber]["questionAnswer"];
 
   useEffect(() => {
+    if (questionNumber > userAnswerList.length) {
+      // TODO: 1일 떄는 그냥 진행됨
+      history.push("/");
+      setUserAnswerList([]);
+    }
+
     return () => {
       setQuestionNum(questionNumber + 1);
     };
   }, []);
+
+  useEffect(() => {}, []);
 
   return (
     <ModalOverlay>
