@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ButtonContainer = styled.button`
+  font-family: "Poppins", sans-serif;
   background: mediumaquamarine;
   color: white;
   font-size: 1.1rem;

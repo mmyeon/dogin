@@ -5,7 +5,9 @@ const GlobalStyles = createGlobalStyle`
     ${reset};
 
     body { 
-        font-family: "Poppins", sans-serif;
+        
+
+        font-family: 'Sunflower', sans-serif;
         width:100vw;
         height:100vh;
         display:flex;
