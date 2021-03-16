@@ -5,8 +5,6 @@ const GlobalStyles = createGlobalStyle`
     ${reset};
 
     body { 
-        
-
         font-family: 'Sunflower', sans-serif;
         width:100vw;
         height:100vh;
