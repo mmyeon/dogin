@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../Components/Button";
 import { getDogImageApi } from "../api";
-import { getDefaultNormalizer } from "@testing-library/dom";
 
 const HomeContent = styled.div`
   /* TODO:padding margin의 필요성 */
@@ -22,13 +21,10 @@ const Background = styled.div`
 `;
 
 const DogImage = styled.img`
-  width: 200px;
-  height: 200px;
-  background: white;
-  border: none;
-  text-decoration: none;
-  /* border: 2px solid white; */
-  /* border-radius: 50px; */
+  width: 300px;
+  height: 300px;
+  border: 7px solid white;
+  border-radius: 50%;
 `;
 
 const Title = styled.h1`
@@ -39,14 +35,16 @@ const Title = styled.h1`
 `;
 
 const Home = () => {
-  let apiResult = null;
+  const [imgURL, setImgURL] = useState([]);
+  const [imgIndex, setImgIndex] = useState(null);
+
   async function getData() {
     try {
       const {
         data: { results: apiResult },
       } = await getDogImageApi();
-      // console.log("results", results);
-      console.log("apiResult", apiResult);
+      const imagesURL = apiResult.map((item) => item.urls.small);
+      setImgURL(imagesURL);
     } catch (error) {
       console.log("failed");
     }
@@ -56,11 +54,17 @@ const Home = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    setImgIndex(Math.floor(Math.random() * imgURL.length));
+  }, [imgURL]);
+
   return (
     <>
       <Background />
       <HomeContent>
-        <DogImage />
+        {/* TODO: 이미지태그가 아닌 backgroundImage로 변경해서 이미지사이즈 다른 부분 개선하기 */}
+        {/* TODO: apiPage를 랜덤하게 보내서 다양한 강아지 사진 불러오기. 현재는 같은 10개만 넘어옴 */}
+        <DogImage src={imgURL[imgIndex]} />
         <Title>
           나는 너와 <br></br>함께할 준비가 되어있을까
         </Title>
