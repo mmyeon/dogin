@@ -45,6 +45,7 @@ const Detail = ({ location: { pathname } }) => {
   const setQuestionNum = useSetQuestionNum();
   const answer = useGetAnswer();
   const questionNumber = JSON.parse(pathname.split("/")[2]);
+  const { answerTitle, answerDetail } = answer(questionNumber);
   const userAnswerList = useUserAnswerList();
   const setUserAnswerList = useSetUserAnswerList();
 
@@ -73,12 +74,8 @@ const Detail = ({ location: { pathname } }) => {
   return (
     <ModalOverlay>
       <ModalContainer>
-        <Title>
-          {userSelection === correctAnswer
-            ? "축하합니다. 정답입니다"
-            : "아쉽지만 틀렸습니다"}
-        </Title>
-        <p>{answer(questionNumber)}</p>
+        <Title>{answerTitle}</Title>
+        <p>{answerDetail}</p>
         {questionNumber < data.length ? (
           <Link to={`/question/${questionNumber + 1}`}>
             <Button title="NEXT" />
