@@ -71,7 +71,6 @@ const Home = () => {
     <>
       <Background />
       <HomeContent>
-        {/* TODO: apiPage를 랜덤하게 보내서 다양한 강아지 사진 불러오기. 현재는 같은 10개만 넘어옴 */}
         <DogImage
           style={{
             backgroundImage: `url(

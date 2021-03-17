@@ -11,6 +11,7 @@ export const getDogImageApi = () =>
   api.get("search/photos", {
     params: {
       query: "dog",
+      page: Math.floor(Math.random() * 100),
     },
   });
 
