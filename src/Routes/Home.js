@@ -20,11 +20,14 @@ const Background = styled.div`
   top: 0;
 `;
 
-const DogImage = styled.img`
+const DogImage = styled.div`
   width: 300px;
   height: 300px;
   border: 7px solid white;
   border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 
 const Title = styled.h1`
@@ -62,9 +65,14 @@ const Home = () => {
     <>
       <Background />
       <HomeContent>
-        {/* TODO: 이미지태그가 아닌 backgroundImage로 변경해서 이미지사이즈 다른 부분 개선하기 */}
         {/* TODO: apiPage를 랜덤하게 보내서 다양한 강아지 사진 불러오기. 현재는 같은 10개만 넘어옴 */}
-        <DogImage src={imgURL[imgIndex]} />
+        <DogImage
+          style={{
+            backgroundImage: `url(
+              ${imgURL[imgIndex]}
+            )`,
+          }}
+        />
         <Title>
           나는 너와 <br></br>함께할 준비가 되어있을까
         </Title>
