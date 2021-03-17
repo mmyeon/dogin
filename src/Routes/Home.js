@@ -6,14 +6,18 @@ import { getDogImageApi } from "../api";
 
 const HomeContent = styled.div`
   /* TODO:padding margin의 필요성 */
-  /* padding: 1.5em; */
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin: 0 2rem;
   position: relative;
 `;
 
 const Background = styled.div`
   width: 100vw;
-  height: 40vh;
+  height: 35vh;
   background: mediumaquamarine;
   position: absolute;
   left: 0;
@@ -21,9 +25,9 @@ const Background = styled.div`
 `;
 
 const DogImage = styled.div`
-  width: 300px;
-  height: 300px;
-  border: 7px solid white;
+  width: 180px;
+  height: 180px;
+  border: 10px solid white;
   border-radius: 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,10 +36,12 @@ const DogImage = styled.div`
 
 const Title = styled.h1`
   font-weight: 500;
-  margin: 2rem 0;
-  font-size: 1.6rem;
-  line-height: 2rem;
+  margin: 1.8rem 0;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
 `;
+
+const StartBtn = styled(Button)``;
 
 const Home = () => {
   const [imgURL, setImgURL] = useState([]);
@@ -74,10 +80,10 @@ const Home = () => {
           }}
         />
         <Title>
-          나는 너와 <br></br>함께할 준비가 되어있을까
+          나는 너와 <br></br>함께할 준비가 되어있을까?
         </Title>
         <Link to="/question/1">
-          <Button title="Dog In" />
+          <StartBtn title="Dog In" />
         </Link>
       </HomeContent>
     </>
