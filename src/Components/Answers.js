@@ -4,8 +4,8 @@ import Button from "../Components/Button";
 const Answers = ({ onClick }) => {
   return (
     <div>
-      <Button title="YES" onClick={onClick} />
-      <Button title="NO" onClick={onClick} />
+      <Button title="YES" marginRight={"5px"} onClick={onClick} />
+      <Button title="YES" marginRight={"5px"} onClick={onClick} />
     </div>
   );
 };
