@@ -32,9 +32,18 @@ const ModalContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 800;
   margin: 1rem 0;
+  white-space: pre-line;
+  line-height: 2.1rem;
+`;
+
+const TitleDetail = styled.p`
+  white-space: pre-line;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 `;
 
 const Detail = ({ location: { pathname } }) => {
@@ -68,7 +77,7 @@ const Detail = ({ location: { pathname } }) => {
     <ModalOverlay>
       <ModalContainer>
         <Title>{answerTitle}</Title>
-        <p>{answerDetail}</p>
+        <TitleDetail>{answerDetail}</TitleDetail>
         {questionNumber < data.length ? (
           <Link to={`/question/${questionNumber + 1}`}>
             <Button title="NEXT" />
