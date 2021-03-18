@@ -15,11 +15,14 @@ const ButtonContainer = styled.button`
   letter-spacing: 3px;
   margin-right: ${(props) => props.marginRight || "0px"};
 
+  /* 데스크탑 */
   &:hover {
     background: mediumaquamarine;
     color: white;
     border-color: black;
   }
+
+  /* TODO: 모바일은 클릭하면 컬러 변하도록 설정 */
 `;
 
 const Button = ({ title, onClick, marginRight }) => {

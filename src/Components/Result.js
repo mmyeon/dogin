@@ -18,9 +18,6 @@ const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 const ModalContainer = styled.div`
@@ -30,7 +27,7 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
-  border-radius: 25px;
+  border-radius: 18px;
   margin: 0 2rem;
 `;
 
@@ -49,11 +46,7 @@ const Detail = ({ location: { pathname } }) => {
   const userAnswerList = useUserAnswerList();
   const setUserAnswerList = useSetUserAnswerList();
 
-  // TODO: 질문하기 - 내 예상에 2번 TODO가 가능할 것 같은데 실제로는 불가함.
-  // TODO: 배열의 갯수가 질문의 넘버와 다른 경우
   const userSelection = userAnswerList[userAnswerList.length - 1]["userAnswer"];
-  // 2번 TODO: 배열의 갯수가 질문의 넘버와 같은 경우
-  // const userSelection = userAnswerList[questionNumber - 1]["userAnswer"];
   const correctAnswer =
     data[questionNumber - 1][questionNumber]["questionAnswer"];
 
