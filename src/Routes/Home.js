@@ -5,7 +5,6 @@ import Button from "../Components/Button";
 import { getDogImageApi } from "../api";
 
 const HomeContent = styled.div`
-  /* TODO:padding margin의 필요성 */
   padding-top: 13px;
   display: flex;
   align-items: center;
@@ -35,7 +34,6 @@ const DogImage = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 500;
   margin: 1.8rem 0;
   font-size: 1.8rem;
   line-height: 2.8rem;

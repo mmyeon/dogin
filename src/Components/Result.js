@@ -34,16 +34,17 @@ const ModalContainer = styled.div`
 const Title = styled.h1`
   font-size: 1.4rem;
   font-weight: 800;
-  margin: 1rem 0;
+  margin-top: 1rem;
   white-space: pre-line;
   line-height: 2.1rem;
 `;
 
 const TitleDetail = styled.p`
   white-space: pre-line;
-  margin-bottom: 2rem;
+  margin: 1.5rem 0;
   font-size: 1.2rem;
   line-height: 1.6rem;
+  font-weight: 500;
 `;
 
 const Detail = ({ location: { pathname } }) => {

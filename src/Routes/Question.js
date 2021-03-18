@@ -75,7 +75,6 @@ const QuestionContent = styled.div`
 
 const Title = styled.h1`
   font-size: 1.6rem;
-  font-weight: 500;
   margin: 1rem 0;
   white-space: pre-line;
   line-height: 2.1rem;

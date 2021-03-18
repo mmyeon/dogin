@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
         align-items:center;
         justify-content:center;
         text-align: center;
+        font-weight: bold;
     }
 
 `;
