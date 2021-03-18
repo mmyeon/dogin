@@ -1,6 +1,7 @@
 const data = [
   {
     1: {
+      imageFileName: "dog-walking.png",
       question: `나는 
       매일 1시간 이상
       산책을 나갈 수 있다.`,
@@ -25,6 +26,7 @@ const data = [
   },
   {
     2: {
+      imageFileName: "veterinarian.png",
       question: `나는 
       매달 10만원이상의 
       병원비를 감당할 수 있다.`,
@@ -53,6 +55,7 @@ const data = [
   },
   {
     3: {
+      imageFileName: "puppy.png",
       question: `개는
       밥만 잘 챙겨주면 
       충분하다`,
@@ -76,6 +79,7 @@ const data = [
   },
   {
     4: {
+      imageFileName: "animals_meet.png",
       question: `나는
       산책할 때
       다른 개에게 다가가는게
@@ -99,6 +103,7 @@ const data = [
   },
   {
     5: {
+      imageFileName: "chicken.png",
       question: `개는 다 잘먹으니까
       다양하게 주는 게 좋다고
       생각한다.`,
@@ -122,6 +127,7 @@ const data = [
   },
   {
     6: {
+      imageFileName: "walking-the-dog.png",
       question: `나는 
       반려견 교육이 
       필요하다고 생각한다.`,
@@ -144,6 +150,7 @@ const data = [
   },
   {
     7: {
+      imageFileName: "family.png",
       question: `나는
       반려견을 케어하는데 
       도움을 받을 사람이 있다.`,
@@ -164,6 +171,7 @@ const data = [
   },
   {
     8: {
+      imageFileName: "health.png",
       question: `나는
       개의 평균 수명에 대해
       알고 있다.`,
@@ -189,6 +197,7 @@ const data = [
   },
   {
     9: {
+      imageFileName: "pets.png",
       question: `나는
       개와 함께 하면서
       내 삶이 달라진다는 것을

@@ -73,6 +73,12 @@ const QuestionContent = styled.div`
   padding: 1.5em;
 `;
 
+const DogImage = styled.img`
+  width: 130px;
+  height: 130px;
+  margin-top: 20px;
+`;
+
 const Title = styled.h1`
   font-size: 1.6rem;
   margin: 1rem 0;
@@ -116,6 +122,13 @@ const Question = ({ location: { pathname } }) => {
               ))}
             </PageList>
             <QuestionContent>
+              {data.map((item, i) =>
+                i + 1 === questionNumber ? (
+                  <DogImage
+                    src={`/assets/${item[questionNumber]["imageFileName"]}`}
+                  />
+                ) : null
+              )}
               <Title>{question(questionNumber)}</Title>
               <Answers onClick={handleResult} />
             </QuestionContent>
