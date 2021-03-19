@@ -5,7 +5,7 @@ import data from "../data";
 const Review = () => {
   const userAnswerList = useUserAnswerList();
   const correctAnswerList = data.map(
-    (item, i) => item[i + 1]["questionAnswer"]
+    (item, i) => item[i + 1]["answerOfQuestion"]
   );
 
   let resultList = [];

@@ -21,7 +21,7 @@ const data = [
         따라서 매일 1시간 이상 
         산책을 해야 합니다.`,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
   {
@@ -50,7 +50,7 @@ const data = [
         나중을 위해 병원비를 
         미리 저축하기를 추천합니다.`,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
   {
@@ -74,7 +74,7 @@ const data = [
         보호자의 시간과 노력이 
         요구됩니다.`,
       },
-      questionAnswer: "NO",
+      answerOfQuestion: "NO",
     },
   },
   {
@@ -98,7 +98,7 @@ const data = [
         그 만남이 부정적인 경험이 
         되지 않도록 관찰해야 합니다.`,
       },
-      questionAnswer: "NO",
+      answerOfQuestion: "NO",
     },
   },
   {
@@ -122,7 +122,7 @@ const data = [
         개에게는 해로울 수 있다는 사실을
         반드시 명심해야 합니다.`,
       },
-      questionAnswer: "NO",
+      answerOfQuestion: "NO",
     },
   },
   {
@@ -145,7 +145,7 @@ const data = [
         이물질 먹지 않기
         산책 예절 훈련 `,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
   {
@@ -166,7 +166,7 @@ const data = [
         급한 상황에서
         빠르게 도움을 받을 수 있습니다.`,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
   {
@@ -192,7 +192,7 @@ const data = [
         어떤 상황에서도 너와 끝까지 함께
         하겠다는 것을 의미합니다.`,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
   {
@@ -223,7 +223,7 @@ const data = [
         동물병원에서 다녀오느라
         주말 오전을 다 보낸다.`,
       },
-      questionAnswer: "YES",
+      answerOfQuestion: "YES",
     },
   },
 ];

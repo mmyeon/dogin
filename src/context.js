@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-const QuestionContext = React.createContext();
+const ContentContext = React.createContext();
 
-export const QuestionProvider = ({ data, children }) => {
+export const ContentProvider = ({ data, children }) => {
   const [questionNum, setQuestionNum] = useState(1);
   // TODO: 유저가 선택한 값 저장하기
   const [userAnswerList, setUserAnswerList] = useState([]);
@@ -19,7 +19,7 @@ export const QuestionProvider = ({ data, children }) => {
   };
 
   return (
-    <QuestionContext.Provider
+    <ContentContext.Provider
       value={{
         questionNum,
         setQuestionNum,
@@ -30,39 +30,39 @@ export const QuestionProvider = ({ data, children }) => {
       }}
     >
       {children}
-    </QuestionContext.Provider>
+    </ContentContext.Provider>
   );
 };
 
 export const useSetQuestionNum = () => {
-  const { setQuestionNum } = useContext(QuestionContext);
+  const { setQuestionNum } = useContext(ContentContext);
   return setQuestionNum;
 };
 
 export const useQuestionNum = () => {
-  const { questionNum } = useContext(QuestionContext);
+  const { questionNum } = useContext(ContentContext);
   return questionNum;
 };
 
 export const useGetQuestion = () => {
-  const { getQuestion } = useContext(QuestionContext);
+  const { getQuestion } = useContext(ContentContext);
   return getQuestion;
 };
 
 export const useGetAnswer = () => {
-  const { getAnswer } = useContext(QuestionContext);
+  const { getAnswer } = useContext(ContentContext);
   return getAnswer;
 };
 
 // TODO: userAnswerList 변경하기
 export const useUserAnswerList = () => {
-  const { userAnswerList } = useContext(QuestionContext);
+  const { userAnswerList } = useContext(ContentContext);
   return userAnswerList;
 };
 
 export const useSetUserAnswerList = () => {
-  const { setUserAnswerList } = useContext(QuestionContext);
+  const { setUserAnswerList } = useContext(ContentContext);
   return setUserAnswerList;
 };
 
-export default QuestionProvider;
+export default ContentProvider;

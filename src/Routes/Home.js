@@ -42,37 +42,26 @@ const Title = styled.h1`
 const StartBtn = styled(Button)``;
 
 const Home = () => {
-  const [imgURL, setImgURL] = useState([]);
+  const [imgUrlList, setImgUrlList] = useState([]);
   const [imgIndex, setImgIndex] = useState(null);
-
-  async function getData() {
-    try {
-      const {
-        data: { results: apiResult },
-      } = await getDogImageApi();
-      const imagesURL = apiResult.map((item) => item.urls.small);
-      setImgURL(imagesURL);
-    } catch (error) {
-      console.log("failed");
-    }
-  }
 
   useEffect(() => {
     getData();
   }, []);
 
   useEffect(() => {
-    setImgIndex(Math.floor(Math.random() * imgURL.length));
-  }, [imgURL]);
+    setImgIndex(Math.floor(Math.random() * imgUrlList.length));
+  }, [imgUrlList]);
 
   return (
     <>
+      {/* TODO: 구조 개선 */}
       <Background />
       <HomeContent>
         <DogImage
           style={{
             backgroundImage: `url(
-              ${imgURL[imgIndex]}
+              ${imgUrlList[imgIndex]}
             )`,
           }}
         />
@@ -85,6 +74,18 @@ const Home = () => {
       </HomeContent>
     </>
   );
+
+  async function getData() {
+    try {
+      const {
+        data: { results: apiResult },
+      } = await getDogImageApi();
+      const imagesURL = apiResult.map((item) => item.urls.small);
+      setImgUrlList(imagesURL);
+    } catch (error) {
+      console.log("failed");
+    }
+  }
 };
 
 export default Home;

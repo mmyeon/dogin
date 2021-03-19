@@ -1,15 +1,15 @@
 import React from "react";
-import QuestionProvider from "../context";
+import ContentProvider from "../context";
 import GlobalStyles from "./GlobalStyles";
 import Router from "./Router";
 import data from "../data";
 
 const App = () => {
   return (
-    <QuestionProvider data={data}>
+    <ContentProvider data={data}>
       <Router />
       <GlobalStyles />
-    </QuestionProvider>
+    </ContentProvider>
   );
 };
 
