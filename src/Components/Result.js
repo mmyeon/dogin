@@ -9,7 +9,7 @@ import {
 } from "../context";
 import Button from "./Button";
 import data from "../data";
-import Answer from "./Answer";
+import TitleWithCircle from "./TitleWithCircle";
 
 const ModalOverlay = styled.div`
   height: 100vh;
@@ -76,7 +76,7 @@ const Detail = ({ location: { pathname } }) => {
     <ModalOverlay>
       <ModalContainer>
         {/* TODO:정답인지 확인해서 타이틀 보내기  */}
-        <Answer title={"Great"} />
+        <TitleWithCircle title={"Great"} />
         <Title>{answerTitle}</Title>
         <TitleDetail>{answerDetail}</TitleDetail>
         {questionNumber < data.length ? (

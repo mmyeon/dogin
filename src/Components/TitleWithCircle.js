@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const AnswerContainer = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,19 +9,25 @@ const AnswerContainer = styled.div`
   top: -25px;
 `;
 
-const CircleContainer = styled.div`
+const BackgroundCircle = styled.div`
   display: flex;
-`;
 
-const Circle = styled.div`
-  width: 45px;
-  height: 45px;
-  background: ${(props) => props.backgroundColor};
-  border: 1px solid black;
-  border-radius: 50%;
-  position: relative;
-  left: ${(props) => props.left || "0px"};
-  right: ${(props) => props.right || "0px"};
+  .circle {
+    width: 45px;
+    height: 45px;
+    background: ${(props) => props.backgroundColor};
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+
+    &.left {
+      left: 6px;
+    }
+
+    &.right {
+      right: 6px;
+    }
+  }
 `;
 
 const Title = styled.span`
@@ -33,30 +39,10 @@ const Title = styled.span`
     1px 1px 0 #000;
 `;
 
-const BackgroundCircle = styled.div`
-  display: flex;
-  .circle {
-    width: 45px;
-    height: 45px;
-    background: ${(props) => props.backgroundColor};
-    border: 1px solid black;
-    border-radius: 50%;
-    position: relative;
-
-    &.left {
-      left: 0px;
-    }
-
-    &.right {
-      right: 0px;
-    }
-  }
-`;
-
-const Answer = ({ title }) => {
+const TitleWithCircle = ({ title }) => {
   return (
     <>
-      <AnswerContainer>
+      <Container>
         <BackgroundCircle
           backgroundColor={title === "Great" ? "#219721" : "#FA5656"}
         >
@@ -65,9 +51,9 @@ const Answer = ({ title }) => {
         </BackgroundCircle>
 
         <Title>{title}</Title>
-      </AnswerContainer>
+      </Container>
     </>
   );
 };
 
-export default Answer;
+export default TitleWithCircle;
