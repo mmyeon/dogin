@@ -9,6 +9,7 @@ import {
 } from "../context";
 import Button from "./Button";
 import data from "../data";
+import Answer from "./Answer";
 
 const ModalOverlay = styled.div`
   height: 100vh;
@@ -29,22 +30,24 @@ const ModalContainer = styled.div`
   background: white;
   border-radius: 18px;
   margin: 0 2rem;
+  position: relative;
+  border: 2px solid black;
 `;
 
 const Title = styled.h1`
-  font-size: 1.4rem;
+  font-size: 24px;
   font-weight: 800;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   white-space: pre-line;
-  line-height: 2.1rem;
+  line-height: 30px;
 `;
 
 const TitleDetail = styled.p`
   white-space: pre-line;
   margin: 1.5rem 0;
-  font-size: 1.2rem;
-  line-height: 1.6rem;
+  line-height: 22px;
   font-weight: 500;
+  font-size: 17px;
 `;
 
 const Detail = ({ location: { pathname } }) => {
@@ -72,6 +75,8 @@ const Detail = ({ location: { pathname } }) => {
   return (
     <ModalOverlay>
       <ModalContainer>
+        {/* TODO:정답인지 확인해서 타이틀 보내기  */}
+        <Answer title={"Great"} />
         <Title>{answerTitle}</Title>
         <TitleDetail>{answerDetail}</TitleDetail>
         {questionNumber < data.length ? (
