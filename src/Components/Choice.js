@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../Components/Button";
+import Button from "./Button";
 
-const Answers = ({ onClick }) => {
+const Choice = ({ onClick }) => {
   return (
     <div>
       <Button title="YES" marginRight={"5px"} onClick={onClick} />
@@ -10,4 +10,4 @@ const Answers = ({ onClick }) => {
   );
 };
 
-export default Answers;
+export default Choice;

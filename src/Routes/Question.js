@@ -5,7 +5,7 @@ import {
   useSetUserAnswerList,
   useUserAnswerList,
 } from "../context";
-import Answers from "../Components/Answers";
+import Choice from "../Components/Choice";
 import Result from "../Components/Result";
 import styled from "styled-components";
 import data from "../data";
@@ -130,7 +130,7 @@ const Question = ({ location: { pathname } }) => {
                 ) : null
               )}
               <Title>{question(questionNumber)}</Title>
-              <Answers onClick={handleResult} />
+              <Choice onClick={handleResult} />
             </QuestionContent>
           </QuestionModal>
         )}
