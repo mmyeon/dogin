@@ -56,13 +56,8 @@ const Detail = ({ location: { pathname } }) => {
   const userAnswerList = useUserAnswerList();
   const setUserAnswerList = useSetUserAnswerList();
 
-  const userSelection = userAnswerList[userAnswerList.length - 1]["userAnswer"];
-  const correctAnswer =
-    data[questionNumber - 1][questionNumber]["questionAnswer"];
-
   useEffect(() => {
     if (questionNumber > userAnswerList.length) {
-      // TODO: 1일 떄는 그냥 진행됨
       history.push("/");
       setUserAnswerList([]);
     }
