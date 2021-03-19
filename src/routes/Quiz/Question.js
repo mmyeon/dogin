@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {
   useGetQuestion,
   useSetUserAnswerList,
   useUserAnswerList,
-} from "../context";
-import Choice from "../Components/Choice";
-import Result from "../Components/Result";
+} from "../../context";
+import Choice from "../../components/Choice";
 import styled from "styled-components";
-import data from "../data";
+import data from "../../data";
 
 const QuestionContainer = styled.div`
   width: 100vw;
@@ -86,18 +85,11 @@ const Title = styled.h1`
   line-height: 2.1rem;
 `;
 
-const Question = ({ location: { pathname } }) => {
+const Question = ({ location: { pathname }, handleResult }) => {
   const question = useGetQuestion();
   const userAnswerList = useUserAnswerList();
   const setUserAnswerList = useSetUserAnswerList();
-  const [hasResult, setIsVisibleResult] = useState(false);
   const questionNumber = JSON.parse(pathname.split("/")[2]);
-
-  function handleResult(e) {
-    setIsVisibleResult(true);
-    const userAnswer = e.target.innerText;
-    setUserAnswerList([...userAnswerList, { questionNumber, userAnswer }]);
-  }
 
   useEffect(() => {
     if (userAnswerList.length > data.length) {
@@ -109,35 +101,39 @@ const Question = ({ location: { pathname } }) => {
     <>
       <QuestionContainer>
         <Background />
-        {!hasResult && (
-          <QuestionModal>
-            <PageList>
-              {data.map((item, i) => (
-                <PageNum
-                  key={i + 1}
-                  className={i + 1 === questionNumber ? "current" : null}
-                >
-                  {i + 1}
-                </PageNum>
-              ))}
-            </PageList>
-            <QuestionContent>
-              {data.map((item, i) =>
-                i + 1 === questionNumber ? (
-                  <DogImage
-                    src={`/assets/${item[questionNumber]["imageFileName"]}`}
-                  />
-                ) : null
-              )}
-              <Title>{question(questionNumber)}</Title>
-              <Choice onClick={handleResult} />
-            </QuestionContent>
-          </QuestionModal>
-        )}
-        {hasResult && <Result />}
+        <QuestionModal>
+          <PageList>
+            {data.map((item, i) => (
+              <PageNum
+                key={i.toString()}
+                className={i + 1 === questionNumber ? "current" : null}
+              >
+                {i + 1}
+              </PageNum>
+            ))}
+          </PageList>
+          <QuestionContent>
+            {data.map((item, i) =>
+              i + 1 === questionNumber ? (
+                <DogImage
+                  key={i.toString()}
+                  src={`/assets/${item[questionNumber]["imageFileName"]}`}
+                />
+              ) : null
+            )}
+            <Title>{question(questionNumber)}</Title>
+            <Choice onClick={updateResult} />
+          </QuestionContent>
+        </QuestionModal>
       </QuestionContainer>
     </>
   );
+
+  function updateResult(e) {
+    handleResult();
+    const userAnswer = e.target.innerText;
+    setUserAnswerList([...userAnswerList, { questionNumber, userAnswer }]);
+  }
 };
 
 export default withRouter(Question);

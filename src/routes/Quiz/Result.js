@@ -6,10 +6,10 @@ import {
   useSetQuestionNum,
   useUserAnswerList,
   useSetUserAnswerList,
-} from "../context";
-import Button from "./Button";
-import data from "../data";
-import TitleWithCircle from "./TitleWithCircle";
+} from "../../context";
+import Button from "../../components/Button";
+import data from "../../data";
+import TitleWithCircle from "../../components/TitleWithCircle";
 
 const ModalOverlay = styled.div`
   height: 100vh;

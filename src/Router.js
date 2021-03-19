@@ -1,9 +1,9 @@
 import React from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Home from "../Routes/Home";
-import Question from "../Routes/Question";
-import data from "../data";
-import Review from "./Review";
+import Home from "./routes/Home";
+import Quiz from "./routes/Quiz";
+import data from "./data";
+import Review from "./routes/Review";
 
 const DefaultRouter = () => {
   return (
@@ -12,10 +12,10 @@ const DefaultRouter = () => {
       {data.map((question, i) => {
         return (
           <Route
-            key={i}
+            key={i.toString()}
             path={`/question/${i + 1}`}
             exact
-            component={Question}
+            component={Quiz}
           />
         );
       })}

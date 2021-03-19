@@ -1,8 +1,8 @@
 import React from "react";
-import ContentProvider from "../context";
-import GlobalStyles from "./GlobalStyles";
+import ContentProvider from "./context";
+import GlobalStyles from "../src/GlobalStyles";
 import Router from "./Router";
-import data from "../data";
+import data from "./data";
 
 const App = () => {
   return (
