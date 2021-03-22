@@ -13,7 +13,7 @@ const DefaultRouter = () => {
         return (
           <Route
             key={i.toString()}
-            path={`/question/${i + 1}`}
+            path={`/quiz/${i + 1}`}
             exact
             component={Quiz}
           />

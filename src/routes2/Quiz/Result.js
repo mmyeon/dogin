@@ -80,7 +80,7 @@ const Detail = ({ location: { pathname } }) => {
         <Title>{answerTitle}</Title>
         <TitleDetail>{answerDetail}</TitleDetail>
         {questionNumber < data.length ? (
-          <Link to={`/question/${questionNumber + 1}`}>
+          <Link to={`/quiz/${questionNumber + 1}`}>
             <Button title="NEXT" />
           </Link>
         ) : (
