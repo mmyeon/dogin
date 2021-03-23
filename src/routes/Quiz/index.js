@@ -7,12 +7,13 @@ const Quiz = () => {
 
   return (
     <div>
-      {!hasResult && <Question handleResult={handleResult} />}
+      {!hasResult && <Question setAsAnswered={setAsAnswered} />}
       {hasResult && <Answer />}
     </div>
   );
 
-  function handleResult() {
+  /* setAsAnswered로 변경 */
+  function setAsAnswered() {
     setHasResult(true);
   }
 };

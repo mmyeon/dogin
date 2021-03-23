@@ -3,15 +3,16 @@ import { Link, withRouter, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import {
   useGetAnswer,
-  useSetQuestionNum,
-  useUserAnswerList,
-  useSetUserAnswerList,
+  useSetCurrentQuizNumber,
+  useUserChoiceList,
+  useSetUserChoiceList,
+  useQuestionList,
 } from "../../context";
 import Button from "../../components/Button";
-import data from "../../data";
 import TitleWithCircle from "../../components/TitleWithCircle";
+import Card from "../../components/Card";
 
-const ModalOverlay = styled.div`
+const Background = styled.div`
   height: 100vh;
   width: 100vw;
   background: mediumaquamarine;
@@ -19,68 +20,66 @@ const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > .Card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .answer-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-top: 0.5rem;
+      white-space: pre-line;
+      line-height: 30px;
+    }
+
+    .explanation {
+      white-space: pre-line;
+      margin: 1.5rem 0;
+      line-height: 22px;
+      font-weight: 500;
+      font-size: 17px;
+    }
+  }
 `;
 
-const ModalContainer = styled.div`
-  padding: 1.5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border-radius: 18px;
-  margin: 0 2rem;
-  position: relative;
-  border: 2px solid black;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 800;
-  margin-top: 0.5rem;
-  white-space: pre-line;
-  line-height: 30px;
-`;
-
-const TitleDetail = styled.p`
-  white-space: pre-line;
-  margin: 1.5rem 0;
-  line-height: 22px;
-  font-weight: 500;
-  font-size: 17px;
-`;
-
-const Detail = ({ location: { pathname } }) => {
+const Answer = ({ location: { pathname } }) => {
   let history = useHistory();
-  const setQuestionNum = useSetQuestionNum();
-  const answer = useGetAnswer();
-  const questionNumber = JSON.parse(pathname.split("/")[2]);
-  const { answerTitle, answerDetail } = answer(questionNumber);
-  const userAnswerList = useUserAnswerList();
-  const setUserAnswerList = useSetUserAnswerList();
+  const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
+  const setCurrentQuizNumber = useSetCurrentQuizNumber();
+  const questionList = useQuestionList();
+  const getAnswer = useGetAnswer();
+  const {
+    answer: { answerTitle, explanation },
+  } = getAnswer(currentQuizNumber);
+  const userChoiceList = useUserChoiceList();
+  const setUserChoiceList = useSetUserChoiceList();
 
   useEffect(() => {
-    if (questionNumber > userAnswerList.length) {
+    if (currentQuizNumber > userChoiceList.length) {
       history.push("/");
-      setUserAnswerList([]);
+      setUserChoiceList([]);
     }
 
     return () => {
-      setQuestionNum(questionNumber + 1);
+      setCurrentQuizNumber(currentQuizNumber + 1);
     };
   }, []);
 
-  useEffect(() => {}, []);
-
   return (
-    <ModalOverlay>
-      <ModalContainer>
+    <Background>
+      <Card>
         {/* TODO:정답인지 확인해서 타이틀 보내기  */}
         <TitleWithCircle title={"Great"} />
-        <Title>{answerTitle}</Title>
-        <TitleDetail>{answerDetail}</TitleDetail>
-        {questionNumber < data.length ? (
-          <Link to={`/quiz/${questionNumber + 1}`}>
+
+        <h1 className="answer-title">{answerTitle}</h1>
+
+        <p className="explanation">{explanation}</p>
+
+        {currentQuizNumber < questionList.length ? (
+          <Link to={`/quiz/${currentQuizNumber + 1}`}>
             <Button title="NEXT" />
           </Link>
         ) : (
@@ -88,9 +87,9 @@ const Detail = ({ location: { pathname } }) => {
             <Button title="NEXT" />
           </Link>
         )}
-      </ModalContainer>
-    </ModalOverlay>
+      </Card>
+    </Background>
   );
 };
 
-export default withRouter(Detail);
+export default withRouter(Answer);

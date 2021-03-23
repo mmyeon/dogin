@@ -2,31 +2,45 @@ import React, { useContext, useState } from "react";
 const ContentContext = React.createContext();
 
 export const ContentProvider = ({ data, children }) => {
-  const [questionNum, setQuestionNum] = useState(1);
-  // TODO: 유저가 선택한 값 저장하기
-  const [userAnswerList, setUserAnswerList] = useState([]);
-  const questionList = data.map((item, i) => item[i + 1]["question"]);
-  const answerList = data.map((item, i) => item[i + 1]["answer"]);
+  const [currentQuizNumber, setCurrentQuizNumber] = useState(1);
+  const [userChoiceList, setUserChoiceList] = useState([]);
 
-  const getAnswer = (questionNum) => {
-    const currentIndex = questionNum - 1;
-    return answerList[currentIndex];
+  const questionList = data.map((item) => {
+    return {
+      currentQuizNumber: item["currentQuizNumber"],
+      key: item["key"],
+      imageFileName: item["imageFileName"],
+      question: item["question"],
+    };
+  });
+
+  const answerList = data.map((item) => {
+    return {
+      currentQuizNumber: item["currentQuizNumber"],
+      answer: item["answer"],
+    };
+  });
+  const getQuestion = (currentQuizNumber) => {
+    const question = questionList[currentQuizNumber - 1];
+    return question;
   };
 
-  const getQuestion = (questionNum) => {
-    const currentIndex = questionNum - 1;
-    return questionList[currentIndex];
+  const getAnswer = (currentQuizNumber) => {
+    const answer = answerList[currentQuizNumber - 1];
+    return answer;
   };
 
   return (
     <ContentContext.Provider
       value={{
-        questionNum,
-        setQuestionNum,
+        currentQuizNumber,
+        setCurrentQuizNumber,
         getQuestion,
         getAnswer,
-        userAnswerList,
-        setUserAnswerList,
+        userChoiceList,
+        setUserChoiceList,
+        questionList,
+        answerList,
       }}
     >
       {children}
@@ -34,14 +48,14 @@ export const ContentProvider = ({ data, children }) => {
   );
 };
 
-export const useSetQuestionNum = () => {
-  const { setQuestionNum } = useContext(ContentContext);
-  return setQuestionNum;
+export const useSetCurrentQuizNumber = () => {
+  const { setCurrentQuizNumber } = useContext(ContentContext);
+  return setCurrentQuizNumber;
 };
 
-export const useQuestionNum = () => {
-  const { questionNum } = useContext(ContentContext);
-  return questionNum;
+export const useCurrentQuizNumber = () => {
+  const { currentQuizNumber } = useContext(ContentContext);
+  return currentQuizNumber;
 };
 
 export const useGetQuestion = () => {
@@ -54,15 +68,22 @@ export const useGetAnswer = () => {
   return getAnswer;
 };
 
-// TODO: userAnswerList 변경하기
-export const useUserAnswerList = () => {
-  const { userAnswerList } = useContext(ContentContext);
-  return userAnswerList;
+export const useUserChoiceList = () => {
+  const { userChoiceList } = useContext(ContentContext);
+  return userChoiceList;
 };
 
-export const useSetUserAnswerList = () => {
-  const { setUserAnswerList } = useContext(ContentContext);
-  return setUserAnswerList;
+export const useSetUserChoiceList = () => {
+  const { setUserChoiceList } = useContext(ContentContext);
+  return setUserChoiceList;
 };
 
+export const useQuestionList = () => {
+  const { questionList } = useContext(ContentContext);
+  return questionList;
+};
+export const useAnswerList = () => {
+  const { answerList } = useContext(ContentContext);
+  return answerList;
+};
 export default ContentProvider;

@@ -7,7 +7,7 @@ import { getDogImageApi } from "../api";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, mediumaquamarine 38%, white 5%);
+  background: linear-gradient(mediumaquamarine 37%, white 37%);
   display: flex;
   align-items: center;
   justify-content: center;

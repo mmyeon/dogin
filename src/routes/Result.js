@@ -1,22 +1,16 @@
 import React from "react";
-import { useUserAnswerList } from "../context";
-import data from "../data";
+import { useAnswerList, useUserChoiceList } from "../context";
 
 const Result = () => {
-  const userAnswerList = useUserAnswerList();
-  const correctAnswerList = data.map(
-    (item, i) => item[i + 1]["answerOfQuestion"]
+  const userChoiceList = useUserChoiceList();
+  const answerList = useAnswerList();
+  const correctAnswerList = answerList.map(
+    (item) => item["answer"]["correctAnswer"]
   );
 
-  let resultList = [];
+  console.log("answerList", answerList);
 
-  function checkResult() {
-    for (let i = 0; i < userAnswerList.length; i++) {
-      userAnswerList[i]["userAnswer"] === correctAnswerList[i]
-        ? resultList.push({ questionNumber: i + 1, answerResult: "맞음" })
-        : resultList.push({ questionNumber: i + 1, answerResult: "틀림" });
-    }
-  }
+  let resultList = [];
 
   checkResult();
 
@@ -34,16 +28,24 @@ const Result = () => {
       <h2>
         {resultList
           .filter((answer) => answer.answerResult === "맞음")
-          .map((item) => `${item.questionNumber} 번 문제, `)}
+          .map((item) => `${item.currentQuizNumber} 번 문제, `)}
       </h2>
       <h1>틀림 : {incorrectNumber} </h1>
       <h2>
         {resultList
           .filter((answer) => answer.answerResult === "틀림")
-          .map((item) => `${item.questionNumber} 번 문제, `)}
+          .map((item) => `${item.currentQuizNumber} 번 문제, `)}
       </h2>
     </section>
   );
+
+  function checkResult() {
+    for (let i = 0; i < userChoiceList.length; i++) {
+      userChoiceList[i]["userChoice"] === correctAnswerList[i]
+        ? resultList.push({ currentQuizNumber: i + 1, answerResult: "맞음" })
+        : resultList.push({ currentQuizNumber: i + 1, answerResult: "틀림" });
+    }
+  }
 };
 
 export default Result;
