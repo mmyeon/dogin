@@ -3,7 +3,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Quiz from "./routes/Quiz";
 import data from "./data";
-import Review from "./routes/Review";
+import Result from "./routes/Result";
 
 const DefaultRouter = () => {
   return (
@@ -19,7 +19,7 @@ const DefaultRouter = () => {
           />
         );
       })}
-      <Route path="/review" exact component={Review} />
+      <Route path="/result" exact component={Result} />
     </Router>
   );
 };

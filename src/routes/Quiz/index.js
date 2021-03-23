@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Question from "./Question";
-import Result from "./Result";
+import Answer from "./Answer";
 
 const Quiz = () => {
   const [hasResult, setHasResult] = useState(false);
@@ -8,7 +8,7 @@ const Quiz = () => {
   return (
     <div>
       {!hasResult && <Question handleResult={handleResult} />}
-      {hasResult && <Result />}
+      {hasResult && <Answer />}
     </div>
   );
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useUserAnswerList } from "../context";
 import data from "../data";
 
-const Review = () => {
+const Result = () => {
   const userAnswerList = useUserAnswerList();
   const correctAnswerList = data.map(
     (item, i) => item[i + 1]["answerOfQuestion"]
@@ -46,4 +46,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default Result;

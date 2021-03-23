@@ -84,7 +84,7 @@ const Detail = ({ location: { pathname } }) => {
             <Button title="NEXT" />
           </Link>
         ) : (
-          <Link to="/review">
+          <Link to="/result">
             <Button title="NEXT" />
           </Link>
         )}
