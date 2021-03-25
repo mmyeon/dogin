@@ -80,11 +80,9 @@ const Question = ({ location: { pathname }, setAsAnswered }) => {
           {questionList.map((item, i) => (
             <li
               key={i.toString()}
-              className={
-                item.currentQuizNumber === currentQuizNumber ? "current" : null
-              }
+              className={i + 1 === currentQuizNumber ? "current" : null}
             >
-              {item.currentQuizNumber}
+              {i + 1}
             </li>
           ))}
         </ul>

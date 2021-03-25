@@ -7,7 +7,6 @@ export const ContentProvider = ({ data, children }) => {
 
   const questionList = data.map((item) => {
     return {
-      currentQuizNumber: item["currentQuizNumber"],
       key: item["key"],
       imageFileName: item["imageFileName"],
       question: item["question"],
@@ -16,7 +15,6 @@ export const ContentProvider = ({ data, children }) => {
 
   const answerList = data.map((item) => {
     return {
-      currentQuizNumber: item["currentQuizNumber"],
       answer: item["answer"],
     };
   });
