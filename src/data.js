@@ -1,20 +1,15 @@
 const data = [
   {
-    // TODO: 불필요 key로 체크하기
-    // TODO: 같은 질문인지 비교하려면 key 비교하기
-    // TODO: quizNumber는 고정값이기때문에 하나가 색제되면 사라짐
-    // 따라서 string인 키가 필요함
-    currentQuizNumber: 1,
     key: "산책",
     imageFileName: "dog-walking.png",
     question: `나는 
       매일 1시간 이상
       산책을 나갈 수 있다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `반려견의 건강을 위해서는
         비가오나 눈이오나 
         산책이 필요합니다.`,
-      correctAnswer: "YES",
       explanation: `산책을 통해 반려견은 
         다양한 자극을 만나 
         에너지를 소모하게 됩니다.
@@ -29,17 +24,16 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 2,
     key: "병원비",
     imageFileName: "veterinarian.png",
     question: `나는 
       매달 10만원이상의 
       병원비를 감당할 수 있다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `반려견은 자주 아플 수 있고,
         동물병원 1회 평균 진료비는 
         약 7,4700원 입니다.`,
-      correctAnswer: "YES",
       explanation: `특히 보험이 적용되지 않아
         큰 비용이 발생하는 편입니다.
         
@@ -58,17 +52,16 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 3,
     key: "전반적인 케어",
     imageFileName: "puppy.png",
     question: `개는
       밥만 잘 챙겨주면 
       충분하다`,
-    answer: {
+    answer: "NO",
+    answerDesc: {
       answerTitle: `반려견의 건강을 위해 
         주기적으로 
         케어가 필요합니다.`,
-      correctAnswer: "NO",
       explanation: `심장사상충, 외부구충제, 
         털 / 발톱관리, 
         빗질, 귀청소, 
@@ -82,18 +75,17 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 4,
     key: "사회화",
     imageFileName: "animals_meet.png",
     question: `나는
       산책할 때
       다른 개에게 다가가는게
       좋다고 생각한다.`,
-    answer: {
+    answer: "NO",
+    answerDesc: {
       answerTitle: `다른 반려견에게 
         무턱대고 다가가는 건 
         위험합니다.`,
-      correctAnswer: "NO",
       explanation: `다른 반려견이 
         어떤 성향을 가졌는지
         알지 못하기 때문에 
@@ -106,17 +98,16 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 5,
     key: "조심해야할 음식",
     imageFileName: "chicken.png",
     question: `개는 다 잘먹으니까
       다양하게 주는 게 좋다고
       생각한다.`,
-    answer: {
+    answer: "NO",
+    answerDesc: {
       answerTitle: `다 잘먹기 때문에
         먹으면 안되는 음식을 알고
         반드시 조심해야 합니다.`,
-      correctAnswer: "NO",
       explanation: `포도와 건포도 (급성신부전증)
         초콜릿(위장장애, 경련, 부정맥)
         자이리톨(저혈당 쇼크)
@@ -130,18 +121,17 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 6,
     key: "훈련",
     imageFileName: "walking-the-dog.png",
     question: `나는 
       반려견 교육이 
       필요하다고 생각한다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `반려견과 생활하다보면
         짖음, 배변, 공격성 등
         예상치 못한 문제가
         생길 수 있습니다.`,
-      correctAnswer: "YES",
       explanation: `보호자는 문제를 해결하기 위해서
         시간과 노력을 들여
         필요한 교육을 진행해야 합니다.
@@ -153,18 +143,16 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 7,
     key: "비상시 도움받을 곳",
     imageFileName: "family.png",
     question: `나는
       반려견을 케어하는데 
       도움을 받을 사람이 있다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `병원입원, 출장, 야근,여행 등 피치 못할 사정이 
         충분히 생길 수 있습니다.`,
-      correctAnswer: "YES",
       explanation: `가족, 지인, 호텔링 등
-        correctAnswer: "YES",
         어디서 도움을 받을 수 있는지
         미리 알아두길 추천합니다.
         
@@ -175,16 +163,15 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 8,
     key: "개의 평균 수명",
     imageFileName: "health.png",
     question: `나는
       개의 평균 수명에 대해
       알고 있다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `반려견의 평균 수명은 
         10년 이상입니다.`,
-      correctAnswer: "YES",
       explanation: `사람이 나이들면 
         노화가 진행되듯이 
         반려견도 늙으면 질병에 걸리고
@@ -201,16 +188,15 @@ const data = [
     },
   },
   {
-    currentQuizNumber: 9,
     key: "포기해야 할 것",
     imageFileName: "pets.png",
     question: `나는
       개와 함께 하면서
       내 삶이 달라진다는 것을
       잘 알고 있다.`,
-    answer: {
+    answer: "YES",
+    answerDesc: {
       answerTitle: `우리가 포기해야 할 것들`,
-      correctAnswer: "YES",
       explanation: `집을 오랜 시간 비울 수 없다
         반려견 동반이 가능한 곳으로
         여행을 간다

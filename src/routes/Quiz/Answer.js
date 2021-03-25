@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import {
-  useGetAnswer,
+  useGetAnswerDesc,
   useSetCurrentQuizNumber,
   useUserChoiceList,
   useSetUserChoiceList,
@@ -50,10 +50,10 @@ const Answer = ({ location: { pathname } }) => {
   const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
   const setCurrentQuizNumber = useSetCurrentQuizNumber();
   const questionList = useQuestionList();
-  const getAnswer = useGetAnswer();
+  const getAnswerDesc = useGetAnswerDesc();
   const {
-    answer: { answerTitle, explanation },
-  } = getAnswer(currentQuizNumber);
+    answerDesc: { answerTitle, explanation },
+  } = getAnswerDesc(currentQuizNumber);
   const userChoiceList = useUserChoiceList();
   const setUserChoiceList = useSetUserChoiceList();
 

@@ -13,18 +13,21 @@ export const ContentProvider = ({ data, children }) => {
     };
   });
 
-  const answerList = data.map((item) => {
+  const answerDescList = data.map((item) => {
     return {
-      answer: item["answer"],
+      answerDesc: item["answerDesc"],
     };
   });
+
+  const answerList = data.map((item) => item.answer);
+
   const getQuestion = (currentQuizNumber) => {
     const question = questionList[currentQuizNumber - 1];
     return question;
   };
 
-  const getAnswer = (currentQuizNumber) => {
-    const answer = answerList[currentQuizNumber - 1];
+  const getAnswerDesc = (currentQuizNumber) => {
+    const answer = answerDescList[currentQuizNumber - 1];
     return answer;
   };
 
@@ -34,10 +37,11 @@ export const ContentProvider = ({ data, children }) => {
         currentQuizNumber,
         setCurrentQuizNumber,
         getQuestion,
-        getAnswer,
-        userChoiceList,
+        getAnswerDesc,
         setUserChoiceList,
+        userChoiceList,
         questionList,
+        answerDescList,
         answerList,
       }}
     >
@@ -46,14 +50,14 @@ export const ContentProvider = ({ data, children }) => {
   );
 };
 
-export const useSetCurrentQuizNumber = () => {
-  const { setCurrentQuizNumber } = useContext(ContentContext);
-  return setCurrentQuizNumber;
-};
-
 export const useCurrentQuizNumber = () => {
   const { currentQuizNumber } = useContext(ContentContext);
   return currentQuizNumber;
+};
+
+export const useSetCurrentQuizNumber = () => {
+  const { setCurrentQuizNumber } = useContext(ContentContext);
+  return setCurrentQuizNumber;
 };
 
 export const useGetQuestion = () => {
@@ -61,9 +65,9 @@ export const useGetQuestion = () => {
   return getQuestion;
 };
 
-export const useGetAnswer = () => {
-  const { getAnswer } = useContext(ContentContext);
-  return getAnswer;
+export const useGetAnswerDesc = () => {
+  const { getAnswerDesc } = useContext(ContentContext);
+  return getAnswerDesc;
 };
 
 export const useUserChoiceList = () => {
