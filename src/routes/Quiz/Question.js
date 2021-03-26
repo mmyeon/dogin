@@ -102,7 +102,7 @@ const Question = ({ location: { pathname }, setAsAnswered }) => {
   function updateResult(e) {
     setAsAnswered();
     const userChoice = e.target.innerText;
-    setUserChoiceList([...userChoiceList, { currentQuizNumber, userChoice }]);
+    setUserChoiceList([...userChoiceList, userChoice]);
   }
 };
 

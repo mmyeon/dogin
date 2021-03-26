@@ -7,6 +7,7 @@ import {
   useUserChoiceList,
   useSetUserChoiceList,
   useQuestionList,
+  useAnswerList,
 } from "../../context";
 import Button from "../../components/Button";
 import TitleWithCircle from "../../components/TitleWithCircle";
@@ -56,6 +57,7 @@ const Answer = ({ location: { pathname } }) => {
   } = getAnswerDesc(currentQuizNumber);
   const userChoiceList = useUserChoiceList();
   const setUserChoiceList = useSetUserChoiceList();
+  const answerList = useAnswerList();
 
   useEffect(() => {
     if (currentQuizNumber > userChoiceList.length) {
@@ -71,8 +73,16 @@ const Answer = ({ location: { pathname } }) => {
   return (
     <Background>
       <Card>
-        {/* TODO:정답인지 확인해서 타이틀 보내기  */}
-        <TitleWithCircle title={"Great"} />
+        {
+          <TitleWithCircle
+            title={
+              userChoiceList[currentQuizNumber - 1] ===
+              answerList[currentQuizNumber - 1]
+                ? "Great"
+                : "No No"
+            }
+          />
+        }
 
         <h1 className="answer-title">{answerTitle}</h1>
 
