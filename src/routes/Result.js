@@ -59,6 +59,7 @@ const Background = styled.div`
           border-radius: 20px;
           font-size: 14px;
           z-index: -1;
+          letter-spacing: 1px;
         }
       }
     }
@@ -81,8 +82,7 @@ const Result = () => {
       <Card>
         <span className="result-title">나의 결과는?</span>
         <section className="result-overview">
-          {/* TODO: 맞춘 개수에 따라 결과 달리지기 */}
-          <h1>아직 준비가 더 필요해요</h1>
+          <h1>{showScore()}</h1>
           <div className="heart-container">
             <img src="./assets/pet-love.png" alt="pet love" />
             <span>
@@ -103,6 +103,16 @@ const Result = () => {
       userChoiceList[i] === answerList[i]
         ? resultList.push({ currentQuizNumber: i + 1, result: "맞음" })
         : resultList.push({ currentQuizNumber: i + 1, result: "틀림" });
+    }
+  }
+
+  function showScore() {
+    if (correctAnswerNumber > 7) {
+      return "우와! 준비를 많이 하셨군요.";
+    } else if (correctAnswerNumber > 5) {
+      return "부족한 부분을 채워보세요.";
+    } else {
+      return "아쉽지만 준비가 더 필요해요";
     }
   }
 };
