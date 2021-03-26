@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
-import { useAnswerList, useUserChoiceList } from "../context";
+import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 
 const Background = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
   background: mediumaquamarine;
   display: flex;
   align-items: center;
@@ -19,6 +19,7 @@ const Background = styled.div`
     align-items: center;
     flex-direction: column;
     align-items: center;
+    padding: 2.5em;
 
     > .result-title {
       position: absolute;
@@ -63,12 +64,34 @@ const Background = styled.div`
         }
       }
     }
+
+    > .result-detail {
+      > h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 20px;
+        line-height: 30px;
+      }
+
+      ul {
+        width: 100%;
+
+        li {
+          padding: 15px 0;
+          border-bottom: 1px solid black;
+          text-align: left;
+          font-size: 20px;
+          padding-left: 10px;
+        }
+      }
+    }
   }
 `;
 
 const Result = () => {
   const userChoiceList = useUserChoiceList();
   const answerList = useAnswerList();
+  const questionList = useQuestionList();
   let resultList = [];
 
   checkResult();
@@ -77,10 +100,17 @@ const Result = () => {
     (answer) => answer.result === "맞음"
   ).length;
 
+  const incorrectAnswerList = resultList.filter(
+    (answer) => answer.result === "틀림"
+  );
+
+  console.log("incorrectAnswerList", incorrectAnswerList);
+
   return (
     <Background>
       <Card>
         <span className="result-title">나의 결과는?</span>
+
         <section className="result-overview">
           <h1>{showScore()}</h1>
           <div className="heart-container">
@@ -92,7 +122,17 @@ const Result = () => {
         </section>
 
         <section className="result-detail">
-          <h1>입양하기 전 더 고민해보세요</h1>
+          <h1>
+            입양하기 전 <br></br>더 고민해보세요
+          </h1>
+          <ul>
+            {/* TODO: 다 맞춘경우, 들어갈 문구 추가하기 */}
+            {incorrectAnswerList.map((item, i) => (
+              <li key={i.toString()}>
+                {questionList[item.currentQuizNumber - 1]["key"]}
+              </li>
+            ))}
+          </ul>
         </section>
       </Card>
     </Background>
@@ -112,7 +152,7 @@ const Result = () => {
     } else if (correctAnswerNumber > 5) {
       return "부족한 부분을 채워보세요.";
     } else {
-      return "아쉽지만 준비가 더 필요해요";
+      return "아직 준비가 더 필요해요";
     }
   }
 };
