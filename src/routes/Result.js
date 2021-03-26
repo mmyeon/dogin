@@ -15,23 +15,51 @@ const Background = styled.div`
   .Card {
     border: 3px solid #53ac8e;
     position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
 
     > .result-title {
       position: absolute;
-      top: -16px;
-      left: 50px;
+      top: -20px;
       background: white;
-      padding: 6px 23px;
+      padding: 6px 20px;
       border: 3px solid #53ac8e;
       border-radius: 20px;
+      font-weight: bold;
+      font-size: 17px;
     }
 
     > .result-overview {
-      border-bottom: 1px solid black;
+      border-bottom: 2px dashed #000000b5;
 
       > h1 {
-        font-size: 19px;
+        font-size: 22px;
         font-weight: bold;
+        margin-top: 10px;
+      }
+
+      > .heart-container {
+        display: inline-flex;
+        align-items: center;
+
+        > img {
+          width: 80px;
+          height: 80px;
+          margin: 8px 0;
+        }
+
+        > span {
+          margin-left: -20px;
+          background: #cb2527;
+          color: white;
+          padding: 9px 25px;
+          border: 3px solid black;
+          border-radius: 20px;
+          font-size: 14px;
+          z-index: -1;
+        }
       }
     }
   }
@@ -48,10 +76,6 @@ const Result = () => {
     (answer) => answer.result === "맞음"
   ).length;
 
-  const incorrectAnswerNumber = resultList.filter(
-    (answer) => answer.result === "틀림"
-  ).length;
-
   return (
     <Background>
       <Card>
@@ -60,27 +84,16 @@ const Result = () => {
           {/* TODO: 맞춘 개수에 따라 결과 달리지기 */}
           <h1>아직 준비가 더 필요해요</h1>
           <div className="heart-container">
-            <img src="" alt="" />
-            <div>
+            <img src="./assets/pet-love.png" alt="pet love" />
+            <span>
               {userChoiceList.length}개 중 {correctAnswerNumber}개 충족
-            </div>
+            </span>
           </div>
         </section>
+
         <section className="result-detail">
           <h1>입양하기 전 더 고민해보세요</h1>
         </section>
-        {/* <h1>맞음 : {correctAnswerNumber}</h1>
-        <h2>
-          {resultList
-            .filter((item) => item.result === "맞음")
-            .map((item, i) => `${item.currentQuizNumber} 번 문제, `)}
-        </h2>
-        <h1>틀림 : {incorrectAnswerNumber} </h1>
-        <h2>
-          {resultList
-            .filter((answer) => answer.result === "틀림")
-            .map((item, i) => `${item.currentQuizNumber} 번 문제, `)}
-        </h2> */}
       </Card>
     </Background>
   );
@@ -95,45 +108,3 @@ const Result = () => {
 };
 
 export default Result;
-// const Result = () => {
-//   const userChoiceList = useUserChoiceList();
-//   const answerList = useAnswerList();
-//   let resultList = [];
-
-//   checkResult();
-
-//   const correctAnswerNumber = resultList.filter(
-//     (answer) => answer.result === "맞음"
-//   ).length;
-
-//   const incorrectAnswerNumber = resultList.filter(
-//     (answer) => answer.result === "틀림"
-//   ).length;
-
-//   return (
-//     <section>
-//       <h1>맞음 : {correctAnswerNumber}</h1>
-//       <h2>
-//         {resultList
-//           .filter((item) => item.result === "맞음")
-//           .map((item, i) => `${item.currentQuizNumber} 번 문제, `)}
-//       </h2>
-//       <h1>틀림 : {incorrectAnswerNumber} </h1>
-//       <h2>
-//         {resultList
-//           .filter((answer) => answer.result === "틀림")
-//           .map((item, i) => `${item.currentQuizNumber} 번 문제, `)}
-//       </h2>
-//     </section>
-//   );
-
-//   function checkResult() {
-//     for (let i = 0; i < userChoiceList.length; i++) {
-//       userChoiceList[i]["userChoice"] === answerList[i]
-//         ? resultList.push({ currentQuizNumber: i + 1, result: "맞음" })
-//         : resultList.push({ currentQuizNumber: i + 1, result: "틀림" });
-//     }
-//   }
-// };
-
-// export default Result;
