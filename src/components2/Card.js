@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
+  /* borderType === "plain" */
+  /* borderType === "special" */
   border: 2px solid black;
   border-radius: 18px;
   margin: 0 2rem;
@@ -11,8 +13,12 @@ const StyledCard = styled.div`
   padding: 1.5em;
 `;
 
-const Card = ({ children }) => {
-  return <StyledCard className="Card">{children}</StyledCard>;
+const Card = ({ borderType, children }) => {
+  return (
+    <StyledCard borderType={borderType} className="Card">
+      {children}
+    </StyledCard>
+  );
 };
 
 export default Card;

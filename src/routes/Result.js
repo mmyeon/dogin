@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "../components/Card";
+import Card from "../components2/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
+import TitleWithCircle from "../components2/TitleWithCircle";
 
 const Background = styled.div`
   width: 100vw;
   height: 200vh;
   background: mediumaquamarine;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -21,7 +23,7 @@ const Background = styled.div`
     align-items: center;
     padding: 2.5em;
 
-    > .result-title {
+    > .source-title {
       position: absolute;
       top: -20px;
       background: white;
@@ -109,7 +111,7 @@ const Result = () => {
   return (
     <Background>
       <Card>
-        <span className="result-title">나의 결과는?</span>
+        <TitleWithCircle title={"나의 결과는?"} />
 
         <section className="result-overview">
           <h1>{showScore()}</h1>
