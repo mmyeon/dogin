@@ -1,47 +1,48 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "../components2/Card";
+import Card from "../components/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
-import TitleWithCircle from "../components2/TitleWithCircle";
+import TitleWithCircle from "../components/TitleWithCircle";
+
+const Title = styled.h1`
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+  /* margin-top: 20px; */
+  line-height: 30px;
+`;
+
+const List = styled.ul`
+  width: 100%;
+`;
+
+const ListItem = styled.li`
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  text-align: left;
+  font-size: ${(props) => (props.fontSize === "big" ? "20px" : "14px")};
+  padding-left: 10px;
+
+  > a {
+    color: black;
+  }
+`;
 
 const Background = styled.div`
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   background: mediumaquamarine;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
+  overflow: scroll;
 
   .Card {
-    border: 3px solid #53ac8e;
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 2.5em;
+    margin-top: 4rem;
 
-    > .source-title {
-      position: absolute;
-      top: -20px;
-      background: white;
-      padding: 6px 20px;
-      border: 3px solid #53ac8e;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 17px;
-    }
-
-    > .result-overview {
+    > .upper-section {
+      width: 100%;
+      padding-bottom: 1rem;
       border-bottom: 2px dashed #000000b5;
-
-      > h1 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-top: 10px;
-      }
 
       > .heart-container {
         display: inline-flex;
@@ -66,26 +67,8 @@ const Background = styled.div`
         }
       }
     }
-
-    > .result-detail {
-      > h1 {
-        font-size: 22px;
-        font-weight: bold;
-        margin-top: 20px;
-        line-height: 30px;
-      }
-
-      ul {
-        width: 100%;
-
-        li {
-          padding: 15px 0;
-          border-bottom: 1px solid black;
-          text-align: left;
-          font-size: 20px;
-          padding-left: 10px;
-        }
-      }
+    > .lower-section {
+      width: 100%;
     }
   }
 `;
@@ -110,11 +93,11 @@ const Result = () => {
 
   return (
     <Background>
-      <Card>
+      <Card borderType="special">
         <TitleWithCircle title={"나의 결과는?"} />
 
-        <section className="result-overview">
-          <h1>{showScore()}</h1>
+        <section className="upper-section">
+          <Title>{showScore()}</Title>
           <div className="heart-container">
             <img src="./assets/pet-love.png" alt="pet love" />
             <span>
@@ -123,18 +106,115 @@ const Result = () => {
           </div>
         </section>
 
-        <section className="result-detail">
-          <h1>
+        <section className="lower-section">
+          <Title>
             입양하기 전 <br></br>더 고민해보세요
-          </h1>
-          <ul>
-            {/* TODO: 다 맞춘경우, 들어갈 문구 추가하기 */}
+          </Title>
+
+          <List>
             {incorrectAnswerList.map((item, i) => (
-              <li key={i.toString()}>
+              <ListItem key={i.toString()} fontSize="big">
                 {questionList[item.currentQuizNumber - 1]["key"]}
-              </li>
+              </ListItem>
             ))}
-          </ul>
+          </List>
+        </section>
+      </Card>
+
+      <Card borderType="special">
+        <TitleWithCircle title={"출처"} />
+
+        <section className="upper-section">
+          <Title>콘텐츠 출처</Title>
+          <List>
+            <ListItem>개를 키울 수 있는 자격 / 셀리나 델 아모</ListItem>
+            <ListItem>
+              <a
+                href="https://news.mt.co.kr/mtview.php?no=2020092709474249329&VN"
+                target="_blank"
+                rel="noreferrer"
+              >
+                "강아지 귀여워, 키울래!"…1000만원 있으세요?"
+              </a>
+            </ListItem>
+            <ListItem>
+              <a
+                href="http://www.koreadognews.co.kr/news/view.php?no=2636"
+                target="_blank"
+                rel="noreferrer"
+              >
+                소비자들의 알권리, 반려동물 진료비만 예외인가?...
+              </a>
+            </ListItem>
+          </List>
+        </section>
+
+        <section className="lower-section">
+          <Title>아이콘 출처</Title>
+          <List>
+            <ListItem>
+              Icons made by{" "}
+              <a
+                href="https://www.flaticon.com/authors/photo3idea-studio"
+                title="photo3idea_studio"
+              >
+                photo3idea_studio
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
+            </ListItem>
+            <ListItem>
+              Icons made by{" "}
+              <a
+                href="https://www.flaticon.com/authors/eucalyp"
+                title="Eucalyp"
+              >
+                Eucalyp
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
+            </ListItem>
+            <ListItem>
+              Icons made by{" "}
+              <a
+                href="https://www.flaticon.com/authors/iconixar"
+                title="iconixar"
+              >
+                iconixar
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
+            </ListItem>
+            <ListItem>
+              Icons made by{" "}
+              <a
+                href="https://www.flaticon.com/authors/mangsaabguru"
+                title="mangsaabguru"
+              >
+                mangsaabguru
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
+            </ListItem>
+            <ListItem>
+              Icons made by{" "}
+              <a href="https://www.freepik.com" title="Freepik">
+                Freepik
+              </a>{" "}
+              from{" "}
+              <a href="https://www.flaticon.com/" title="Flaticon">
+                www.flaticon.com
+              </a>
+            </ListItem>
+          </List>
         </section>
       </Card>
     </Background>

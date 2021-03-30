@@ -18,7 +18,7 @@ const StyledCard = styled.div`
         align-items: center;
         flex-direction: column;
         align-items: center;
-        padding: 2.5em;
+        padding: 1.5em 2em;
         margin-bottom: 4rem;
       `;
     }
