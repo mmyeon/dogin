@@ -1,16 +1,28 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyledCard = styled.div`
-  /* borderType === "plain" */
-  /* borderType === "special" */
-  border: 2px solid black;
   border-radius: 18px;
   margin: 0 2rem;
   background: white;
   z-index: 1;
   position: relative;
-  padding: 1.5em;
+  border: 2px solid black;
+  padding: 1.3em;
+
+  ${(props) => {
+    if (props.borderType === "special") {
+      return css`
+        border: 3px solid #53ac8e;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5em;
+        margin-bottom: 4rem;
+      `;
+    }
+  }}
 `;
 
 const Card = ({ borderType, children }) => {
