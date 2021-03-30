@@ -10,7 +10,7 @@ import {
   useAnswerList,
 } from "../../context";
 import Button from "../../components/Button";
-import TitleWithCircle from "../../components/TitleWithCircle";
+import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
 
 const Background = styled.div`
@@ -74,7 +74,7 @@ const Answer = ({ location: { pathname } }) => {
     <Background>
       <Card>
         {
-          <TitleWithCircle
+          <TitleWithBubble
             title={
               userChoiceList[currentQuizNumber - 1] ===
               answerList[currentQuizNumber - 1]
