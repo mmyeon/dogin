@@ -21,7 +21,7 @@ const data = [
         따라서 매일 1시간 이상 
         산책을 해야 합니다.`,
     },
-    titleOnResult: "매일 산책을 할 수 있다",
+    titleOnResult: "매일 산책을 할 수 있다.",
   },
   {
     imageFileName: "veterinarian.png",
@@ -49,7 +49,7 @@ const data = [
         나중을 위해 병원비를 
         미리 저축하기를 추천합니다.`,
     },
-    titleOnResult: "병원비를 감당할 수 있다",
+    titleOnResult: "병원비를 감당할 수 있다.",
   },
   {
     imageFileName: "puppy.png",
@@ -118,7 +118,7 @@ const data = [
         개에게는 해로울 수 있다는 사실을
         반드시 명심해야 합니다.`,
     },
-    titleOnResult: "개가 먹으면 위험한 음식이 있다",
+    titleOnResult: "개가 먹으면 위험한 음식에 대해 알고 있다.",
   },
   {
     imageFileName: "walking-the-dog.png",
@@ -140,7 +140,7 @@ const data = [
         이물질 먹지 않기
         산책 예절 훈련 `,
     },
-    titleOnResult: "반려견 교육은 매우 중요하다",
+    titleOnResult: "반려견 교육은 매우 중요하다.",
   },
   {
     imageFileName: "family.png",
@@ -160,7 +160,7 @@ const data = [
         급한 상황에서
         빠르게 도움을 받을 수 있습니다.`,
     },
-    titleOnResult: "반려견 케어를 도와줄 사람이 있다",
+    titleOnResult: "반려견 케어를 도와줄 사람이 있다.",
   },
   {
     imageFileName: "health.png",
@@ -185,7 +185,7 @@ const data = [
         어떤 상황에서도 너와 끝까지 함께
         하겠다는 것을 의미합니다.`,
     },
-    titleOnResult: "개의 평균 수명을 알고 있다",
+    titleOnResult: "개의 평균 수명을 알고 있다.",
   },
   {
     imageFileName: "pets.png",
@@ -215,7 +215,7 @@ const data = [
         동물병원에서 다녀오느라
         주말 오전을 다 보낸다.`,
     },
-    titleOnResult: "개와 함께하는 삶에 대해 자세히 알고 있다",
+    titleOnResult: "개와 함께하는 삶에 대해 자세히 알고 있다.",
   },
 ];
 

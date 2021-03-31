@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 import TitleWithCircle from "../components/TitleWithCircle";
+import { contentReference, iconReference } from "../reference";
 
 const Title = styled.h1`
   font-size: 22px;
@@ -19,12 +20,13 @@ const List = styled.ul`
 const ListItem = styled.li`
   padding-top: 19px;
   padding-bottom: 5px;
-  line-height: 20px;
+  line-height: 17px;
   border-bottom: ${(props) => (props.borderBottom ? "1px solid black" : 0)};
   text-align: left;
   font-size: ${(props) => (props.fontSize === "big" ? "16px" : "14px")};
   padding-left: 10px;
   font-weight: 200;
+  word-break: keep-all;
 
   > a {
     color: black;
@@ -112,7 +114,7 @@ const Result = () => {
         {correctAnswerNumber !== 9 && (
           <section className="lower-section">
             <Title>
-              입양하기 전 <br></br>더 고민해보세요
+              입양하기 전 <br></br>다시 확인해보세요
             </Title>
 
             <List>
@@ -134,93 +136,40 @@ const Result = () => {
         <section className="upper-section">
           <Title>콘텐츠 출처</Title>
           <List>
-            <ListItem>개를 키울 수 있는 자격 / 셀리나 델 아모</ListItem>
-            <ListItem>
-              <a
-                href="https://news.mt.co.kr/mtview.php?no=2020092709474249329&VN"
-                target="_blank"
-                rel="noreferrer"
-              >
-                "강아지 귀여워, 키울래!"…1000만원 있으세요?"
-              </a>
-            </ListItem>
-            <ListItem>
-              <a
-                href="http://www.koreadognews.co.kr/news/view.php?no=2636"
-                target="_blank"
-                rel="noreferrer"
-              >
-                소비자들의 알권리, 반려동물 진료비만 예외인가?...
-              </a>
-            </ListItem>
+            {contentReference.map((reference) => (
+              <ListItem>
+                👉{" "}
+                {reference.link ? (
+                  <a href={reference.link} target="_blank" rel="noreferrer">
+                    {reference.title}
+                  </a>
+                ) : (
+                  reference.title
+                )}
+              </ListItem>
+            ))}
           </List>
         </section>
 
         <section className="lower-section">
           <Title>아이콘 출처</Title>
           <List>
-            <ListItem>
-              Icons made by{" "}
-              <a
-                href="https://www.flaticon.com/authors/photo3idea-studio"
-                title="photo3idea_studio"
-              >
-                photo3idea_studio
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </ListItem>
-            <ListItem>
-              Icons made by{" "}
-              <a
-                href="https://www.flaticon.com/authors/eucalyp"
-                title="Eucalyp"
-              >
-                Eucalyp
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </ListItem>
-            <ListItem>
-              Icons made by{" "}
-              <a
-                href="https://www.flaticon.com/authors/iconixar"
-                title="iconixar"
-              >
-                iconixar
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </ListItem>
-            <ListItem>
-              Icons made by{" "}
-              <a
-                href="https://www.flaticon.com/authors/mangsaabguru"
-                title="mangsaabguru"
-              >
-                mangsaabguru
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </ListItem>
-            <ListItem>
-              Icons made by{" "}
-              <a href="https://www.freepik.com" title="Freepik">
-                Freepik
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </ListItem>
+            {iconReference.map((reference) => (
+              <ListItem>
+                👉 Icons made by{" "}
+                {
+                  <a href={reference.link} title={reference.title}>
+                    {reference.title}
+                  </a>
+                }{" "}
+                from{" "}
+                {
+                  <a href="https://www.flaticon.com/" title="Flaticon">
+                    www.flaticon.com
+                  </a>
+                }
+              </ListItem>
+            ))}
           </List>
         </section>
       </Card>
