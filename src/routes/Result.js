@@ -10,6 +10,7 @@ const Title = styled.h1`
   margin-top: 10px;
   /* margin-top: 20px; */
   line-height: 30px;
+  word-break: keep-all;
 `;
 
 const List = styled.ul`
@@ -106,7 +107,22 @@ const Result = () => {
           </div>
         </section>
 
-        <section className="lower-section">
+        {correctAnswerNumber !== 9 && (
+          <section className="lower-section">
+            <Title>
+              입양하기 전 <br></br>더 고민해보세요
+            </Title>
+
+            <List>
+              {incorrectAnswerList.map((item, i) => (
+                <ListItem key={i.toString()} fontSize="big">
+                  {questionList[item.currentQuizNumber - 1]["key"]}
+                </ListItem>
+              ))}
+            </List>
+          </section>
+        )}
+        {/* <section className="lower-section">
           <Title>
             입양하기 전 <br></br>더 고민해보세요
           </Title>
@@ -118,7 +134,7 @@ const Result = () => {
               </ListItem>
             ))}
           </List>
-        </section>
+        </section> */}
       </Card>
 
       <Card borderType="special">
@@ -229,12 +245,13 @@ const Result = () => {
   }
 
   function showScore() {
-    if (correctAnswerNumber > 7) {
-      return "우와! 준비를 많이 하셨군요.";
-    } else if (correctAnswerNumber > 5) {
-      return "부족한 부분을 채워보세요.";
+    if (correctAnswerNumber > 8) {
+      return `훌륭한 보호자가 
+      되기에 충분해요.`;
+    } else if (correctAnswerNumber > 6) {
+      return "부족한 부분이 좀 있네요.";
     } else {
-      return "아직 준비가 더 필요해요";
+      return "보호자가 되기엔 아직 준비가 더 필요해요.";
     }
   }
 };
