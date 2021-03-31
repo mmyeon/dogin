@@ -8,7 +8,6 @@ const Title = styled.h1`
   font-size: 22px;
   font-weight: bold;
   margin-top: 10px;
-  /* margin-top: 20px; */
   line-height: 30px;
   word-break: keep-all;
 `;
@@ -18,12 +17,14 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding-top: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
+  padding-top: 19px;
+  padding-bottom: 5px;
+  line-height: 20px;
+  border-bottom: ${(props) => (props.borderBottom ? "1px solid black" : 0)};
   text-align: left;
-  font-size: ${(props) => (props.fontSize === "big" ? "20px" : "14px")};
+  font-size: ${(props) => (props.fontSize === "big" ? "16px" : "14px")};
   padding-left: 10px;
+  font-weight: 200;
 
   > a {
     color: black;
@@ -43,6 +44,7 @@ const Background = styled.div`
     > .upper-section {
       width: 100%;
       padding-bottom: 1rem;
+      margin-bottom: 1rem;
       border-bottom: 2px dashed #000000b5;
 
       > .heart-container {
@@ -115,8 +117,10 @@ const Result = () => {
 
             <List>
               {incorrectAnswerList.map((item, i) => (
-                <ListItem key={i.toString()} fontSize="big">
-                  {questionList[item.currentQuizNumber - 1]["key"]}
+                <ListItem key={i.toString()} fontSize="big" borderBottom>
+                  {`🐶 ${
+                    questionList[item.currentQuizNumber - 1]["titleOnResult"]
+                  }`}
                 </ListItem>
               ))}
             </List>

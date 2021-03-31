@@ -1,6 +1,5 @@
 const data = [
   {
-    key: "산책",
     imageFileName: "dog-walking.png",
     question: `나는 
       매일 1시간 이상
@@ -22,9 +21,9 @@ const data = [
         따라서 매일 1시간 이상 
         산책을 해야 합니다.`,
     },
+    titleOnResult: "매일 산책을 할 수 있다",
   },
   {
-    key: "병원비",
     imageFileName: "veterinarian.png",
     question: `나는 
       매달 10만원이상의 
@@ -50,9 +49,9 @@ const data = [
         나중을 위해 병원비를 
         미리 저축하기를 추천합니다.`,
     },
+    titleOnResult: "병원비를 감당할 수 있다",
   },
   {
-    key: "전반적인 케어",
     imageFileName: "puppy.png",
     question: `개는
       밥만 잘 챙겨주면 
@@ -73,9 +72,9 @@ const data = [
         보호자의 시간과 노력이 
         요구됩니다.`,
     },
+    titleOnResult: "반려견을 매일 케어할 수 있다.",
   },
   {
-    key: "사회화",
     imageFileName: "animals_meet.png",
     question: `나는
       산책할 때
@@ -96,9 +95,9 @@ const data = [
         그 만남이 부정적인 경험이 
         되지 않도록 관찰해야 합니다.`,
     },
+    titleOnResult: "다른 개와 만날 땐 조심한다.",
   },
   {
-    key: "조심해야할 음식",
     imageFileName: "chicken.png",
     question: `개는 다 잘먹으니까
       다양하게 주는 게 좋다고
@@ -119,9 +118,9 @@ const data = [
         개에게는 해로울 수 있다는 사실을
         반드시 명심해야 합니다.`,
     },
+    titleOnResult: "개가 먹으면 위험한 음식이 있다",
   },
   {
-    key: "훈련",
     imageFileName: "walking-the-dog.png",
     question: `나는 
       반려견 교육이 
@@ -141,9 +140,9 @@ const data = [
         이물질 먹지 않기
         산책 예절 훈련 `,
     },
+    titleOnResult: "반려견 교육은 매우 중요하다",
   },
   {
-    key: "비상시 도움받을 곳",
     imageFileName: "family.png",
     question: `나는
       반려견을 케어하는데 
@@ -161,9 +160,9 @@ const data = [
         급한 상황에서
         빠르게 도움을 받을 수 있습니다.`,
     },
+    titleOnResult: "반려견 케어를 도와줄 사람이 있다",
   },
   {
-    key: "개의 평균 수명",
     imageFileName: "health.png",
     question: `나는
       개의 평균 수명에 대해
@@ -186,9 +185,9 @@ const data = [
         어떤 상황에서도 너와 끝까지 함께
         하겠다는 것을 의미합니다.`,
     },
+    titleOnResult: "개의 평균 수명을 알고 있다",
   },
   {
-    key: "포기해야 할 것",
     imageFileName: "pets.png",
     question: `나는
       개와 함께 하면서
@@ -196,8 +195,9 @@ const data = [
       잘 알고 있다.`,
     answer: "YES",
     answerDesc: {
-      answerTitle: `우리가 포기해야 할 것들`,
+      answerTitle: `반려견과 함께하는 삶이란?`,
       explanation: `집을 오랜 시간 비울 수 없다
+
         반려견 동반이 가능한 곳으로
         여행을 간다
         
@@ -215,6 +215,7 @@ const data = [
         동물병원에서 다녀오느라
         주말 오전을 다 보낸다.`,
     },
+    titleOnResult: "개와 함께하는 삶에 대해 자세히 알고 있다",
   },
 ];
 

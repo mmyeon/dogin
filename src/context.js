@@ -7,9 +7,9 @@ export const ContentProvider = ({ data, children }) => {
 
   const questionList = data.map((item) => {
     return {
-      key: item["key"],
       imageFileName: item["imageFileName"],
       question: item["question"],
+      titleOnResult: item["titleOnResult"],
     };
   });
 
