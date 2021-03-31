@@ -122,19 +122,6 @@ const Result = () => {
             </List>
           </section>
         )}
-        {/* <section className="lower-section">
-          <Title>
-            입양하기 전 <br></br>더 고민해보세요
-          </Title>
-
-          <List>
-            {incorrectAnswerList.map((item, i) => (
-              <ListItem key={i.toString()} fontSize="big">
-                {questionList[item.currentQuizNumber - 1]["key"]}
-              </ListItem>
-            ))}
-          </List>
-        </section> */}
       </Card>
 
       <Card borderType="special">
@@ -246,12 +233,12 @@ const Result = () => {
 
   function showScore() {
     if (correctAnswerNumber > 8) {
-      return `훌륭한 보호자가 
-      되기에 충분해요.`;
+      return `좋은 보호자가 
+      될 수 있을 것 같아요.`;
     } else if (correctAnswerNumber > 6) {
       return "부족한 부분이 좀 있네요.";
     } else {
-      return "보호자가 되기엔 아직 준비가 더 필요해요.";
+      return `보호자가 되기엔 아직 준비가 더 필요해요.`;
     }
   }
 };
