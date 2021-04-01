@@ -13,7 +13,7 @@ import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
 
-const Background = styled.div`
+const Container = styled.div`
   height: 100vh;
   width: 100vw;
   background: mediumaquamarine;
@@ -84,7 +84,7 @@ const Answer = ({ location: { pathname } }) => {
   }, []);
 
   return (
-    <Background>
+    <Container>
       <Card>
         {
           <TitleWithBubble
@@ -127,7 +127,7 @@ const Answer = ({ location: { pathname } }) => {
           </Link>
         )}
       </Card>
-    </Background>
+    </Container>
   );
 };
 
