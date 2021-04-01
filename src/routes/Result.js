@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
@@ -20,6 +21,40 @@ const Gnb = styled.div`
   font-weight: bold;
   font-family: Poppins;
   box-shadow: 0 1px 0 rgb(12 13 14 / 15%);
+`;
+
+const Buttons = styled.div`
+  width: 100vw;
+  background: mediumaquamarines;
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  > .home-url {
+    display: none;
+  }
+
+  button {
+    padding: 0.8rem 1rem;
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-family: "Sunflower";
+    font-weight: bold;
+  }
+
+  .shareBtn {
+    background: #cb2527;
+  }
+
+  .homeBtn {
+    background: #ffb90f;
+    color: white;
+  }
 `;
 
 const Title = styled.h1`
@@ -50,13 +85,14 @@ const ListItem = styled.li`
   }
 `;
 
-const Background = styled.div`
+const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: mediumaquamarine;
   position: relative;
   overflow: scroll;
-  padding-top: 60px;
+  padding-top: 100px;
+  padding-bottom: 30px;
 
   .Card {
     margin-top: 4rem;
@@ -101,6 +137,7 @@ const Result = () => {
   const answerList = useAnswerList();
   const questionList = useQuestionList();
   let resultList = [];
+  const urlInput = useRef();
 
   checkResult();
 
@@ -112,10 +149,8 @@ const Result = () => {
     (answer) => answer.result === "틀림"
   );
 
-  console.log("incorrectAnswerList", incorrectAnswerList);
-
   return (
-    <Background>
+    <Container>
       <Gnb>DogIn</Gnb>
       <Card borderType="special">
         <TitleWithCircle title={"나의 결과는?"} />
@@ -138,7 +173,7 @@ const Result = () => {
 
             <List>
               {incorrectAnswerList.map((item, i) => (
-                <ListItem key={i.toString()} fontSize="big" borderBottom>
+                <ListItem key={i + 1} fontSize="big" borderBottom>
                   {`🐶 ${
                     questionList[item.currentQuizNumber - 1]["titleOnResult"]
                   }`}
@@ -155,11 +190,16 @@ const Result = () => {
         <section className="upper-section">
           <Title>콘텐츠 출처</Title>
           <List>
-            {contentReferenceList.map((reference) => (
+            {contentReferenceList.map((reference, i) => (
               <ListItem>
                 👉{" "}
                 {reference.link ? (
-                  <a href={reference.link} target="_blank" rel="noreferrer">
+                  <a
+                    href={reference.link}
+                    key={i.toString()}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {reference.title}
                   </a>
                 ) : (
@@ -192,7 +232,23 @@ const Result = () => {
           </List>
         </section>
       </Card>
-    </Background>
+
+      <Buttons>
+        <input
+          type="text"
+          className="home-url"
+          // TODO: 공유할 url 수정하기
+          value="http://localhost:3000/"
+          ref={urlInput}
+        />
+        <button className="shareBtn" onClick={copyToClipboard}>
+          친구에게 공유하기
+        </button>
+        <Link to="/">
+          <button className="homeBtn">처음으로</button>
+        </Link>
+      </Buttons>
+    </Container>
   );
 
   function checkResult() {
@@ -212,6 +268,13 @@ const Result = () => {
     } else {
       return `보호자가 되기엔 아직 준비가 더 필요해요.`;
     }
+  }
+
+  function copyToClipboard() {
+    const homeUrlInput = urlInput.current;
+    homeUrlInput.select();
+    document.execCommand("copy");
+    window.alert("주소가 복사되었습니다.");
   }
 };
 
