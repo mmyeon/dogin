@@ -43,6 +43,18 @@ const Background = styled.div`
       font-weight: 500;
       font-size: 17px;
     }
+
+    .reference {
+      font-weight: 200;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 1rem;
+      color: #595656d4;
+
+      > a {
+        color: #595656d4;
+      }
+    }
   }
 `;
 
@@ -53,7 +65,7 @@ const Answer = ({ location: { pathname } }) => {
   const questionList = useQuestionList();
   const getAnswerDesc = useGetAnswerDesc();
   const {
-    answerDesc: { answerTitle, explanation },
+    answerDesc: { answerTitle, explanation, referenceList },
   } = getAnswerDesc(currentQuizNumber);
   const userChoiceList = useUserChoiceList();
   const setUserChoiceList = useSetUserChoiceList();
@@ -87,6 +99,22 @@ const Answer = ({ location: { pathname } }) => {
         <h1 className="answer-title">{answerTitle}</h1>
 
         <p className="explanation">{explanation}</p>
+
+        {referenceList !== undefined && (
+          <span className="reference">
+            <h3>출처 </h3>
+            {referenceList.map((reference, i) => (
+              <a
+                key={i.toString()}
+                href={reference.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {reference.title}
+              </a>
+            ))}
+          </span>
+        )}
 
         {currentQuizNumber < questionList.length ? (
           <Link to={`/quiz/${currentQuizNumber + 1}`}>

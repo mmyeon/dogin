@@ -15,6 +15,12 @@ const GlobalStyles = createGlobalStyle`
         font-weight: bold;
     }
 
+    a{
+        color:black;
+        text-decoration:none;
+        cursor: pointer;
+    }
+
 `;
 
 export default GlobalStyles;
