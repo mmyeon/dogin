@@ -5,6 +5,23 @@ import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 import TitleWithCircle from "../components/TitleWithCircle";
 import { contentReferenceList, iconReferenceList } from "../reference";
 
+const Gnb = styled.div`
+  width: 100vw;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  background-color: #fffffffa;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #66cdaa;
+  font-weight: bold;
+  font-family: Poppins;
+  box-shadow: 0 1px 0 rgb(12 13 14 / 15%);
+`;
+
 const Title = styled.h1`
   font-size: 22px;
   font-weight: bold;
@@ -39,6 +56,7 @@ const Background = styled.div`
   background: mediumaquamarine;
   position: relative;
   overflow: scroll;
+  padding-top: 60px;
 
   .Card {
     margin-top: 4rem;
@@ -98,6 +116,7 @@ const Result = () => {
 
   return (
     <Background>
+      <Gnb>DogIn</Gnb>
       <Card borderType="special">
         <TitleWithCircle title={"나의 결과는?"} />
 
