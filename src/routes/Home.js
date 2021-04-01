@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/Button";
 import { getDogImageApi } from "../api";
+import Loader from "../components/Loader";
 
 const Container = styled.div`
   width: 100vw;
@@ -42,6 +43,7 @@ const Container = styled.div`
 const Home = () => {
   const [imgUrlList, setImgUrlList] = useState([]);
   const [imgIndex, setImgIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
@@ -51,7 +53,9 @@ const Home = () => {
     setImgIndex(Math.floor(Math.random() * imgUrlList.length));
   }, [imgUrlList]);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <Container>
       <section className="content">
         <div
@@ -83,6 +87,8 @@ const Home = () => {
       setImgUrlList(imagesURL);
     } catch (error) {
       console.log("failed");
+    } finally {
+      setLoading(false);
     }
   }
 };
