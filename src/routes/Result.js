@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 import TitleWithCircle from "../components/TitleWithCircle";
-import { contentReference, iconReference } from "../reference";
+import { contentReferenceList, iconReferenceList } from "../reference";
 
 const Title = styled.h1`
   font-size: 22px;
@@ -136,7 +136,7 @@ const Result = () => {
         <section className="upper-section">
           <Title>콘텐츠 출처</Title>
           <List>
-            {contentReference.map((reference) => (
+            {contentReferenceList.map((reference) => (
               <ListItem>
                 👉{" "}
                 {reference.link ? (
@@ -154,7 +154,7 @@ const Result = () => {
         <section className="lower-section">
           <Title>아이콘 출처</Title>
           <List>
-            {iconReference.map((reference) => (
+            {iconReferenceList.map((reference) => (
               <ListItem>
                 👉 Icons made by{" "}
                 {
