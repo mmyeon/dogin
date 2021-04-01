@@ -18,7 +18,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding-top: 19px;
+  padding-top: 10px;
   padding-bottom: 5px;
   line-height: 17px;
   border-bottom: ${(props) => (props.borderBottom ? "1px solid black" : 0)};
@@ -66,7 +66,7 @@ const Background = styled.div`
           padding: 9px 25px;
           border: 3px solid black;
           border-radius: 20px;
-          font-size: 14px;
+          font-size: 15px;
           z-index: -1;
           letter-spacing: 1px;
         }

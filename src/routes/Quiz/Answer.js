@@ -33,6 +33,7 @@ const Background = styled.div`
       font-weight: 800;
       margin-top: 0.5rem;
       white-space: pre-line;
+      word-break: keep-all;
       line-height: 30px;
     }
 
