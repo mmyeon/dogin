@@ -32,10 +32,6 @@ const Buttons = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
 
-  > .home-url {
-    display: none;
-  }
-
   button {
     padding: 0.8rem 1rem;
     margin: 5px;
@@ -130,6 +126,10 @@ const Container = styled.div`
       width: 100%;
     }
   }
+
+  > .home-url {
+    opacity: 0;
+  }
 `;
 
 const Result = () => {
@@ -137,7 +137,7 @@ const Result = () => {
   const answerList = useAnswerList();
   const questionList = useQuestionList();
   let resultList = [];
-  const urlInput = useRef();
+  const urlInput = useRef(null);
 
   checkResult();
 
@@ -233,15 +233,15 @@ const Result = () => {
         </section>
       </Card>
 
+      <input
+        type="text"
+        className="home-url"
+        // TODO: 공유할 url 수정하기
+        value="http://localhost:3000/"
+        readOnly
+        ref={urlInput}
+      />
       <Buttons>
-        <input
-          type="text"
-          className="home-url"
-          // TODO: 공유할 url 수정하기
-          value="http://localhost:3000/"
-          readOnly
-          ref={urlInput}
-        />
         <button className="shareBtn" onClick={copyToClipboard}>
           친구에게 공유하기
         </button>
