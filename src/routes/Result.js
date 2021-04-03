@@ -173,7 +173,7 @@ const Result = () => {
 
             <List>
               {incorrectAnswerList.map((item, i) => (
-                <ListItem key={i + 1} fontSize="big" borderBottom>
+                <ListItem key={i.toString()} fontSize="big" borderBottom>
                   {`🐶 ${
                     questionList[item.currentQuizNumber - 1]["titleOnResult"]
                   }`}
@@ -239,6 +239,7 @@ const Result = () => {
           className="home-url"
           // TODO: 공유할 url 수정하기
           value="http://localhost:3000/"
+          readOnly
           ref={urlInput}
         />
         <button className="shareBtn" onClick={copyToClipboard}>
