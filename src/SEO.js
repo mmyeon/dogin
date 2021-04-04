@@ -1,17 +1,19 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const SEO = ({ meta }) => {
   return (
-    <Helmet>
-      {meta.map((item, i) => (
-        <meta
-          key={i.toString()}
-          property={item.property}
-          content={item.content}
-        ></meta>
-      ))}
-    </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        {meta.map((item, i) => (
+          <meta
+            key={i.toString()}
+            property={item.property}
+            content={item.content}
+          ></meta>
+        ))}
+      </Helmet>
+    </HelmetProvider>
   );
 };
 
