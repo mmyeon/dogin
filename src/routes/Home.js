@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { getDogImageApi } from "../api";
 import Loader from "../components/Loader";
+import SEO from "../SEO";
 
 const Container = styled.div`
   width: 100vw;
@@ -57,29 +58,44 @@ const Home = () => {
     setImgIndex(Math.floor(Math.random() * imgUrlList.length));
   }, [imgUrlList]);
 
-  return loading ? (
-    <Loader />
-  ) : (
-    <Container>
-      <section className="content">
-        <div
-          className="dog-img"
-          style={{
-            backgroundImage: `url(
-              ${imgUrlList[imgIndex]}
-            )`,
-          }}
-        />
+  return (
+    <>
+      <SEO
+        meta={[
+          { property: "og:title", content: "Dog In" },
+          {
+            property: "og:description",
+            content: "반려견 입양 전, 꼭 알아야 할 체크리스트!",
+          },
+          { property: "og:image", content: "/assets/og-img.png" },
+        ]}
+      />
 
-        <h1 className="title">
-          나는 너와 <br></br>함께할 준비가 되어있을까?
-        </h1>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <section className="content">
+            <div
+              className="dog-img"
+              style={{
+                backgroundImage: `url(
+            ${imgUrlList[imgIndex]}
+          )`,
+              }}
+            />
 
-        <Link to="/quiz/1">
-          <Button title="Dog In" />
-        </Link>
-      </section>
-    </Container>
+            <h1 className="title">
+              나는 너와 <br></br>함께할 준비가 되어있을까?
+            </h1>
+
+            <Link to="/quiz/1">
+              <Button title="Dog In" />
+            </Link>
+          </section>
+        </Container>
+      )}
+    </>
   );
 
   async function getData() {
