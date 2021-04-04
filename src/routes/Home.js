@@ -47,6 +47,10 @@ const Home = () => {
 
   useEffect(() => {
     getData();
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1900);
   }, []);
 
   useEffect(() => {
@@ -87,8 +91,6 @@ const Home = () => {
       setImgUrlList(imagesURL);
     } catch (error) {
       console.log("failed");
-    } finally {
-      setLoading(false);
     }
   }
 };
