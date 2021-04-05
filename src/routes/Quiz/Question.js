@@ -9,6 +9,7 @@ import {
 import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
+import { device } from "../../breakpoints";
 
 const QuestionContainer = styled.div`
   width: 100vw;
@@ -51,16 +52,21 @@ const QuestionContainer = styled.div`
 
   .content {
     > img {
-      width: 130px;
-      height: 130px;
+      max-width: 100%;
+      width: 8.2em;
+      height: 8.2em;
       margin-top: 20px;
     }
 
     > h1 {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       margin: 1rem 0;
       white-space: pre-line;
-      line-height: 2.1rem;
+      line-height: 1.5em;
+
+      @media ${device.tablet} {
+        font-size: 1.6rem;
+      }
     }
   }
 `;

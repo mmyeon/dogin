@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { device } from "../breakpoints";
 
 const StyledCard = styled.div`
   border-radius: 18px;
@@ -23,6 +24,11 @@ const StyledCard = styled.div`
       `;
     }
   }}
+
+  @media ${device.tablet} {
+    font-size: 1.2em;
+    padding: 3em 5em;
+  }
 `;
 
 const Card = ({ borderType, children }) => {

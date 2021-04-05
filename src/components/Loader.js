@@ -5,7 +5,6 @@ const Container = styled.div`
   background: mediumaquamarine;
   width: 100vw;
   height: 100vh;
-  /* background: linear-gradient(mediumaquamarine 37%, white 37%); */
   display: flex;
   align-items: flex-end;
   justify-content: center;

@@ -5,14 +5,22 @@ import Button from "../components/Button";
 import { getDogImageApi } from "../api";
 import Loader from "../components/Loader";
 import SEO from "../SEO";
+import { device, size } from "../breakpoints";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(mediumaquamarine 37%, white 37%);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${size.mobile}) {
+    background: linear-gradient(mediumaquamarine 35%, white 34%);
+  }
+
+  @media ${device.mobile} {
+    background: linear-gradient(mediumaquamarine 38%, white 37%);
+  }
 
   > .content {
     padding-top: 13px;
@@ -37,6 +45,7 @@ const Container = styled.div`
       margin: 1.8rem 0;
       font-size: 1.8rem;
       line-height: 2.8rem;
+      word-break: keep-all;
     }
   }
 `;

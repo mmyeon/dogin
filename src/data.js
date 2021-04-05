@@ -155,7 +155,8 @@ const data = [
       도움을 받을 사람이 있다.`,
     answer: "YES",
     answerDesc: {
-      answerTitle: `병원입원, 출장, 야근,여행 등 피치 못할 사정이 
+      answerTitle: `병원입원, 출장, 야근,여행 등 
+        피치 못할 사정이 
         충분히 생길 수 있습니다.`,
       explanation: `가족, 지인, 호텔링 등
         어디서 도움을 받을 수 있는지

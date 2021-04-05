@@ -12,7 +12,6 @@ const Quiz = () => {
     </div>
   );
 
-  /* setAsAnswered로 변경 */
   function setAsAnswered() {
     setHasResult(true);
   }

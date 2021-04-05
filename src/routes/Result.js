@@ -24,7 +24,6 @@ const Gnb = styled.div`
 `;
 
 const Buttons = styled.div`
-  width: 100vw;
   background: mediumaquamarines;
   z-index: 10;
   position: fixed;
@@ -59,6 +58,7 @@ const Title = styled.h1`
   margin-top: 10px;
   line-height: 30px;
   word-break: keep-all;
+  padding: 0px 1em;
 `;
 
 const List = styled.ul`
@@ -68,10 +68,10 @@ const List = styled.ul`
 const ListItem = styled.li`
   padding-top: 10px;
   padding-bottom: 5px;
-  line-height: 17px;
+  line-height: 1.3em;
   border-bottom: ${(props) => (props.borderBottom ? "1px solid black" : 0)};
   text-align: left;
-  font-size: ${(props) => (props.fontSize === "big" ? "16px" : "14px")};
+  font-size: ${(props) => (props.fontSize === "big" ? "16px" : "0.9em")};
   padding-left: 10px;
   font-weight: 200;
   word-break: keep-all;
@@ -87,10 +87,17 @@ const Container = styled.div`
   background: mediumaquamarine;
   position: relative;
   overflow: scroll;
-  padding-top: 100px;
-  padding-bottom: 30px;
+  padding-top: 2em;
+  /* padding-top: 6em; */
+  padding-bottom: 1.4em;
+
+  .content-container {
+    max-width: 389px;
+    margin: 0 auto;
+  }
 
   .Card {
+    padding: 1.3em;
     margin-top: 4rem;
 
     > .upper-section {
@@ -113,7 +120,8 @@ const Container = styled.div`
           margin-left: -20px;
           background: #cb2527;
           color: white;
-          padding: 9px 25px;
+          padding: 0.6em 1.2em;
+          /* padding: 0.6em 1.6em; */
           border: 3px solid black;
           border-radius: 20px;
           font-size: 15px;
@@ -127,7 +135,7 @@ const Container = styled.div`
     }
   }
 
-  > .home-url {
+  .home-url {
     opacity: 0;
   }
 `;
@@ -152,103 +160,105 @@ const Result = () => {
   return (
     <Container>
       <Gnb>DogIn</Gnb>
-      <Card borderType="special">
-        <TitleWithCircle title={"나의 결과는?"} />
+      <div className="content-container">
+        <Card borderType="special">
+          <TitleWithCircle title={"나의 결과는?"} />
 
-        <section className="upper-section">
-          <Title>{showScore()}</Title>
-          <div className="heart-container">
-            <img src="./assets/pet-love.png" alt="pet love" />
-            <span>
-              {userChoiceList.length}개 중 {correctAnswerNumber}개 충족
-            </span>
-          </div>
-        </section>
+          <section className="upper-section">
+            <Title>{showScore()}</Title>
+            <div className="heart-container">
+              <img src="./assets/pet-love.png" alt="pet love" />
+              <span>
+                {userChoiceList.length}개 중 {correctAnswerNumber}개 충족
+              </span>
+            </div>
+          </section>
 
-        {correctAnswerNumber !== 9 && (
-          <section className="lower-section">
-            <Title>
-              입양하기 전 <br></br>다시 확인해보세요
-            </Title>
+          {correctAnswerNumber !== 9 && (
+            <section className="lower-section">
+              <Title>
+                입양하기 전 <br></br>다시 확인해보세요
+              </Title>
 
+              <List>
+                {incorrectAnswerList.map((item, i) => (
+                  <ListItem key={i.toString()} fontSize="big" borderBottom>
+                    {`🐶 ${
+                      questionList[item.currentQuizNumber - 1]["titleOnResult"]
+                    }`}
+                  </ListItem>
+                ))}
+              </List>
+            </section>
+          )}
+        </Card>
+
+        <Card borderType="special">
+          <TitleWithCircle title={"출처"} />
+
+          <section className="upper-section">
+            <Title>콘텐츠 출처</Title>
             <List>
-              {incorrectAnswerList.map((item, i) => (
-                <ListItem key={i.toString()} fontSize="big" borderBottom>
-                  {`🐶 ${
-                    questionList[item.currentQuizNumber - 1]["titleOnResult"]
-                  }`}
+              {contentReferenceList.map((reference, i) => (
+                <ListItem>
+                  👉{" "}
+                  {reference.link ? (
+                    <a
+                      href={reference.link}
+                      key={i.toString()}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {reference.title}
+                    </a>
+                  ) : (
+                    reference.title
+                  )}
                 </ListItem>
               ))}
             </List>
           </section>
-        )}
-      </Card>
 
-      <Card borderType="special">
-        <TitleWithCircle title={"출처"} />
+          <section className="lower-section">
+            <Title>아이콘 출처</Title>
+            <List>
+              {iconReferenceList.map((reference) => (
+                <ListItem>
+                  👉 Icons made by{" "}
+                  {
+                    <a href={reference.link} title={reference.title}>
+                      {reference.title}
+                    </a>
+                  }{" "}
+                  from{" "}
+                  {
+                    <a href="https://www.flaticon.com/" title="Flaticon">
+                      www.flaticon.com
+                    </a>
+                  }
+                </ListItem>
+              ))}
+            </List>
+          </section>
+        </Card>
 
-        <section className="upper-section">
-          <Title>콘텐츠 출처</Title>
-          <List>
-            {contentReferenceList.map((reference, i) => (
-              <ListItem>
-                👉{" "}
-                {reference.link ? (
-                  <a
-                    href={reference.link}
-                    key={i.toString()}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {reference.title}
-                  </a>
-                ) : (
-                  reference.title
-                )}
-              </ListItem>
-            ))}
-          </List>
-        </section>
-
-        <section className="lower-section">
-          <Title>아이콘 출처</Title>
-          <List>
-            {iconReferenceList.map((reference) => (
-              <ListItem>
-                👉 Icons made by{" "}
-                {
-                  <a href={reference.link} title={reference.title}>
-                    {reference.title}
-                  </a>
-                }{" "}
-                from{" "}
-                {
-                  <a href="https://www.flaticon.com/" title="Flaticon">
-                    www.flaticon.com
-                  </a>
-                }
-              </ListItem>
-            ))}
-          </List>
-        </section>
-      </Card>
-
-      <input
-        type="text"
-        className="home-url"
-        // TODO: 공유할 url 수정하기
-        value="http://localhost:3000/"
-        readOnly
-        ref={urlInput}
-      />
-      <Buttons>
-        <button className="shareBtn" onClick={copyToClipboard}>
-          친구에게 공유하기
-        </button>
-        <Link to="/">
-          <button className="homeBtn">처음으로</button>
-        </Link>
-      </Buttons>
+        <input
+          type="text"
+          className="home-url"
+          // TODO: 공유할 url 수정하기
+          value="http://localhost:3000/"
+          readOnly
+          ref={urlInput}
+        />
+        <Buttons>
+          <button className="shareBtn" onClick={copyToClipboard}>
+            친구에게 공유하기
+          </button>
+          <Link to="/">
+            <button className="homeBtn">처음으로</button>
+          </Link>
+        </Buttons>
+      </div>
     </Container>
   );
 

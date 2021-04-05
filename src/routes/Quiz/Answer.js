@@ -12,15 +12,21 @@ import {
 import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
+import { device } from "../../breakpoints";
 
 const Container = styled.div`
-  height: 100vh;
   width: 100vw;
   background: mediumaquamarine;
   position: relative;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media ${device.tablet} {
+    /* padding: 3em 0; */
+    /* height: fit-content; */
+  }
 
   > .Card {
     display: flex;
@@ -29,20 +35,20 @@ const Container = styled.div`
     justify-content: center;
 
     .answer-title {
-      font-size: 24px;
       font-weight: 800;
       margin-top: 0.5rem;
       white-space: pre-line;
       word-break: keep-all;
       line-height: 30px;
+      font-size: 1.25em;
     }
 
     .explanation {
       white-space: pre-line;
-      margin: 1.5rem 0;
-      line-height: 22px;
+      margin: 1.4em 0;
       font-weight: 500;
-      font-size: 17px;
+      font-size: 1.05em;
+      line-height: 1.3;
     }
 
     .reference {
