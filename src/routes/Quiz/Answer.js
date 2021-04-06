@@ -23,11 +23,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media ${device.tablet} {
-    /* padding: 3em 0; */
-    /* height: fit-content; */
-  }
-
   > .Card {
     display: flex;
     flex-direction: column;

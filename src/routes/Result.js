@@ -120,7 +120,6 @@ const Container = styled.div`
           background: #cb2527;
           color: white;
           padding: 0.6em 1.2em;
-          /* padding: 0.6em 1.6em; */
           border: 3px solid black;
           border-radius: 20px;
           font-size: 15px;
