@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 import TitleWithCircle from "../components/TitleWithCircle";
 import { contentReferenceList, iconReferenceList } from "../reference";
+import { device, size } from "../breakpoints";
 
 const Gnb = styled.div`
   width: 100vw;
@@ -21,35 +22,6 @@ const Gnb = styled.div`
   font-weight: bold;
   font-family: Poppins;
   box-shadow: 0 1px 0 rgb(12 13 14 / 15%);
-`;
-
-const Buttons = styled.div`
-  background: mediumaquamarines;
-  z-index: 10;
-  position: fixed;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-
-  button {
-    padding: 0.8rem 1rem;
-    margin: 5px;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: white;
-    font-size: 20px;
-    font-family: "Sunflower";
-    font-weight: bold;
-  }
-
-  .shareBtn {
-    background: #cb2527;
-  }
-
-  .homeBtn {
-    background: #ffb90f;
-    color: white;
-  }
 `;
 
 const Title = styled.h1`
@@ -93,48 +65,102 @@ const Container = styled.div`
   .content-container {
     max-width: 389px;
     margin: 0 auto;
-  }
+    position: relative;
 
-  .Card {
-    padding: 1.3em;
-    margin-top: 4rem;
+    .Card {
+      padding: 1.3em;
+      margin-top: 4rem;
 
-    > .upper-section {
-      width: 100%;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px dashed #000000b5;
+      > .upper-section {
+        width: 100%;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px dashed #000000b5;
 
-      > .heart-container {
-        display: inline-flex;
-        align-items: center;
+        > .heart-container {
+          display: inline-flex;
+          align-items: center;
 
-        > img {
-          width: 80px;
-          height: 80px;
-          margin: 8px 0;
-        }
+          > img {
+            width: 80px;
+            height: 80px;
+            margin: 8px 0;
+          }
 
-        > span {
-          margin-left: -20px;
-          background: #cb2527;
-          color: white;
-          padding: 0.6em 1.2em;
-          border: 3px solid black;
-          border-radius: 20px;
-          font-size: 15px;
-          z-index: -1;
-          letter-spacing: 1px;
+          > span {
+            margin-left: -20px;
+            background: #cb2527;
+            color: white;
+            padding: 0.6em 1.2em;
+            border: 3px solid black;
+            border-radius: 20px;
+            font-size: 15px;
+            z-index: -1;
+            letter-spacing: 1px;
+          }
         }
       }
+      > .lower-section {
+        width: 100%;
+      }
     }
-    > .lower-section {
-      width: 100%;
+
+    .btn-container {
+      z-index: 10;
+      position: fixed;
+      top: 68%;
+
+      @media (max-width: ${size.mobileM}) {
+        left: 5px;
+      }
+
+      @media ${device.mobileM} {
+        margin-left: -19px;
+      }
+
+      .home-url {
+        opacity: 0;
+        width: 20px;
+      }
+    }
+  }
+`;
+
+const Buttons = styled.div`
+  background: #ffd767;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+
+  button {
+    margin: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    > img {
+      width: 20px;
+      height: 20px;
+      padding: 2px;
     }
   }
 
-  .home-url {
-    opacity: 0;
+  .shareBtn {
+    background: #cae97d;
+  }
+
+  .homeBtn {
+    background: #a77deb;
   }
 `;
 
@@ -158,6 +184,7 @@ const Result = () => {
   return (
     <Container>
       <Gnb>DogIn</Gnb>
+
       <div className="content-container">
         <Card borderType="special">
           <TitleWithCircle title={"나의 결과는?"} />
@@ -198,15 +225,10 @@ const Result = () => {
             <Title>콘텐츠 출처</Title>
             <List>
               {contentReferenceList.map((reference, i) => (
-                <ListItem>
+                <ListItem key={i.toString()}>
                   👉{" "}
                   {reference.link ? (
-                    <a
-                      href={reference.link}
-                      key={i.toString()}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={reference.link} target="_blank" rel="noreferrer">
                       {reference.title}
                     </a>
                   ) : (
@@ -220,8 +242,8 @@ const Result = () => {
           <section className="lower-section">
             <Title>아이콘 출처</Title>
             <List>
-              {iconReferenceList.map((reference) => (
-                <ListItem>
+              {iconReferenceList.map((reference, i) => (
+                <ListItem key={i.toString()}>
                   👉 Icons made by{" "}
                   {
                     <a href={reference.link} title={reference.title}>
@@ -239,23 +261,27 @@ const Result = () => {
             </List>
           </section>
         </Card>
+        <div className="btn-container">
+          <input
+            type="text"
+            className="home-url"
+            // TODO: 공유할 url 수정하기
+            value="http://localhost:3000/"
+            readOnly
+            ref={urlInput}
+          />
 
-        <input
-          type="text"
-          className="home-url"
-          // TODO: 공유할 url 수정하기
-          value="http://localhost:3000/"
-          readOnly
-          ref={urlInput}
-        />
-        <Buttons>
-          <button className="shareBtn" onClick={copyToClipboard}>
-            친구에게 공유하기
-          </button>
-          <Link to="/">
-            <button className="homeBtn">처음으로</button>
-          </Link>
-        </Buttons>
+          <Buttons>
+            <Link to="/">
+              <button className="homeBtn">
+                <img src="/assets/home.png" alt="home" />
+              </button>
+            </Link>
+            <button className="shareBtn" onClick={copyToClipboard}>
+              <img src="/assets/share.png" alt="share" />
+            </button>
+          </Buttons>
+        </div>
       </div>
     </Container>
   );

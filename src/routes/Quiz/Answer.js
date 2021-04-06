@@ -12,7 +12,6 @@ import {
 import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
-import { device } from "../../breakpoints";
 
 const Container = styled.div`
   width: 100vw;

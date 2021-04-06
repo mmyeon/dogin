@@ -14,11 +14,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: ${size.mobile}) {
+  @media (max-width: ${size.mobileS}) {
     background: linear-gradient(mediumaquamarine 35%, white 34%);
   }
 
-  @media ${device.mobile} {
+  @media ${device.mobileS} {
     background: linear-gradient(mediumaquamarine 38%, white 37%);
   }
 
