@@ -146,7 +146,7 @@ const data = [
         이물질 먹지 않기
         산책 예절 훈련 `,
     },
-    titleOnResult: "반려견 교육은 매우 중요하다.",
+    titleOnResult: "꼭 필요한 반려견 교육에 대해 알고 있다.",
   },
   {
     imageFileName: "family.png",

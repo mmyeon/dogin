@@ -88,7 +88,6 @@ const Container = styled.div`
   position: relative;
   overflow: scroll;
   padding-top: 2em;
-  /* padding-top: 6em; */
   padding-bottom: 1.4em;
 
   .content-container {
