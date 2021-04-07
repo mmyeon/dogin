@@ -24,6 +24,118 @@ const Gnb = styled.div`
   box-shadow: 0 1px 0 rgb(12 13 14 / 15%);
 `;
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: mediumaquamarine;
+  position: relative;
+  overflow: scroll;
+  padding-top: 2em;
+  padding-bottom: 1.4em;
+
+  .content-container {
+    max-width: 389px;
+    margin: 0 auto;
+    position: relative;
+
+    .Card {
+      padding: 1.3em;
+      margin-top: 4rem;
+
+      > .upper-section {
+        width: 100%;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px dashed #000000b5;
+
+        > .score-container {
+          display: inline-flex;
+          align-items: center;
+
+          > img {
+            width: 80px;
+            height: 80px;
+            margin: 8px 0;
+          }
+
+          > span {
+            margin-left: -20px;
+            background: #cb2527;
+            color: white;
+            padding: 0.6em 1.2em;
+            border: 3px solid black;
+            border-radius: 20px;
+            font-size: 15px;
+            z-index: -1;
+            letter-spacing: 1px;
+          }
+        }
+      }
+
+      > .lower-section {
+        width: 100%;
+      }
+    }
+
+    .action-container {
+      z-index: 10;
+      position: fixed;
+      top: 68%;
+
+      @media (max-width: ${size.mobileM}) {
+        left: 5px;
+      }
+
+      @media ${device.mobileM} {
+        margin-left: -19px;
+      }
+
+      > .home-url {
+        opacity: 0;
+        width: 20px;
+      }
+
+      > .btn-container {
+        background: #ffd767;
+        display: flex;
+        flex-direction: column;
+        border-radius: 50px;
+
+        button {
+          margin: 5px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          width: 36px;
+          height: 36px;
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          > img {
+            width: 20px;
+            height: 20px;
+            padding: 2px;
+          }
+        }
+
+        .shareBtn {
+          background: #cae97d;
+        }
+
+        .homeBtn {
+          background: #a77deb;
+        }
+      }
+    }
+  }
+`;
+
 const Title = styled.h1`
   font-size: 22px;
   font-weight: bold;
@@ -53,117 +165,6 @@ const ListItem = styled.li`
   }
 `;
 
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: mediumaquamarine;
-  position: relative;
-  overflow: scroll;
-  padding-top: 2em;
-  padding-bottom: 1.4em;
-
-  .content-container {
-    max-width: 389px;
-    margin: 0 auto;
-    position: relative;
-
-    .Card {
-      padding: 1.3em;
-      margin-top: 4rem;
-
-      > .upper-section {
-        width: 100%;
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
-        border-bottom: 2px dashed #000000b5;
-
-        > .heart-container {
-          display: inline-flex;
-          align-items: center;
-
-          > img {
-            width: 80px;
-            height: 80px;
-            margin: 8px 0;
-          }
-
-          > span {
-            margin-left: -20px;
-            background: #cb2527;
-            color: white;
-            padding: 0.6em 1.2em;
-            border: 3px solid black;
-            border-radius: 20px;
-            font-size: 15px;
-            z-index: -1;
-            letter-spacing: 1px;
-          }
-        }
-      }
-      > .lower-section {
-        width: 100%;
-      }
-    }
-
-    .btn-container {
-      z-index: 10;
-      position: fixed;
-      top: 68%;
-
-      @media (max-width: ${size.mobileM}) {
-        left: 5px;
-      }
-
-      @media ${device.mobileM} {
-        margin-left: -19px;
-      }
-
-      .home-url {
-        opacity: 0;
-        width: 20px;
-      }
-    }
-  }
-`;
-
-const Buttons = styled.div`
-  background: #ffd767;
-  display: flex;
-  flex-direction: column;
-  border-radius: 50px;
-
-  button {
-    margin: 5px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-
-    &:focus {
-      outline: none;
-    }
-
-    > img {
-      width: 20px;
-      height: 20px;
-      padding: 2px;
-    }
-  }
-
-  .shareBtn {
-    background: #cae97d;
-  }
-
-  .homeBtn {
-    background: #a77deb;
-  }
-`;
-
 const Result = () => {
   const userChoiceList = useUserChoiceList();
   const answerList = useAnswerList();
@@ -190,8 +191,8 @@ const Result = () => {
           <TitleWithCircle title={"나의 결과는?"} />
 
           <section className="upper-section">
-            <Title>{showScore()}</Title>
-            <div className="heart-container">
+            <Title>{showResult()}</Title>
+            <div className="score-container">
               <img src="./assets/pet-love.png" alt="pet love" />
               <span>
                 {userChoiceList.length}개 중 {correctAnswerNumber}개 충족
@@ -261,7 +262,8 @@ const Result = () => {
             </List>
           </section>
         </Card>
-        <div className="btn-container">
+
+        <div className="action-container">
           <input
             type="text"
             className="home-url"
@@ -270,8 +272,7 @@ const Result = () => {
             readOnly
             ref={urlInput}
           />
-
-          <Buttons>
+          <div className="btn-container">
             <Link to="/">
               <button className="homeBtn">
                 <img src="/assets/home.png" alt="home" />
@@ -280,7 +281,7 @@ const Result = () => {
             <button className="shareBtn" onClick={copyToClipboard}>
               <img src="/assets/share.png" alt="share" />
             </button>
-          </Buttons>
+          </div>
         </div>
       </div>
     </Container>
@@ -294,7 +295,7 @@ const Result = () => {
     }
   }
 
-  function showScore() {
+  function showResult() {
     if (correctAnswerNumber > 8) {
       return `좋은 보호자가 
       될 수 있을 것 같아요.`;
@@ -309,7 +310,7 @@ const Result = () => {
     const homeUrlInput = urlInput.current;
     homeUrlInput.select();
     document.execCommand("copy");
-    window.alert("주소가 복사되었습니다.");
+    window.alert("주소가 복사되었습니다. 😊");
   }
 };
 
