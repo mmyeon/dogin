@@ -20,7 +20,7 @@ const StyledCard = styled.div`
         flex-direction: column;
         align-items: center;
         padding: 1.5em 2em;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
       `;
     }
   }}

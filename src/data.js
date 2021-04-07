@@ -122,7 +122,7 @@ const data = [
         개에게는 해로울 수 있다는 사실을
         반드시 명심해야 합니다.`,
     },
-    titleOnResult: "개가 먹으면 위험한 음식에 대해 알고 있다.",
+    titleOnResult: "개가 먹으면 안되는 음식에 대해 알고 있다.",
   },
   {
     imageFileName: "walking-the-dog.png",
@@ -146,7 +146,7 @@ const data = [
         이물질 먹지 않기
         산책 예절 훈련 `,
     },
-    titleOnResult: "꼭 필요한 반려견 교육에 대해 알고 있다.",
+    titleOnResult: "반려견 교육에 대해 잘 알고 있다.",
   },
   {
     imageFileName: "family.png",
