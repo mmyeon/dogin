@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { device, size } from "../breakpoints";
 
 const Container = styled.div`
+  font-family: "Sunflower", sans-serif;
   width: 100vw;
   height: 100vh;
   display: flex;
