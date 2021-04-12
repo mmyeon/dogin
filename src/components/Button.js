@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device, size } from "../breakpoints";
+import { device } from "../breakpoints";
 
 const ButtonContainer = styled.button`
   font-family: "Poppins", sans-serif;
