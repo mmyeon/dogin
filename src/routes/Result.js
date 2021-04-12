@@ -267,8 +267,7 @@ const Result = () => {
           <input
             type="text"
             className="home-url"
-            // TODO: 공유할 url 수정하기
-            value="http://localhost:3000/"
+            value="https://dogin.mmyeon.com"
             readOnly
             ref={urlInput}
           />
@@ -310,7 +309,7 @@ const Result = () => {
     const homeUrlInput = urlInput.current;
     homeUrlInput.select();
     document.execCommand("copy");
-    window.alert("주소가 복사되었습니다. 😊");
+    window.alert("주소가 복사되었습니다. 친구에게 공유해보세요 😊");
   }
 };
 
