@@ -17,7 +17,7 @@ const Container = styled.div`
   width: 100vw;
   background: mediumaquamarine;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +27,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 3em 0;
 
     .answer-title {
       font-weight: 800;
@@ -103,7 +104,7 @@ const Answer = ({ location: { pathname } }) => {
 
         {referenceList !== undefined && (
           <span className="reference">
-            <h3>출처 </h3>
+            <h3>출처</h3>
             {referenceList.map((reference, i) => (
               <a
                 key={i.toString()}
