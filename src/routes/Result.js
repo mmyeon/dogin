@@ -26,7 +26,6 @@ const Gnb = styled.div`
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   background: mediumaquamarine;
   position: relative;
   overflow: scroll;
