@@ -184,7 +184,9 @@ const Result = () => {
 
   return (
     <Container>
-      <Gnb>DogIn</Gnb>
+      <Link to="/">
+        <Gnb>DogIn</Gnb>
+      </Link>
 
       <div className="content-container">
         <Card borderType="special">
