@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { getDogImageApi } from "../api";
 import Loader from "../components/Loader";
-import SEO from "../SEO";
 import { device, size } from "../breakpoints";
 
 const Container = styled.div`
@@ -69,17 +68,6 @@ const Home = () => {
 
   return (
     <>
-      <SEO
-        meta={[
-          { property: "og:title", content: "Dog In" },
-          {
-            property: "og:description",
-            content: "반려견 입양 전, 꼭 알아야 할 체크리스트!",
-          },
-          { property: "og:image", content: "/assets/og-img.png" },
-        ]}
-      />
-
       {loading ? (
         <Loader />
       ) : (
