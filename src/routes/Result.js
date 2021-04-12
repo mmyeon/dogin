@@ -17,11 +17,14 @@ const Gnb = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  color: #66cdaa;
-  font-weight: bold;
-  font-family: Poppins;
   box-shadow: 0 1px 0 rgb(12 13 14 / 15%);
+
+  > .link {
+    font-size: 30px;
+    color: #66cdaa;
+    font-weight: bold;
+    font-family: Poppins;
+  }
 `;
 
 const Container = styled.div`
@@ -183,9 +186,11 @@ const Result = () => {
 
   return (
     <Container>
-      <Link to="/">
-        <Gnb>DogIn</Gnb>
-      </Link>
+      <Gnb>
+        <Link to="/" className="link">
+          DogIn{" "}
+        </Link>
+      </Gnb>
 
       <div className="content-container">
         <Card borderType="special">
