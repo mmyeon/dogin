@@ -1,4 +1,4 @@
-# <center> [🐕 DogIn 🐕](https://dogin.mmyeon.com/)</center>
+# <div align="center"> [🐕 DogIn 🐕](https://dogin.mmyeon.com/)</div>
 
 <div align="center">반려견 입양 전, 꼭 필요한 체크리스트!</div>
 <br>
