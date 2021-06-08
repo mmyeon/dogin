@@ -1,7 +1,7 @@
-# <center>[🐕 DogIn 🐕](https://dogin.mmyeon.com/)</center>
+# <center> [🐕 DogIn 🐕](https://dogin.mmyeon.com/)</center>
 
-<center>반려견 입양 전, 꼭 필요한 체크리스트!</center>
-<br/>
+<div align="center">반려견 입양 전, 꼭 필요한 체크리스트!</div>
+<br>
 
 <p align="center">
 <img width="400" alt="project home" src="https://user-images.githubusercontent.com/57064447/121141642-2ce78a80-c876-11eb-92bb-2e5032163731.png">
