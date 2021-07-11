@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "../breakpoints";
 
 const ButtonContainer = styled.button`
   font-family: "Poppins", sans-serif;
@@ -16,19 +15,6 @@ const ButtonContainer = styled.button`
   margin-right: ${(props) => props.marginRight || "0px"};
   background: mediumaquamarine;
   color: white;
-
-  @media ${device.laptop} {
-    background: white;
-    border-color: #c8c5d2;
-    padding: 0.5em 2em;
-    color: #c8c5d2;
-  }
-
-  &:hover {
-    background: mediumaquamarine;
-    color: white;
-    border-color: black;
-  }
 `;
 
 const Button = ({ title, onClick, marginRight }) => {
