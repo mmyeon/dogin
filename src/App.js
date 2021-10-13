@@ -1,15 +1,15 @@
 import React from "react";
-import ContentProvider from "./context";
 import GlobalStyles from "../src/GlobalStyles";
 import Router from "./Router";
-import data from "./data";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => {
   return (
-    <ContentProvider data={data}>
+    <Provider store={store}>
       <Router />
       <GlobalStyles />
-    </ContentProvider>
+    </Provider>
   );
 };
 
