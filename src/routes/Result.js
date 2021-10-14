@@ -2,10 +2,11 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
-import { useAnswerList, useQuestionList, useUserChoiceList } from "../context";
 import TitleWithCircle from "../components/TitleWithCircle";
 import { contentReferenceList, iconReferenceList } from "../reference";
 import { device, size } from "../breakpoints";
+import { useSelector } from "react-redux";
+import data from "../data";
 
 const Gnb = styled.div`
   width: 100vw;
@@ -168,9 +169,19 @@ const ListItem = styled.li`
 `;
 
 const Result = () => {
-  const userChoiceList = useUserChoiceList();
-  const answerList = useAnswerList();
-  const questionList = useQuestionList();
+  const { userChoiceList } = useSelector((state) => {
+    return { userChoiceList: state.userChoiceList };
+  });
+
+  const answerList = data.map((item) => item.answer);
+  const questionList = data.map((item) => {
+    return {
+      imageFileName: item["imageFileName"],
+      question: item["question"],
+      titleOnResult: item["titleOnResult"],
+    };
+  });
+
   let resultList = [];
   const urlInput = useRef(null);
 
