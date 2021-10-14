@@ -2,7 +2,7 @@ import React from "react";
 import GlobalStyles from "../src/GlobalStyles";
 import Router from "./Router";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux/store";
 
 const App = () => {
   return (

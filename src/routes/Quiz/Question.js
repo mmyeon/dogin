@@ -7,7 +7,8 @@ import styled from "styled-components";
 import { device } from "../../breakpoints";
 import data from "../../data";
 import { useDispatch } from "react-redux";
-import { updateUserChoiceList } from "../../store";
+import { updateUserChoiceList } from "../../redux/store";
+import { getQuestionList } from "../../redux/selectors";
 
 const QuestionContainer = styled.div`
   width: 100vw;
@@ -70,6 +71,8 @@ const QuestionContainer = styled.div`
 `;
 
 const Question = ({ location: { pathname }, setAsAnswered }) => {
+  const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
+
   const questionList = data.map((item) => {
     return {
       imageFileName: item["imageFileName"],
@@ -77,8 +80,6 @@ const Question = ({ location: { pathname }, setAsAnswered }) => {
       titleOnResult: item["titleOnResult"],
     };
   });
-
-  const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
 
   const getQuestion = (currentQuizNumber) => {
     const question = questionList[currentQuizNumber - 1];

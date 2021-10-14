@@ -5,7 +5,10 @@ import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
 import { useSelector, useDispatch } from "react-redux";
-import { updateCurrentQuizNumber, updateUserChoiceList } from "../../store";
+import {
+  updateCurrentQuizNumber,
+  updateUserChoiceList,
+} from "../../redux/store";
 import data from "../../data";
 
 const Container = styled.div`
@@ -58,8 +61,8 @@ const Container = styled.div`
 const Answer = ({ location: { pathname } }) => {
   let history = useHistory();
   const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
-
   const dispatch = useDispatch();
+
   const questionList = data.map((item) => {
     return {
       imageFileName: item["imageFileName"],

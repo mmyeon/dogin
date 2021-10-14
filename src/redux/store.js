@@ -1,10 +1,12 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import data from "../data";
 
 const quiz = createSlice({
   name: "quizReducer",
   initialState: {
     currentQuizNumber: 0,
     userChoiceList: [],
+    quizData: data,
   },
   reducers: {
     updateCurrentQuizNumber: (state, action) => {
