@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import styled from "styled-components";
-import {
-  useGetAnswerDesc,
-  useSetCurrentQuizNumber,
-  useUserChoiceList,
-  useSetUserChoiceList,
-  useQuestionList,
-  useAnswerList,
-} from "../../context";
 import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
+import { useSelector, useDispatch } from "react-redux";
+import { updateCurrentQuizNumber, updateUserChoiceList } from "../../store";
+import data from "../../data";
 
 const Container = styled.div`
   width: 100vw;
@@ -63,24 +58,44 @@ const Container = styled.div`
 const Answer = ({ location: { pathname } }) => {
   let history = useHistory();
   const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
-  const setCurrentQuizNumber = useSetCurrentQuizNumber();
-  const questionList = useQuestionList();
-  const getAnswerDesc = useGetAnswerDesc();
+
+  const dispatch = useDispatch();
+  const questionList = data.map((item) => {
+    return {
+      imageFileName: item["imageFileName"],
+      question: item["question"],
+      titleOnResult: item["titleOnResult"],
+    };
+  });
+
+  const answerList = data.map((item) => item.answer);
+
+  const answerDescList = data.map((item) => {
+    return {
+      answerDesc: item["answerDesc"],
+    };
+  });
+
+  const getAnswerDesc = (currentQuizNumber) => {
+    const answer = answerDescList[currentQuizNumber - 1];
+    return answer;
+  };
+
   const {
     answerDesc: { answerTitle, explanation, referenceList },
   } = getAnswerDesc(currentQuizNumber);
-  const userChoiceList = useUserChoiceList();
-  const setUserChoiceList = useSetUserChoiceList();
-  const answerList = useAnswerList();
+  const userChoiceList = useSelector((state) => {
+    return { userChoiceList: state.userChoiceList };
+  });
 
   useEffect(() => {
     if (currentQuizNumber > userChoiceList.length) {
       history.push("/");
-      setUserChoiceList([]);
+      dispatch(updateUserChoiceList([]));
     }
 
     return () => {
-      setCurrentQuizNumber(currentQuizNumber + 1);
+      dispatch(updateCurrentQuizNumber(currentQuizNumber + 1));
     };
   }, []);
 
