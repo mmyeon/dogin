@@ -10,6 +10,7 @@ import {
   updateUserChoiceList,
 } from "../../redux/store";
 import data from "../../data";
+import { getAnswerList, getQuestionList } from "../../redux/selectors";
 
 const Container = styled.div`
   width: 100vw;
@@ -63,15 +64,13 @@ const Answer = ({ location: { pathname } }) => {
   const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
   const dispatch = useDispatch();
 
-  const questionList = data.map((item) => {
+  const { questionList, answerList, userChoiceList } = useSelector((state) => {
     return {
-      imageFileName: item["imageFileName"],
-      question: item["question"],
-      titleOnResult: item["titleOnResult"],
+      questionList: getQuestionList(state),
+      answerList: getAnswerList(state),
+      userChoiceList: state.userChoiceList,
     };
   });
-
-  const answerList = data.map((item) => item.answer);
 
   const answerDescList = data.map((item) => {
     return {
@@ -87,9 +86,6 @@ const Answer = ({ location: { pathname } }) => {
   const {
     answerDesc: { answerTitle, explanation, referenceList },
   } = getAnswerDesc(currentQuizNumber);
-  const userChoiceList = useSelector((state) => {
-    return { userChoiceList: state.userChoiceList };
-  });
 
   useEffect(() => {
     if (currentQuizNumber > userChoiceList.length) {

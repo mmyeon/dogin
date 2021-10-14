@@ -5,8 +5,7 @@ import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
 import { device } from "../../breakpoints";
-import data from "../../data";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserChoiceList } from "../../redux/store";
 import { getQuestionList } from "../../redux/selectors";
 
@@ -73,11 +72,9 @@ const QuestionContainer = styled.div`
 const Question = ({ location: { pathname }, setAsAnswered }) => {
   const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
 
-  const questionList = data.map((item) => {
+  const { questionList } = useSelector((state) => {
     return {
-      imageFileName: item["imageFileName"],
-      question: item["question"],
-      titleOnResult: item["titleOnResult"],
+      questionList: getQuestionList(state),
     };
   });
 

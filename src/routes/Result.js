@@ -6,7 +6,7 @@ import TitleWithCircle from "../components/TitleWithCircle";
 import { contentReferenceList, iconReferenceList } from "../reference";
 import { device, size } from "../breakpoints";
 import { useSelector } from "react-redux";
-import data from "../data";
+import { getAnswerList, getQuestionList } from "../redux/selectors";
 
 const Gnb = styled.div`
   width: 100vw;
@@ -169,16 +169,11 @@ const ListItem = styled.li`
 `;
 
 const Result = () => {
-  const { userChoiceList } = useSelector((state) => {
-    return { userChoiceList: state.userChoiceList };
-  });
-
-  const answerList = data.map((item) => item.answer);
-  const questionList = data.map((item) => {
+  const { userChoiceList, questionList, answerList } = useSelector((state) => {
     return {
-      imageFileName: item["imageFileName"],
-      question: item["question"],
-      titleOnResult: item["titleOnResult"],
+      userChoiceList: state.userChoiceList,
+      questionList: getQuestionList(state),
+      answerList: getAnswerList(state),
     };
   });
 
