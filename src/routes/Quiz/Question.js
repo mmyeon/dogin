@@ -73,6 +73,7 @@ const QuestionContainer = styled.div`
 
 const Question = ({ setAsAnswered }) => {
   const { quizNumber } = useParams();
+  const currentQuizNumber = parseInt(quizNumber);
 
   const { questionList } = useSelector((state) => {
     return {
@@ -80,17 +81,17 @@ const Question = ({ setAsAnswered }) => {
     };
   });
 
-  const getQuestion = (quizNumber) => {
-    const question = questionList[quizNumber - 1];
+  const getQuestion = (currentQuizNumber) => {
+    const question = questionList[currentQuizNumber - 1];
     return question;
   };
 
-  const { question, imageFileName } = getQuestion(quizNumber);
+  const { question, imageFileName } = getQuestion(currentQuizNumber);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(updateCurrentQuizNumber(parseInt(quizNumber)));
+    dispatch(updateCurrentQuizNumber(currentQuizNumber));
   }, []);
 
   return (
@@ -100,7 +101,7 @@ const Question = ({ setAsAnswered }) => {
           {questionList.map((item, i) => (
             <li
               key={i.toString()}
-              className={i + 1 === quizNumber ? "current" : null}
+              className={i + 1 === currentQuizNumber ? "current" : null}
             >
               {i + 1}
             </li>
