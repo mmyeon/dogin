@@ -1,6 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-
+import { withRouter, useParams } from "react-router-dom";
 import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
@@ -69,8 +68,8 @@ const QuestionContainer = styled.div`
   }
 `;
 
-const Question = ({ location: { pathname }, setAsAnswered }) => {
-  const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
+const Question = ({ setAsAnswered }) => {
+  const { quizNumber } = useParams();
 
   const { questionList } = useSelector((state) => {
     return {
@@ -78,12 +77,12 @@ const Question = ({ location: { pathname }, setAsAnswered }) => {
     };
   });
 
-  const getQuestion = (currentQuizNumber) => {
-    const question = questionList[currentQuizNumber - 1];
+  const getQuestion = (quizNumber) => {
+    const question = questionList[quizNumber - 1];
     return question;
   };
 
-  const { question, imageFileName } = getQuestion(currentQuizNumber);
+  const { question, imageFileName } = getQuestion(quizNumber);
 
   const dispatch = useDispatch();
 
@@ -94,7 +93,7 @@ const Question = ({ location: { pathname }, setAsAnswered }) => {
           {questionList.map((item, i) => (
             <li
               key={i.toString()}
-              className={i + 1 === currentQuizNumber ? "current" : null}
+              className={i + 1 === quizNumber ? "current" : null}
             >
               {i + 1}
             </li>
