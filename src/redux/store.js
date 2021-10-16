@@ -15,10 +15,17 @@ const quiz = createSlice({
     updateUserChoiceList: (state, action) => {
       state.userChoiceList.push(action.payload);
     },
+    resetUserChoiceList: (state) => {
+      state.userChoiceList = [];
+    },
   },
 });
 
 const store = configureStore({ reducer: quiz.reducer });
 
-export const { updateCurrentQuizNumber, updateUserChoiceList } = quiz.actions;
+export const {
+  updateCurrentQuizNumber,
+  updateUserChoiceList,
+  resetUserChoiceList,
+} = quiz.actions;
 export default store;

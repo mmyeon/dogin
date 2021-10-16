@@ -5,6 +5,8 @@ import Button from "../components/Button";
 import { getDogImageApi } from "../api";
 import Loader from "../components/Loader";
 import { device, size } from "../breakpoints";
+import { useDispatch } from "react-redux";
+import { resetUserChoiceList } from "../redux/store";
 
 const Container = styled.div`
   font-family: "Sunflower", sans-serif;
@@ -55,8 +57,11 @@ const Home = () => {
   const [imgIndex, setImgIndex] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getData();
+    dispatch(resetUserChoiceList);
 
     setTimeout(() => {
       setLoading(false);
