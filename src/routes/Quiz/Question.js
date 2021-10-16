@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter, useParams } from "react-router-dom";
 import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
 import { device } from "../../breakpoints";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserChoiceList } from "../../redux/store";
+import {
+  updateCurrentQuizNumber,
+  updateUserChoiceList,
+} from "../../redux/store";
 import { getQuestionList } from "../../redux/selectors";
 
 const QuestionContainer = styled.div`
@@ -85,6 +88,10 @@ const Question = ({ setAsAnswered }) => {
   const { question, imageFileName } = getQuestion(quizNumber);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateCurrentQuizNumber(parseInt(quizNumber)));
+  }, []);
 
   return (
     <QuestionContainer>
