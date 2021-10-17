@@ -59,18 +59,20 @@ const Container = styled.div`
   }
 `;
 
-const Answer = ({ location: { pathname } }) => {
+const Answer = () => {
   let history = useHistory();
-  const currentQuizNumber = JSON.parse(pathname.split("/")[2]);
   const dispatch = useDispatch();
 
-  const { questionList, answerList, userChoiceList } = useSelector((state) => {
-    return {
-      questionList: getQuestionList(state),
-      answerList: getAnswerList(state),
-      userChoiceList: state.userChoiceList,
-    };
-  });
+  const { questionList, answerList, userChoiceList, quizNumber } = useSelector(
+    (state) => {
+      return {
+        questionList: getQuestionList(state),
+        answerList: getAnswerList(state),
+        userChoiceList: state.userChoiceList,
+        quizNumber: state.currentQuizNumber,
+      };
+    }
+  );
 
   const answerDescList = data.map((item) => {
     return {
@@ -78,23 +80,23 @@ const Answer = ({ location: { pathname } }) => {
     };
   });
 
-  const getAnswerDesc = (currentQuizNumber) => {
-    const answer = answerDescList[currentQuizNumber - 1];
+  const getAnswerDesc = (quizNumber) => {
+    const answer = answerDescList[quizNumber - 1];
     return answer;
   };
 
   const {
     answerDesc: { answerTitle, explanation, referenceList },
-  } = getAnswerDesc(currentQuizNumber);
+  } = getAnswerDesc(quizNumber);
 
   useEffect(() => {
-    if (currentQuizNumber > userChoiceList.length) {
+    if (quizNumber > userChoiceList.length) {
       history.push("/");
       dispatch(updateUserChoiceList([]));
     }
 
     return () => {
-      dispatch(updateCurrentQuizNumber(currentQuizNumber + 1));
+      dispatch(updateCurrentQuizNumber(quizNumber + 1));
     };
   }, []);
 
@@ -104,8 +106,7 @@ const Answer = ({ location: { pathname } }) => {
         {
           <TitleWithBubble
             title={
-              userChoiceList[currentQuizNumber - 1] ===
-              answerList[currentQuizNumber - 1]
+              userChoiceList[quizNumber - 1] === answerList[quizNumber - 1]
                 ? "Great"
                 : "No No"
             }
@@ -132,8 +133,8 @@ const Answer = ({ location: { pathname } }) => {
           </span>
         )}
 
-        {currentQuizNumber < questionList.length ? (
-          <Link to={`/quiz/${currentQuizNumber + 1}`}>
+        {quizNumber < questionList.length ? (
+          <Link to={`/quiz/${quizNumber + 1}`}>
             <Button title="NEXT" />
           </Link>
         ) : (
