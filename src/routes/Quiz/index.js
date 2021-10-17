@@ -4,18 +4,18 @@ import Answer from "./Answer";
 import ScrollToTop from "../../components/ScrollToTop";
 
 const Quiz = () => {
-  const [hasResult, setHasResult] = useState(false);
+  const [isAnswered, setIsAnswered] = useState(false);
 
   return (
     <div>
       <ScrollToTop />
-      {!hasResult && <Question setAsAnswered={setAsAnswered} />}
-      {hasResult && <Answer />}
+      {!isAnswered && <Question setAnswerState={setAnswerState} />}
+      {isAnswered && <Answer setAnswerState={setAnswerState} />}
     </div>
   );
 
-  function setAsAnswered() {
-    setHasResult(true);
+  function setAnswerState() {
+    setIsAnswered(!isAnswered);
   }
 };
 

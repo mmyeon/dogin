@@ -59,7 +59,7 @@ const Container = styled.div`
   }
 `;
 
-const Answer = () => {
+const Answer = ({ setAnswerState }) => {
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -135,7 +135,7 @@ const Answer = () => {
 
         {quizNumber < questionList.length ? (
           <Link to={`/quiz/${quizNumber + 1}`}>
-            <Button title="NEXT" />
+            <Button title="NEXT" onClick={setAnswerState} />
           </Link>
         ) : (
           <Link to="/result">

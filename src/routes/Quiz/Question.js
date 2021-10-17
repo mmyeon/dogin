@@ -71,7 +71,7 @@ const QuestionContainer = styled.div`
   }
 `;
 
-const Question = ({ setAsAnswered }) => {
+const Question = ({ setAnswerState }) => {
   const { quizNumber } = useParams();
   const currentQuizNumber = parseInt(quizNumber);
 
@@ -121,7 +121,7 @@ const Question = ({ setAsAnswered }) => {
   );
 
   function updateResult(e) {
-    setAsAnswered();
+    setAnswerState();
     const userChoice = e.target.innerText;
     dispatch(updateUserChoiceList(userChoice));
   }
