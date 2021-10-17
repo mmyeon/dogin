@@ -4,11 +4,8 @@ import styled from "styled-components";
 import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  updateCurrentQuizNumber,
-  updateUserChoiceList,
-} from "../../redux/store";
+import { useSelector } from "react-redux";
+
 import data from "../../data";
 import { getAnswerList, getQuestionList } from "../../redux/selectors";
 
@@ -61,7 +58,6 @@ const Container = styled.div`
 
 const Answer = ({ setAnswerState }) => {
   let history = useHistory();
-  const dispatch = useDispatch();
 
   const { questionList, answerList, userChoiceList, quizNumber } = useSelector(
     (state) => {
@@ -92,12 +88,7 @@ const Answer = ({ setAnswerState }) => {
   useEffect(() => {
     if (quizNumber > userChoiceList.length) {
       history.push("/");
-      dispatch(updateUserChoiceList([]));
     }
-
-    return () => {
-      dispatch(updateCurrentQuizNumber(quizNumber + 1));
-    };
   }, []);
 
   return (

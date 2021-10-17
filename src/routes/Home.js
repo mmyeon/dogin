@@ -6,7 +6,7 @@ import { getDogImageApi } from "../api";
 import Loader from "../components/Loader";
 import { device, size } from "../breakpoints";
 import { useDispatch } from "react-redux";
-import { resetUserChoiceList } from "../redux/store";
+import { resetUserChoiceList, updateCurrentQuizNumber } from "../redux/store";
 
 const Container = styled.div`
   font-family: "Sunflower", sans-serif;
@@ -61,7 +61,8 @@ const Home = () => {
 
   useEffect(() => {
     getData();
-    dispatch(resetUserChoiceList);
+    dispatch(updateCurrentQuizNumber(0));
+    dispatch(resetUserChoiceList());
 
     setTimeout(() => {
       setLoading(false);
