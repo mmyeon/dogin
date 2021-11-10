@@ -104,7 +104,7 @@ const Container = styled.div`
         flex-direction: column;
         border-radius: 50px;
 
-        button {
+        .icon-wrapper {
           margin: 5px;
           border-radius: 50%;
           display: flex;
@@ -115,16 +115,18 @@ const Container = styled.div`
           width: 36px;
           height: 36px;
           cursor: pointer;
+        }
 
+        button {
           &:focus {
             outline: none;
           }
+        }
 
-          > img {
-            width: 20px;
-            height: 20px;
-            padding: 2px;
-          }
+        img {
+          width: 20px;
+          height: 20px;
+          padding: 2px;
         }
 
         .shareBtn {
@@ -284,13 +286,11 @@ const Result = () => {
             ref={urlInput}
           />
           <div className="btn-container">
-            <Link to="/">
-              <button className="homeBtn">
-                <img src="/assets/home.png" alt="home" />
-              </button>
+            <Link to="/" className="homeBtn icon-wrapper">
+              <img src="/assets/home.png" alt="go home button" />
             </Link>
-            <button className="shareBtn" onClick={copyToClipboard}>
-              <img src="/assets/share.png" alt="share" />
+            <button className="shareBtn icon-wrapper" onClick={copyToClipboard}>
+              <img src="/assets/share.png" alt="share button" />
             </button>
           </div>
         </div>
