@@ -182,6 +182,7 @@ const Result = () => {
 
   let resultList = [];
   const urlInput = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   checkResult();
 
@@ -192,8 +193,6 @@ const Result = () => {
   const incorrectAnswerList = resultList.filter(
     (answer) => answer.result === "틀림"
   );
-  // test
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Container>
@@ -292,7 +291,6 @@ const Result = () => {
             <Link to="/" className="homeBtn icon-wrapper">
               <img src="/assets/home.png" alt="go home button" />
             </Link>
-            {/* <button className="shareBtn icon-wrapper" onClick={copyToClipboard}> */}
             <button
               className="shareBtn icon-wrapper"
               onClick={() => setIsOpen(true)}
@@ -323,13 +321,6 @@ const Result = () => {
     } else {
       return `보호자가 되기엔 아직 준비가 더 필요해요.`;
     }
-  }
-
-  function copyToClipboard() {
-    const homeUrlInput = urlInput.current;
-    homeUrlInput.select();
-    document.execCommand("copy");
-    window.alert("주소가 복사되었습니다. 친구에게 공유해보세요 😊");
   }
 };
 
