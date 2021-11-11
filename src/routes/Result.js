@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
@@ -7,6 +7,7 @@ import { contentReferenceList, iconReferenceList } from "../reference";
 import { device, size } from "../breakpoints";
 import { useSelector } from "react-redux";
 import { getAnswerList, getQuestionList } from "../redux/selectors";
+import Modal from "../components/Modal";
 
 const Gnb = styled.div`
   width: 100vw;
@@ -191,6 +192,8 @@ const Result = () => {
   const incorrectAnswerList = resultList.filter(
     (answer) => answer.result === "틀림"
   );
+  // test
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Container>
@@ -289,10 +292,15 @@ const Result = () => {
             <Link to="/" className="homeBtn icon-wrapper">
               <img src="/assets/home.png" alt="go home button" />
             </Link>
-            <button className="shareBtn icon-wrapper" onClick={copyToClipboard}>
+            {/* <button className="shareBtn icon-wrapper" onClick={copyToClipboard}> */}
+            <button
+              className="shareBtn icon-wrapper"
+              onClick={() => setIsOpen(true)}
+            >
               <img src="/assets/share.png" alt="share button" />
             </button>
           </div>
+          {isOpen && <Modal setIsOpen={setIsOpen} />}
         </div>
       </div>
     </Container>
