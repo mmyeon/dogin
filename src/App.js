@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalStyles from "../src/GlobalStyles";
+import GlobalStyles from "./styles/GlobalStyles";
 import Router from "./Router";
 import { Provider } from "react-redux";
 import store from "./redux/store";
