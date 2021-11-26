@@ -107,6 +107,7 @@ const Question = ({ setAnswerState }) => {
             </li>
           ))}
         </ul>
+
         <section className="content">
           <img
             src={`/assets/${imageFileName}`}
