@@ -211,9 +211,8 @@ const Result = () => {
             <div className="score-container">
               <img src="./assets/pet-love.png" alt="pet love" />
               <span>
-                {`${Math.floor(
-                  (correctAnswerNumber / questionList.length) * 100
-                )} 점`}
+                {Math.floor((correctAnswerNumber / questionList.length) * 100)}
+                점
               </span>
             </div>
           </section>
