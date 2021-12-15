@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
@@ -94,11 +94,6 @@ const Container = styled.div`
         margin-left: -19px;
       }
 
-      > .home-url {
-        opacity: 0;
-        width: 20px;
-      }
-
       > .btn-container {
         background: #ffd767;
         display: flex;
@@ -181,7 +176,6 @@ const Result = () => {
   });
 
   let resultList = [];
-  const urlInput = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
   checkResult();
@@ -281,13 +275,6 @@ const Result = () => {
         </Card>
 
         <div className="action-container">
-          <input
-            type="text"
-            className="home-url"
-            value="https://dogin.mmyeon.com"
-            readOnly
-            ref={urlInput}
-          />
           <div className="btn-container">
             <Link to="/" className="homeBtn icon-wrapper">
               <img src="/assets/home.png" alt="go home button" />
