@@ -129,7 +129,8 @@ const StyledModal = ({ setIsOpen }) => {
       content: {
         title: "반려견 입양을 앞두고 계신가요?",
         description: "좋은 보호자가 될 수 있을지 체크해보세요.",
-        imageUrl: "https://ifh.cc/g/ChgM59.jpg",
+        imageUrl:
+          "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc3hmUy%2FbtrobNLGc2Q%2F2qzqGs8HOVxZzfn5GLAmO1%2Fimg.png",
         link: {
           mobileWebUrl: "https://dogin.mmyeon.com",
           webUrl: "https://dogin.mmyeon.com",
