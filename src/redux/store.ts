@@ -1,13 +1,21 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import data from "../data";
 
+export type InitialStateType = {
+  currentQuizNumber: number;
+  userChoiceList: ("YES" | "NO")[];
+  quizData: typeof data;
+};
+
+const initialState: InitialStateType = {
+  currentQuizNumber: 0,
+  userChoiceList: [],
+  quizData: data,
+};
+
 const quiz = createSlice({
   name: "quizReducer",
-  initialState: {
-    currentQuizNumber: 0,
-    userChoiceList: [],
-    quizData: data,
-  },
+  initialState,
   reducers: {
     updateCurrentQuizNumber: (state, action) => {
       state.currentQuizNumber = action.payload;

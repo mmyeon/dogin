@@ -1,5 +1,10 @@
-import React, { useEffect } from "react";
-import { Link, withRouter, useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  Link,
+  withRouter,
+  useHistory,
+  RouteComponentProps,
+} from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import TitleWithBubble from "../../components/TitleWithBubble";
@@ -8,6 +13,7 @@ import { useSelector } from "react-redux";
 
 import data from "../../data";
 import { getAnswerList, getQuestionList } from "../../redux/selectors";
+import { InitialStateType } from "../../redux/store";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,11 +62,15 @@ const Container = styled.div`
   }
 `;
 
-const Answer = ({ setAnswerState }) => {
+interface AnswerProps extends RouteComponentProps {
+  setAnswerState: () => void;
+}
+
+const Answer = ({ setAnswerState }: AnswerProps) => {
   let history = useHistory();
 
   const { questionList, answerList, userChoiceList, quizNumber } = useSelector(
-    (state) => {
+    (state: InitialStateType) => {
       return {
         questionList: getQuestionList(state),
         answerList: getAnswerList(state),
@@ -76,7 +86,7 @@ const Answer = ({ setAnswerState }) => {
     };
   });
 
-  const getAnswerDesc = (quizNumber) => {
+  const getAnswerDesc = (quizNumber: number) => {
     const answer = answerDescList[quizNumber - 1];
     return answer;
   };

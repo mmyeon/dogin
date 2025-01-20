@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
@@ -8,6 +8,7 @@ import { device, size } from "../breakpoints";
 import { useSelector } from "react-redux";
 import { getAnswerList, getQuestionList } from "../redux/selectors";
 import Modal from "../components/Modal";
+import { InitialStateType } from "../redux/store";
 
 const Gnb = styled.div`
   width: 100vw;
@@ -150,7 +151,7 @@ const List = styled.ul`
   width: 100%;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.li<{ borderBottom?: boolean; fontSize?: string }>`
   padding-top: 10px;
   padding-bottom: 5px;
   line-height: 1.3em;
@@ -167,15 +168,17 @@ const ListItem = styled.li`
 `;
 
 const Result = () => {
-  const { userChoiceList, questionList, answerList } = useSelector((state) => {
-    return {
-      userChoiceList: state.userChoiceList,
-      questionList: getQuestionList(state),
-      answerList: getAnswerList(state),
-    };
-  });
+  const { userChoiceList, questionList, answerList } = useSelector(
+    (state: InitialStateType) => {
+      return {
+        userChoiceList: state.userChoiceList,
+        questionList: getQuestionList(state),
+        answerList: getAnswerList(state),
+      };
+    }
+  );
 
-  let resultList = [];
+  let resultList: { currentQuizNumber: number; result: "맞음" | "틀림" }[] = [];
   const [isOpen, setIsOpen] = useState(false);
 
   checkResult();

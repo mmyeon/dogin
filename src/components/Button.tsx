@@ -1,7 +1,9 @@
-import React from "react";
 import styled from "styled-components";
+import { OnClick } from "./Choice";
 
-const ButtonContainer = styled.button`
+const ButtonContainer = styled.button<{
+  marginRight?: string;
+}>`
   font-family: "Poppins", sans-serif;
   color: #c8c5d2;
   font-size: 1.1rem;
@@ -17,7 +19,13 @@ const ButtonContainer = styled.button`
   color: white;
 `;
 
-const Button = ({ title, onClick, marginRight }) => {
+type ButtonProps = {
+  title: string;
+  onClick?: OnClick;
+  marginRight?: string;
+};
+
+const Button = ({ title, onClick, marginRight }: ButtonProps) => {
   return (
     <ButtonContainer onClick={onClick} marginRight={marginRight}>
       {title}

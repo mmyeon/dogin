@@ -12,7 +12,7 @@ const StyledTiTleWithCircle = styled.span`
   font-size: 17px;
 `;
 
-const TitleWithCircle = ({ title }) => {
+const TitleWithCircle = ({ title }: { title: string }) => {
   return <StyledTiTleWithCircle>{title}</StyledTiTleWithCircle>;
 };
 

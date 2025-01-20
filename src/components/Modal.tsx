@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
@@ -87,9 +87,16 @@ const LinkButton = styled.button`
   color: black;
 `;
 
-const StyledModal = ({ setIsOpen }) => {
+// TODO: set함수를 전달하는게 좋은 방법인지 고민
+const StyledModal = ({
+  setIsOpen,
+}: {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { Kakao } = window;
-  const urlInput = useRef(null);
+
+  console.log(window);
+  const urlInput = useRef<HTMLInputElement>(null);
 
   return (
     <ModalContainer>
@@ -150,7 +157,8 @@ const StyledModal = ({ setIsOpen }) => {
 
   function copyToClipboard() {
     const homeUrlInput = urlInput.current;
-    homeUrlInput.select();
+    homeUrlInput?.select();
+    // TODO: deprecated 메서드 개선하기
     document.execCommand("copy");
     window.alert("주소가 복사되었습니다.😊");
     setIsOpen(false);

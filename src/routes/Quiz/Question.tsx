@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { withRouter, useParams } from "react-router-dom";
+import { BaseSyntheticEvent, useEffect } from "react";
+import { withRouter, useParams, RouteComponentProps } from "react-router-dom";
 import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
 import { device } from "../../breakpoints";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  InitialStateType,
   updateCurrentQuizNumber,
   updateUserChoiceList,
 } from "../../redux/store";
@@ -71,17 +72,21 @@ const QuestionContainer = styled.div`
   }
 `;
 
-const Question = ({ setAnswerState }) => {
-  const { quizNumber } = useParams();
+interface QuestionProps extends RouteComponentProps {
+  setAnswerState: () => void;
+}
+
+const Question = ({ setAnswerState }: QuestionProps) => {
+  const { quizNumber } = useParams<{ quizNumber: string }>();
   const currentQuizNumber = parseInt(quizNumber);
 
-  const { questionList } = useSelector((state) => {
+  const { questionList } = useSelector((state: InitialStateType) => {
     return {
       questionList: getQuestionList(state),
     };
   });
 
-  const getQuestion = (currentQuizNumber) => {
+  const getQuestion = (currentQuizNumber: number) => {
     const question = questionList[currentQuizNumber - 1];
     return question;
   };
@@ -101,7 +106,7 @@ const Question = ({ setAnswerState }) => {
           {questionList.map((item, i) => (
             <li
               key={i.toString()}
-              className={i + 1 === currentQuizNumber ? "current" : null}
+              className={i + 1 === currentQuizNumber ? "current" : ""}
             >
               {i + 1}
             </li>
@@ -111,17 +116,20 @@ const Question = ({ setAnswerState }) => {
         <section className="content">
           <img
             src={`/assets/${imageFileName}`}
-            alt={imageFileName.slice(0, imageFileName.match(/.png/).index)}
+            alt={imageFileName.slice(
+              0,
+              imageFileName.match(/.png/)?.index || imageFileName.length
+            )}
           />
 
-          <h1>{question}</h1>
+          {question && <h1>{question}</h1>}
           <Choice onClick={updateResult} />
         </section>
       </Card>
     </QuestionContainer>
   );
 
-  function updateResult(e) {
+  function updateResult(e: BaseSyntheticEvent) {
     setAnswerState();
     const userChoice = e.target.innerText;
     dispatch(updateUserChoiceList(userChoice));

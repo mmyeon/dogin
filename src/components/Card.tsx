@@ -1,8 +1,8 @@
-import React from "react";
 import styled, { css } from "styled-components";
 import { device } from "../breakpoints";
+import { ReactNode } from "react";
 
-const StyledCard = styled.div`
+const StyledCard = styled.div<{ borderType?: string }>`
   border-radius: 18px;
   margin: 0 2rem;
   background: white;
@@ -31,7 +31,12 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ borderType, children }) => {
+type CardProps = {
+  borderType?: string;
+  children: ReactNode;
+};
+
+const Card = ({ borderType, children }: CardProps) => {
   return (
     <StyledCard borderType={borderType} className="Card">
       {children}

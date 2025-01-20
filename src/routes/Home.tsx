@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { getDogImageApi } from "../api";
+import { getDogImages } from "../apis/api";
 import Loader from "../components/Loader";
 import { device, size } from "../breakpoints";
 import { useDispatch } from "react-redux";
@@ -53,8 +53,8 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const [imgUrlList, setImgUrlList] = useState([]);
-  const [imgIndex, setImgIndex] = useState(null);
+  const [imgUrlList, setImgUrlList] = useState<string[]>([]);
+  const [imgIndex, setImgIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
@@ -104,10 +104,8 @@ const Home = () => {
 
   async function getData() {
     try {
-      const {
-        data: { results: apiResult },
-      } = await getDogImageApi();
-      const imagesURL = apiResult.map((item) => item.urls.small);
+      const data = await getDogImages();
+      const imagesURL = data.results.map((item) => item.urls.small);
       setImgUrlList(imagesURL);
     } catch (error) {
       console.log("failed");

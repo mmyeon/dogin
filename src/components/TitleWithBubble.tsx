@@ -9,7 +9,7 @@ const Container = styled.div`
   top: -25px;
 `;
 
-const BackgroundCircle = styled.div`
+const BackgroundCircle = styled.div<{ backgroundColor: string }>`
   display: flex;
 
   .circle {
@@ -39,7 +39,7 @@ const Title = styled.span`
     1px 1px 0 #000;
 `;
 
-const TitleWithCircle = ({ title }) => {
+const TitleWithCircle = ({ title }: { title: string }) => {
   return (
     <>
       <Container>

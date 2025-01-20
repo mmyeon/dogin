@@ -1,7 +1,8 @@
-import React from "react";
+import { BaseSyntheticEvent } from "react";
 import Button from "./Button";
+export type OnClick = (e: BaseSyntheticEvent) => void;
 
-const Choice = ({ onClick }) => {
+const Choice = ({ onClick }: { onClick: OnClick }) => {
   return (
     <div>
       <Button title="YES" marginRight={"5px"} onClick={onClick} />

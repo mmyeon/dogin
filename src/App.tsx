@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import GlobalStyles from "./styles/GlobalStyles";
 import Router from "./Router";
 import { Provider } from "react-redux";
@@ -10,7 +10,7 @@ const App = () => {
 
   useEffect(() => {
     Kakao.init(KAKAO_KEY);
-  }, []);
+  }, [Kakao, KAKAO_KEY]);
 
   return (
     <Provider store={store}>

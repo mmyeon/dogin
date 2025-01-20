@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
+import { InitialStateType } from "./store";
 
-const quizDataSelector = (state) => state.quizData;
+const quizDataSelector = (state: InitialStateType) => state.quizData;
 
 const getQuestionList = createSelector(quizDataSelector, (quizData) => {
   const questionList = quizData.map((quiz) => {
