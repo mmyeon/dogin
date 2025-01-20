@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { device, size } from "../breakpoints";
 import { useDispatch } from "react-redux";
 import { resetUserChoiceList, updateCurrentQuizNumber } from "../redux/store";
+import { useQuery } from "@tanstack/react-query";
 
 const Container = styled.div`
   font-family: "Sunflower", sans-serif;
@@ -53,14 +54,19 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const [imgUrlList, setImgUrlList] = useState<string[]>([]);
   const [imgIndex, setImgIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { data: imgUrlList = [], isLoading } = useQuery({
+    queryKey: ["dogImgUrls"],
+    queryFn: async () => {
+      const data = await getDogImages();
+      return data.results.map((item) => item.urls.small);
+    },
+  });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getData();
     dispatch(updateCurrentQuizNumber(0));
     dispatch(resetUserChoiceList());
 
@@ -70,8 +76,12 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    if (!imgUrlList) return;
+
     setImgIndex(Math.floor(Math.random() * imgUrlList.length));
   }, [imgUrlList]);
+
+  if (isLoading || !imgUrlList) return <Loader />;
 
   return (
     <>
@@ -83,9 +93,7 @@ const Home = () => {
             <div
               className="dog-img"
               style={{
-                backgroundImage: `url(
-            ${imgUrlList[imgIndex]}
-          )`,
+                backgroundImage: `url(${imgUrlList[imgIndex]})`,
               }}
             />
 
@@ -101,16 +109,6 @@ const Home = () => {
       )}
     </>
   );
-
-  async function getData() {
-    try {
-      const data = await getDogImages();
-      const imagesURL = data.results.map((item) => item.urls.small);
-      setImgUrlList(imagesURL);
-    } catch (error) {
-      console.log("failed");
-    }
-  }
 };
 
 export default Home;

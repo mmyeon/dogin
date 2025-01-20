@@ -3,6 +3,9 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Router from "./Router";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const { Kakao } = window;
@@ -13,10 +16,12 @@ const App = () => {
   }, [Kakao, KAKAO_KEY]);
 
   return (
-    <Provider store={store}>
-      <Router />
-      <GlobalStyles />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <Router />
+        <GlobalStyles />
+      </Provider>
+    </QueryClientProvider>
   );
 };
 
