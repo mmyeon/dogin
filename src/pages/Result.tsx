@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Card";
 import TitleWithCircle from "../components/TitleWithCircle";
-import { contentReferenceList, iconReferenceList } from "../reference";
+import {
+  contentReferenceList,
+  iconReferenceList,
+} from "../entities/quiz/reference";
 import { device, size } from "../app/styles/breakpoints";
 import { useSelector } from "react-redux";
-import { getAnswerList, getQuestionList } from "../redux/selectors";
+import { getAnswerList, getQuestionList } from "@/entities/quiz/model";
 import Modal from "../components/Modal";
 import { InitialStateType } from "../app/store";
 

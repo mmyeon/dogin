@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import data from "../data";
+import data from "../entities/quiz/questions";
 
 export type InitialStateType = {
   currentQuizNumber: number;

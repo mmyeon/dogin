@@ -95,7 +95,6 @@ const StyledModal = ({
 }) => {
   const { Kakao } = window;
 
-  console.log(window);
   const urlInput = useRef<HTMLInputElement>(null);
 
   return (

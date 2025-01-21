@@ -8,8 +8,8 @@ import {
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { InitialStateType } from "../../app/store";
-import { getAnswerList, getQuestionList } from "../../redux/selectors";
-import data from "../../data";
+import { getAnswerList, getQuestionList } from "@/entities/quiz/model";
+import data from "../../entities/quiz/questions";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
 import Button from "../../components/Button";

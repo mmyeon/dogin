@@ -10,7 +10,7 @@ import {
   updateCurrentQuizNumber,
   updateUserChoiceList,
 } from "../../app/store";
-import { getQuestionList } from "../../redux/selectors";
+import { getQuestionList } from "@/entities/quiz/model";
 
 const QuestionContainer = styled.div`
   width: 100vw;

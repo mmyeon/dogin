@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Question from "./Question";
 import Answer from "./Answer";
-import ScrollToTop from "../../components/ScrollToTop";
+import ScrollToTop from "../../shared/utils/ScrollToTop";
 
 const Quiz = () => {
   const [isAnswered, setIsAnswered] = useState(false);

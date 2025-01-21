@@ -1,4 +1,4 @@
-const data = [
+const questions = [
   {
     imageFileName: "dog-walking.png",
     question: `나는 
@@ -225,4 +225,4 @@ const data = [
   },
 ];
 
-export default data;
+export default questions;

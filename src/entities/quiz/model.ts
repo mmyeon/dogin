@@ -1,5 +1,5 @@
+import { InitialStateType } from "@/app/store";
 import { createSelector } from "reselect";
-import { InitialStateType } from "../app/store";
 
 const quizDataSelector = (state: InitialStateType) => state.quizData;
 
