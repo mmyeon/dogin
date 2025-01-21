@@ -6,14 +6,13 @@ import {
   RouteComponentProps,
 } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../../components/Button";
+import { useSelector } from "react-redux";
+import { InitialStateType } from "../../app/store";
+import { getAnswerList, getQuestionList } from "../../redux/selectors";
+import data from "../../data";
 import TitleWithBubble from "../../components/TitleWithBubble";
 import Card from "../../components/Card";
-import { useSelector } from "react-redux";
-
-import data from "../../data";
-import { getAnswerList, getQuestionList } from "../../redux/selectors";
-import { InitialStateType } from "../../redux/store";
+import Button from "../../components/Button";
 
 const Container = styled.div`
   width: 100vw;

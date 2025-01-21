@@ -1,11 +1,8 @@
 import { useEffect } from "react";
-import GlobalStyles from "./styles/GlobalStyles";
-import Router from "./Router";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import Router from "./app/Router";
+import GlobalStyles from "./app/styles/GlobalStyles";
+import { CustomQueryClientProvider } from "./app/providers/CustomQueryClientProvider";
+import ReduxProvider from "./app/providers/ReduxProvider";
 
 const App = () => {
   const { Kakao } = window;
@@ -16,12 +13,12 @@ const App = () => {
   }, [Kakao, KAKAO_KEY]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+    <CustomQueryClientProvider>
+      <ReduxProvider>
         <Router />
         <GlobalStyles />
-      </Provider>
-    </QueryClientProvider>
+      </ReduxProvider>
+    </CustomQueryClientProvider>
   );
 };
 

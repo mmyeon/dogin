@@ -6,7 +6,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 export default defineConfig(({ mode }) => {
   const isLocal = mode === "development";
   return {
-    base: "./",
+    base: "/",
     plugins: [
       react(),
       vitetsConfigPaths(),
@@ -22,6 +22,11 @@ export default defineConfig(({ mode }) => {
           ]
         : [],
     ],
+    resolve: {
+      alias: {
+        "@/*": ["src/*"],
+      },
+    },
     server: {
       open: true,
       port: 3000,

@@ -16,7 +16,11 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "allowImportingTsExtensions": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "exclude": ["node_modules"]
 }

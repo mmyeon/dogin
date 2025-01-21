@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import TitleWithCircle from "../components/TitleWithCircle";
 import { contentReferenceList, iconReferenceList } from "../reference";
-import { device, size } from "../breakpoints";
+import { device, size } from "../app/styles/breakpoints";
 import { useSelector } from "react-redux";
 import { getAnswerList, getQuestionList } from "../redux/selectors";
 import Modal from "../components/Modal";
-import { InitialStateType } from "../redux/store";
+import { InitialStateType } from "../app/store";
 
 const Gnb = styled.div`
   width: 100vw;

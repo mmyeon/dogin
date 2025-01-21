@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { device } from "../breakpoints";
 import { ReactNode } from "react";
+import { device } from "@/app/styles/breakpoints";
 
 const StyledCard = styled.div<{ borderType?: string }>`
   border-radius: 18px;

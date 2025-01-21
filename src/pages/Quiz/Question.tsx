@@ -3,13 +3,13 @@ import { withRouter, useParams, RouteComponentProps } from "react-router-dom";
 import Choice from "../../components/Choice";
 import Card from "../../components/Card";
 import styled from "styled-components";
-import { device } from "../../breakpoints";
+import { device } from "../../app/styles/breakpoints";
 import { useDispatch, useSelector } from "react-redux";
 import {
   InitialStateType,
   updateCurrentQuizNumber,
   updateUserChoiceList,
-} from "../../redux/store";
+} from "../../app/store";
 import { getQuestionList } from "../../redux/selectors";
 
 const QuestionContainer = styled.div`

@@ -4,9 +4,9 @@ import styled from "styled-components";
 import Button from "../components/Button";
 import { getDogImages } from "../apis/api";
 import Loader from "../components/Loader";
-import { device, size } from "../breakpoints";
+import { device, size } from "../app/styles/breakpoints";
 import { useDispatch } from "react-redux";
-import { resetUserChoiceList, updateCurrentQuizNumber } from "../redux/store";
+import { resetUserChoiceList, updateCurrentQuizNumber } from "../app/store";
 import { useQuery } from "@tanstack/react-query";
 
 const Container = styled.div`
