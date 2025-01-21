@@ -4,7 +4,7 @@ import { UnsplashSearchPhotoApiResponse } from "./type";
 const api = axios.create({
   baseURL: "https://api.unsplash.com/",
   params: {
-    client_id: process.env.REACT_APP_CLIENT_KEY,
+    client_id: import.meta.env.VITE_CLIENT_KEY,
   },
 });
 

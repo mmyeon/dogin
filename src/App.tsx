@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { Kakao } = window;
-  const KAKAO_KEY = process.env.REACT_APP_KAKAO_KEY;
+  const KAKAO_KEY = import.meta.env.VITE_KAKAO_KEY;
 
   useEffect(() => {
     Kakao.init(KAKAO_KEY);

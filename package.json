@@ -2,6 +2,7 @@
   "name": "dogin",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@tanstack/react-query": "^5.64.2",
@@ -16,16 +17,15 @@
     "react-helmet-async": "^1.0.9",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.1",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "visualize": "vite build --mode development"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +50,10 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^5.1.34"
+    "@types/styled-components": "^5.1.34",
+    "@vitejs/plugin-react": "^4.3.4",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "vite": "^6.0.9",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
