@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useEffect } from "react";
 import { withRouter, useParams, RouteComponentProps } from "react-router-dom";
-import Choice from "../../components/Choice";
-import Card from "../../components/Card";
+import Choice from "../../shared/ui/Choice";
+import Card from "../../shared/ui/Card";
 import styled from "styled-components";
 import { device } from "../../app/styles/breakpoints";
 import { useDispatch, useSelector } from "react-redux";

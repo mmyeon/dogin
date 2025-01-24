@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Card from "../components/Card";
-import TitleWithCircle from "../components/TitleWithCircle";
+import Card from "../shared/ui/Card";
+import TitleWithCircle from "../shared/ui/TitleWithCircle";
 import {
   contentReferenceList,
   iconReferenceList,
@@ -10,7 +10,7 @@ import {
 import { device, size } from "../app/styles/breakpoints";
 import { useSelector } from "react-redux";
 import { getAnswerList, getQuestionList } from "@/entities/quiz/model";
-import Modal from "../components/Modal";
+import Modal from "../shared/ui/Modal";
 import { InitialStateType } from "../app/store";
 
 const Gnb = styled.div`

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button";
+import Button from "../../shared/ui/Button";
 
-import Loader from "../../components/Loader";
+import Loader from "../../shared/ui/Loader";
 import { useDispatch } from "react-redux";
 import { resetUserChoiceList, updateCurrentQuizNumber } from "../../app/store";
 
-import { StyledContainer } from "@/features/loader/Loader";
 import { useDogImages } from "@/entities/dogs/useDogImages";
+import { StyledContainer } from "./StyledContainer";
 
 const Home = () => {
   const [imgIndex, setImgIndex] = useState(0);

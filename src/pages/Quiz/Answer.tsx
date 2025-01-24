@@ -10,9 +10,9 @@ import { useSelector } from "react-redux";
 import { InitialStateType } from "../../app/store";
 import { getAnswerList, getQuestionList } from "@/entities/quiz/model";
 import data from "../../entities/quiz/questions";
-import TitleWithBubble from "../../components/TitleWithBubble";
-import Card from "../../components/Card";
-import Button from "../../components/Button";
+import TitleWithBubble from "../../shared/ui/TitleWithBubble";
+import Card from "../../shared/ui/Card";
+import Button from "../../shared/ui/Button";
 
 const Container = styled.div`
   width: 100vw;
