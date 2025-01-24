@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { OnClick } from "./Choice";
+import { BaseSyntheticEvent } from "react";
 
 const ButtonContainer = styled.button<{
   marginRight?: string;
@@ -21,7 +21,7 @@ const ButtonContainer = styled.button<{
 
 type ButtonProps = {
   title: string;
-  onClick?: OnClick;
+  onClick?: (e: BaseSyntheticEvent) => void;
   marginRight?: string;
 };
 
