@@ -1,4 +1,4 @@
-export interface Question {
+interface Question {
   imageFileName: string;
   question: string;
   answer: string;
@@ -8,3 +8,17 @@ export interface Question {
   };
   titleOnResult: string;
 }
+
+type QuestionList = {
+  imageFileName: string;
+  question: string;
+  titleOnResult: string;
+};
+
+type ResultType = "맞음" | "틀림";
+type ResultListType = {
+  currentQuizNumber: number;
+  result: ResultType;
+}[];
+
+export type { Question, ResultListType, ResultType, QuestionList };

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { StyledContainer } from "./StyledContainer";
+import { StyledContainer } from "./Styled";
 import Button from "@/shared/ui/Button";
 import { useDogImages } from "@/entities/dogs/useDogImages";
 

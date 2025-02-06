@@ -1,5 +1,5 @@
 import { BaseSyntheticEvent } from "react";
-import Button from "./Button";
+import Button from "../../../shared/ui/Button";
 
 const Choice = ({ onClick }: { onClick: (e: BaseSyntheticEvent) => void }) => {
   return (

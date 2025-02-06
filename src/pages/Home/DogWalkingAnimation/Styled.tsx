@@ -34,7 +34,7 @@ const tongue = keyframes`
 }
 `;
 
-const Walkingdog = styled.div`
+const WalkingDog = styled.div`
   z-index: 100;
 
   > h1 {
@@ -230,7 +230,7 @@ const Tongue = styled.div`
 
 export {
   Container,
-  Walkingdog,
+  WalkingDog,
   DogFace,
   Ear1,
   Ear2,

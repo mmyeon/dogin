@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 
 import { Content } from "./Content";
-import DogWalkingAnimation from "../../shared/ui/DogWalkingAnimation";
+import DogWalkingAnimation from "./DogWalkingAnimation";
 
 const Home = () => {
-  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
+  const [showsAnimation, setShowsAnimation] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsAnimationVisible(false);
+      setShowsAnimation(false);
     }, 1900);
 
     return () => clearTimeout(timer);
   }, []);
 
-  return <>{isAnimationVisible ? <DogWalkingAnimation /> : <Content />}</>;
+  return <>{showsAnimation ? <DogWalkingAnimation /> : <Content />}</>;
 };
 
 export default Home;

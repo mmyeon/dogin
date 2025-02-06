@@ -1,19 +1,16 @@
 import { useState } from "react";
 import Question from "./Question";
 import Answer from "./Answer";
-import useScrollToTop from "../../shared/utils/useScrollToTop";
+import useScrollToTop from "./hooks/useScrollToTop";
 
 const Quiz = () => {
-  const [isQuestionMode, setIsQuestionMode] = useState<boolean>(true);
+  const [mode, setMode] = useState<"question" | "answer">("question");
   useScrollToTop();
 
   return (
     <>
-      {isQuestionMode ? (
-        <Question changeMode={() => setIsQuestionMode(false)} />
-      ) : (
-        <Answer changeMode={() => setIsQuestionMode(true)} />
-      )}
+      {mode === "question" && <Question changeMode={() => setMode("answer")} />}
+      {mode === "answer" && <Answer changeMode={() => setMode("question")} />}
     </>
   );
 };

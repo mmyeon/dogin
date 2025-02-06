@@ -1,6 +1,6 @@
 import {
   Container,
-  Walkingdog,
+  WalkingDog,
   DogFace,
   Ear1,
   Ear2,
@@ -22,12 +22,12 @@ import {
   Paw3,
   Paw4,
   Tail,
-} from "./StyledDog";
+} from "./Styled";
 
 const DogWalkingAnimation = () => {
   return (
     <Container>
-      <Walkingdog>
+      <WalkingDog>
         <h1>로딩중..</h1>
         <DogFace>
           <Ear1></Ear1>
@@ -55,7 +55,7 @@ const DogWalkingAnimation = () => {
           <Paw4></Paw4>
         </Leg4>
         <Tail></Tail>
-      </Walkingdog>
+      </WalkingDog>
     </Container>
   );
 };

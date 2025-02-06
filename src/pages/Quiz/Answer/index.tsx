@@ -11,9 +11,9 @@ import { getAnswerList, getQuestionList } from "@/entities/quiz/model";
 import Container from "./Styled";
 import { InitialStateType } from "@/app/store";
 import TitleWithBubble from "@/shared/ui/TitleWithBubble";
-import Card from "@/shared/ui/Card";
+import Card from "@/pages/Quiz/Card";
 import Button from "@/shared/ui/Button";
-import questions from "@/entities/quiz/questions";
+import questions from "@/entities/quiz/questionData";
 
 interface AnswerProps extends RouteComponentProps {
   changeMode: () => void;
@@ -65,12 +65,9 @@ const Answer = ({ changeMode }: AnswerProps) => {
             }
           />
         }
-
         <h1 className="answer-title">{answerTitle}</h1>
-
         <p className="explanation">{explanation}</p>
-
-        {referenceList !== undefined && (
+        {referenceList && (
           <span className="reference">
             <h3>출처</h3>
             {referenceList.map((reference, i) => (
@@ -85,7 +82,6 @@ const Answer = ({ changeMode }: AnswerProps) => {
             ))}
           </span>
         )}
-
         <Link to={nextLink}>
           <Button title="NEXT" onClick={isLastQuiz ? undefined : changeMode} />
         </Link>

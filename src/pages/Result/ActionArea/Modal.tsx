@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
@@ -87,15 +86,57 @@ const LinkButton = styled.button`
   color: black;
 `;
 
-// TODO: set함수를 전달하는게 좋은 방법인지 고민
+const BASE_URL = "https://dogin.mmyeon.com";
+
+function shareToKakao() {
+  window.Kakao.Link.sendDefault({
+    objectType: "feed",
+    content: {
+      title: "반려견 입양을 앞두고 계신가요?",
+      description: "좋은 보호자가 될 수 있을지 체크해보세요.",
+      imageUrl:
+        "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc3hmUy%2FbtrobNLGc2Q%2F2qzqGs8HOVxZzfn5GLAmO1%2Fimg.png",
+      link: {
+        mobileWebUrl: BASE_URL,
+        webUrl: BASE_URL,
+      },
+    },
+    buttons: [
+      {
+        title: "나도 테스트 해보기",
+        link: {
+          mobileWebUrl: BASE_URL,
+          webUrl: BASE_URL,
+        },
+      },
+    ],
+  });
+}
+
+async function copyToClipboard(url: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 const StyledModal = ({
   setIsOpen,
 }: {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { Kakao } = window;
+  const handleCopy = async () => {
+    const isSuccess = await copyToClipboard(BASE_URL);
 
-  const urlInput = useRef<HTMLInputElement>(null);
+    if (isSuccess) {
+      window.alert("주소가 복사되었습니다.😊");
+      setIsOpen(false);
+    } else {
+      window.alert("주소 복사에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   return (
     <ModalContainer>
@@ -112,56 +153,14 @@ const StyledModal = ({
               />
             </KakaoButton>
 
-            <LinkButton onClick={copyToClipboard} className="button">
+            <LinkButton onClick={handleCopy} className="button">
               <i className="fas fa-link fa-2x"></i>
             </LinkButton>
-
-            <input
-              type="text"
-              className="home-url"
-              value="https://dogin.mmyeon.com"
-              readOnly
-              ref={urlInput}
-            />
           </ButtonContainer>
         </ModalContent>
       </Modal>
     </ModalContainer>
   );
-
-  function shareToKakao() {
-    Kakao.Link.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "반려견 입양을 앞두고 계신가요?",
-        description: "좋은 보호자가 될 수 있을지 체크해보세요.",
-        imageUrl:
-          "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc3hmUy%2FbtrobNLGc2Q%2F2qzqGs8HOVxZzfn5GLAmO1%2Fimg.png",
-        link: {
-          mobileWebUrl: "https://dogin.mmyeon.com",
-          webUrl: "https://dogin.mmyeon.com",
-        },
-      },
-      buttons: [
-        {
-          title: "나도 테스트 해보기",
-          link: {
-            mobileWebUrl: "https://dogin.mmyeon.com",
-            webUrl: "https://dogin.mmyeon.com",
-          },
-        },
-      ],
-    });
-  }
-
-  function copyToClipboard() {
-    const homeUrlInput = urlInput.current;
-    homeUrlInput?.select();
-    // TODO: deprecated 메서드 개선하기
-    document.execCommand("copy");
-    window.alert("주소가 복사되었습니다.😊");
-    setIsOpen(false);
-  }
 };
 
 export default StyledModal;

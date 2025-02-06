@@ -10,8 +10,8 @@ import {
   updateCurrentQuizNumber,
   updateUserChoiceList,
 } from "@/app/store";
-import Card from "@/shared/ui/Card";
-import Choice from "@/shared/ui/Choice";
+import Card from "@/pages/Quiz/Card";
+import Choice from "@/pages/Quiz/Question/Choice";
 
 interface QuestionProps extends RouteComponentProps {
   changeMode: () => void;

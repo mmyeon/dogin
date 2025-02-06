@@ -38,7 +38,7 @@ const Title = styled.span`
     1px 1px 0 #000;
 `;
 
-const TitleWithCircle = ({ title }: { title: string }) => {
+const TitleWithBubble = ({ title }: { title: string }) => {
   return (
     <>
       <Container>
@@ -55,4 +55,4 @@ const TitleWithCircle = ({ title }: { title: string }) => {
   );
 };
 
-export default TitleWithCircle;
+export default TitleWithBubble;
