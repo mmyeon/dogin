@@ -1,0 +1,20 @@
+{
+  "words": [
+    "dogin",
+    "Kakao",
+    "kakaotalk",
+    "flaticon",
+    "Eucalyp",
+    "iconixar",
+    "mangsaabguru",
+    "Freepik"
+  ],
+  "dictionaries": ["custom-dictionary"],
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-dictionary",
+      "path": "./.cspell/custom-dictionary.txt",
+      "addWords": true
+    }
+  ]
+}
