@@ -1,6 +1,10 @@
 import { List, ListItem, Title } from "./Styled";
 import Card from "../Quiz/Card";
-import { QuestionList, ResultListType, ResultType } from "@/entities/quiz/type";
+import {
+  QuestionList,
+  ResultListType,
+  ResultType,
+} from "@/entities/quiz/types";
 import TitleWithCircle from "./TitleWithCircle";
 
 const HIGH_SCORE_THRESHOLD = 8;

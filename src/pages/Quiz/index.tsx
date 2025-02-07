@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Question from "./Question";
 import Answer from "./Answer";
-import useScrollToTop from "./hooks/useScrollToTop";
+import useScrollToTop from "./useScrollToTop";
 
 const Quiz = () => {
   const [mode, setMode] = useState<"question" | "answer">("question");

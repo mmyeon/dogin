@@ -7,7 +7,7 @@ import { Container, Gnb } from "./Styled";
 import Reference from "./Reference";
 import Report from "./Report";
 import ActionArea from "./ActionArea";
-import { ResultListType } from "@/entities/quiz/type";
+import { ResultListType } from "@/entities/quiz/types";
 
 function evaluateUserAnswers(
   userChoiceList: string[],

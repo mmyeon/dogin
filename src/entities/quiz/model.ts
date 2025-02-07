@@ -1,6 +1,6 @@
 import { InitialStateType } from "@/app/store";
 import { createSelector } from "reselect";
-import { QuestionList } from "./type";
+import { QuestionList } from "./types";
 
 const quizDataSelector = (state: InitialStateType) => state.quizData;
 
