@@ -1,15 +1,18 @@
 {
   "words": [
     "dogin",
+    "Eucalyp",
+    "flaticon",
+    "Freepik",
+    "iconixar",
     "Kakao",
     "kakaotalk",
-    "flaticon",
-    "Eucalyp",
-    "iconixar",
     "mangsaabguru",
-    "Freepik"
+    "treemap"
   ],
-  "dictionaries": ["custom-dictionary"],
+  "dictionaries": [
+    "custom-dictionary"
+  ],
   "dictionaryDefinitions": [
     {
       "name": "custom-dictionary",

@@ -1,6 +1,6 @@
 import { defineConfig, PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
-import vitetsConfigPaths from "vite-tsconfig-paths";
+import vitestConfigPaths from "vite-tsconfig-paths";
 import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig(({ mode }) => {
@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     base: "/",
     plugins: [
       react(),
-      vitetsConfigPaths(),
+      vitestConfigPaths(),
       isLocal
         ? [
             visualizer({
@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: {
-        "@/*": ["src/*"],
+        "@/*": "src/*",
       },
     },
     server: {
