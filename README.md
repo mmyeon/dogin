@@ -35,3 +35,14 @@
 ## 바라는 것은?
 
 [DogIn 테스트](https://dogin.mmyeon.com/)를 통해서 현실적으로 반려견과 함께 산다는 것은 삶을 어떻게 변화시키는지를 알아보고 스스로 준비가 되었는지 체크해보는 시간을 가졌으면 좋겠습니다.
+
+---
+
+## Skills
+
+- **Frontend:** [React 18](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/), [React Redux](https://react-redux.js.org/), [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- **Routing:** [React Router](https://reactrouter.com/)
+- **Styling:** [styled-components](https://styled-components.com/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Bundle Analysis:** [Rollup Plugin Visualizer](https://github.com/btd/rollup-plugin-visualizer)
