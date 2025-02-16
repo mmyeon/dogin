@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UnsplashSearchPhotoApiResponse } from "./type";
+import { UnsplashSearchPhotoApiResponse } from "./types";
 
 const api = axios.create({
   baseURL: "https://api.unsplash.com/",
